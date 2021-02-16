@@ -1,0 +1,28 @@
+<!--%fetchFolder(img)-->
+<!--%fetchFile(preview.jpg)-->
+
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        %globalInsert(head.html)
+        <title>Measuring Spoons</title>
+        <style>
+            h2{
+                padding-left: 15vw;
+            }
+            p{
+                text-align: justify;
+                padding: 0 15vw;
+                font-size: 15pt;
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body>
+        %globalInsert(header.html)
+        <div class="content">
+            %localInsert(doc.html)
+            <script>loadThemedImages(theme_preference);</script>
+        </div>
+    </body>
+</html>

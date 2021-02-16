@@ -1,0 +1,29 @@
+<!--%fetchFolder(downloads)-->
+<!--%fetchFile(preview.jpg)-->
+
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        %globalInsert(head.html)
+        <title>%txt(title)</title>
+    </head>
+    <body>
+        %globalInsert(header.html)
+        <div class="content">
+            <h1>%txt(heading)</h1>
+            <p class="intro">%txt(intro)</p>
+            <div class="flexrow">
+                <div class="left-music-column">
+                    <iframe class="youtube" src=%txt(youtube) frameborder="0"></iframe>
+                    <div class="musescore-download">
+                        <a class="musescore-link" href="downloads/%path().mscz" target=_blank><img class="themed" data-themedSrc="/svg/mscz_theme.svg" style="height:179px; width:293px" alt="Edit Sheetmusic"></a>
+                        <script>loadThemedImages(theme_preference);</script>
+                        <br>
+                        <a class="musescore-link" href="downloads/%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
+                    </div>
+                </div>
+                <embed class="sheetmusic" src="downloads/%path().pdf">
+            </div>
+        </div>
+    </body>
+</html>

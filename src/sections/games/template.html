@@ -1,0 +1,26 @@
+<!--%fetchFolder(Build)-->
+<!--%fetchFile(preview.jpg)-->
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    %globalInsert(head.html)
+    <title>%txt(title)</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      UnityLoader.instantiate("unityContainer", "Build/%path().json");
+    </script>
+  </head>
+  <body>
+    %globalInsert(header.html)
+    <div class="content">
+      <h1>%txt(title)</h1>
+      <p class="intro">%txt(intro)</p>
+      <div class="center-inline">
+        <div class="unity">
+          <div id="unityContainer" style="width: 1024px; height: 576px;"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
