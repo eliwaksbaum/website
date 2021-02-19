@@ -53,6 +53,7 @@ p.listdate{
 
 p.listing{
     margin: 2vh 0;
+    margin-right: 2vw;
     padding-left: 2vw
 }
 
@@ -73,11 +74,35 @@ a.listing{
     align-items: center;
 }
 
+.game-listing{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    padding: 15px;
+    width: 80%
+}
+
+.game-links{
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 20px;
+}
+
 ul{
     list-style-type: none;
 }
 
-li{
+li.game-home{
+    border:3px solid hotpink;
+    position: relative;
+    margin-bottom: 3%;
+    width: 75%
+}
+
+li.section-home{
     margin-bottom: 3%;
     padding: 15px;
     max-width: 75%;
