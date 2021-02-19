@@ -7,3 +7,5 @@ intro = """
         nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserun
         mollit anim id est laborum."""
 summary = "The world's first videogame is a good place to start."
+width = "1024"
+height = "576"
