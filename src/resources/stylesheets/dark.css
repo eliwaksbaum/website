@@ -12,7 +12,7 @@ table, th, td{
 }
 
 /* YO THE SHADOW RGBA ISN'T THE VARIABLE */
-li{
+.shadow{
     box-shadow: 0 4px 8px 0 rgba(235, 235, 235, 0.2);
 }
 

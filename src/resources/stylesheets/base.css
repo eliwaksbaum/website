@@ -74,21 +74,32 @@ a.listing{
     align-items: center;
 }
 
+a.game-link{
+    border-radius: 20px;
+    height: 80%;
+    width: 33%;
+    float: right;
+    text-align: center;
+}
+
 .game-listing{
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
-    padding: 15px;
-    width: 80%
+    padding: 1%;
+    width: 75%
 }
 
 .game-links{
     height: 100%;
+    width: 20%;
     position: absolute;
     bottom: 0;
     right: 0;
-    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 ul{
@@ -96,15 +107,14 @@ ul{
 }
 
 li.game-home{
-    border:3px solid hotpink;
     position: relative;
     margin-bottom: 3%;
-    width: 75%
+    width: 85%
 }
 
 li.section-home{
     margin-bottom: 3%;
-    padding: 15px;
+    padding: 1%;
     max-width: 75%;
     border-radius: 20px;
 }
@@ -216,5 +226,11 @@ a.musescore-link{
 @media (max-width: 800px) {
     .flexrow{
       flex-direction:column-reverse
+    }
+    .game-links{
+        flex-direction: column-reverse;
+    }
+    a.game-link{
+        width: 100%;
     }
 }
