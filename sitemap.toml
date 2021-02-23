@@ -1,0 +1,47 @@
+meta.path = ""
+meta.template = "none"
+meta.has_subs = true
+
+    ### Games
+    [[subs]]
+    meta.path = "games"
+    meta.template = "sectionhome"
+    meta.has_subs = true
+    
+    data.title = "Games"
+    data.heading = "Game Development"
+    data.intro = "I make games sometimes"
+
+        ### Flappy Bird
+        [[subs.subs]]
+        meta.path = "flappy-bird"
+        meta.template = "game"
+        meta.has_subs = false
+
+        data.title = "Flappy Bird"
+        data.summary = "flap flap flap flap shit."
+        data.intro = """This is the second in a series of games Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."""
+        data.width = "1080"
+        data.height = "675"
+
+        ### Pong
+        [[subs.subs]]
+        meta.path = "pong"
+        meta.template = "game"
+        meta.has_subs = false
+
+        data.title = "Pong"
+        data.intro = """
+        This is the first in a series of games Gorem dipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserun
+        mollit anim id est laborum."""
+        data.summary = "The world's first videogame is a good place to start."
+        data.width = "1024"
+        data.height = "576"

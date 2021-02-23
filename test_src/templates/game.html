@@ -1,14 +1,11 @@
-<!--%fetchFolder(Build)-->
-<!--%fetchFile(preview.jpg)-->
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     %globalInsert(head.html)
     <title>%txt(title)</title>
-    <script src="Build/UnityLoader.js"></script>
+    <script src=".com/resources/%path()/UnityLoader.js"></script>
     <script>
-      UnityLoader.instantiate("unityContainer", "Build/%path().json");
+      UnityLoader.instantiate("unityContainer", ".com/resources/%path()/%path().json");
     </script>
   </head>
   <body>

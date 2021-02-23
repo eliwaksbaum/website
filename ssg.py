@@ -4,8 +4,8 @@ from pathlib import Path
 from shutil import copyfile
 from shutil import copytree
 
-read_path = Path("src")
-write_path = Path("eli.waksbaum.com")
+read_path = Path("test_src")
+write_path = Path("test.com")
 current_section_read = "Path"
 current_section_write = "Path"
 current_page_read = "Path"
@@ -103,7 +103,7 @@ def carryOut(edits, line, lookup):
 #globalInsert should have one argument, the adress of the html snippet to be inserted in relation to /src
 def globalInsert(html):
     snippet = ""
-    with open(read_path / html, "r") as insert_text:
+    with open(read_path / "inserts" / html, "r") as insert_text:
         for line in insert_text:
             snippet = snippet + line
     return (snippet)
@@ -153,8 +153,8 @@ def fetch(argument, mode):
     elif mode == "folder":
         copytree(read, write, dirs_exist_ok = True)
 
-def createPage(address, dst, lookup=None):
-    template = readDoc(address)
+def createPage(template_address, dst, lookup=None):
+    template = readDoc(template_address)
     edits = parseDoc(template, lookup)
     page = editDoc(template, edits)
     writeDoc(dst, page)
@@ -251,10 +251,32 @@ def buildSections():
 
         createPage(read_path / "sectionhome.html", current_section_write / "index.html", section_toml)
 
+def buildDirectory(table:dict, last_write:Path):
+    write = last_write / table["meta"]["path"]
 
-def buildSite():
-    buildElse()
-    buildSections()
+    if not write.exists():
+        write.mkdir()
+
+    if (table["meta"]["has_subs"]):
+        for sub in table["subs"]:
+            buildDirectory(sub, write)
+    
+    createPage(Path("test_src/templates") / (table["meta"]["template"] + ".html"), write / "index.html", table["data"])
+
+    # with open(write / "index.html", "w") as html:
+    #     html.write(table["data"]["content"])
+
+
+
+# def buildSite():
+#     buildElse()
+#     buildSections()
             
             
-buildSite()
+sitemap = 0
+with open ("sitemap.toml", "r") as read:
+    sitemap = toml.load(read)
+
+#current_write = Path("test.com")
+#print(sitemap)
+buildDirectory(sitemap, Path("test.com"))
