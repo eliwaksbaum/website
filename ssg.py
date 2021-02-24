@@ -6,10 +6,10 @@ from shutil import copytree
 
 read_path = Path("src")
 write_path = Path(".com")
-current_section_read = "Path"
-current_section_write = "Path"
-current_page_read = "Path"
-current_page_write = "Path"
+current_section_read = Path("fuck.txt")
+current_section_write = Path("fuck.txt")
+current_page_read = Path("fuck.txt")
+current_page_write = Path("fuck.txt")
 
 class Listing():
     def __init__(self, li, date):
@@ -119,14 +119,14 @@ def buildSections():
 # -----------------------------------------------------------------------------------------------------
 
 
-# CREATING PAGE FROM TEMPLATE
+# CREATING HTML FROM TEMPLATE
 # -----------------------------------------------
 
-def createPage(template_address, dst, lookup=None):
+def generate(template_address, lookup = None):
     template = readDoc(template_address)
     edits = parseDoc(template, lookup)
-    page = editDoc(template, edits)
-    writeDoc(dst, page)
+    doc = editDoc(template, edits)
+    return doc
 
 def readDoc(address):
     doc = []
@@ -143,9 +143,9 @@ def parseDoc(doc, lookup = None):
         if len(results) > 0:
             new_line = carryOut(results, line, lookup) #every command function should return a single string, the text to overwrite the line where the command was written
             if new_line == "bad commad":
-                print("Invalid command at line " + str(i) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
+                print("Invalid command at line " + str(i+1) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
             if new_line == "bad key":
-                print("Key does not exist at line " + str(i) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
+                print("Key does not exist at line " + str(i+1) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
             else:
                 line_edits.append((i, new_line))
 
@@ -180,17 +180,13 @@ def editDoc(_doc, edits):
         doc[edit[0]] = edit[1]
     return doc
 
-def writeDoc(address, doc):
-    with open(address, "w") as file:
-        for line in doc:
-            file.write(line)
-
 # COMMANDS
 # -----------------------------------------------
 
 def carryOut(edits, line, lookup):
     new_line = line
     for edit in edits:
+        print(edit.command, edit.argument)
         if edit.command == "globalInsert":
             new_line = globalInsert(edit.argument)
         # elif edit.command == "localInsert":
@@ -200,7 +196,7 @@ def carryOut(edits, line, lookup):
         # elif edit.command == "sectiontxt":
         #     new_line = sectiontxt(edit.argument, new_line, lookup["section"])
         elif edit.command == "path":
-            new_line = path(new_line)
+            new_line = path(new_line, lookup["path"])
         # elif edit.command == "fetchFile":
         #     fetch(edit.argument, "file")
         # elif edit.command == "fetchFolder":
@@ -243,8 +239,7 @@ def txt(key, orig, lookup):
 #     else:
 #         return "bad key"
 
-def path(orig):
-    pathname = current_page_read.name
+def path(orig, pathname):
     new = orig.replace("%path()", pathname)
     return new
 
@@ -273,12 +268,22 @@ def buildDirectory(table:dict, last_write:Path):
     if not write.exists():
         write.mkdir()
 
-    if (table["meta"]["has_subs"]):
+    if table["meta"]["has_subs"]:
         for sub in table["subs"]:
             buildDirectory(sub, write)
     
-    createPage(Path("test_src/templates") / (table["meta"]["template"] + ".html"), write / "index.html", table["data"])
+    table["data"]["path"] = table["meta"]["path"]
 
+    if table["meta"]["template"] == "none":
+        page = generate(read_path / table["data"]["index_dir"])
+    else:
+        page = generate(read_path / "templates" / (table["meta"]["template"] + ".html"),  table["data"])
+    writePage(write / "index.html", page)
+
+def writePage(address, doc):
+    with open(address, "w") as file:
+        for line in doc:
+            file.write(line)
 
 # RUN            
 # -----------------------------------------------
@@ -287,4 +292,4 @@ sitemap = 0
 with open ("sitemap.toml", "r") as read:
     sitemap = toml.load(read)
 
-buildDirectory(sitemap, Path("test.com"))
+buildDirectory(sitemap, Path(".com"))
