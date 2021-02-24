@@ -1,6 +1,3 @@
-<!--%fetchFolder(img)-->
-<!--%fetchFile(preview.jpg)-->
-
 <!DOCTYPE html>
 <html lang = "en">
     <head>
@@ -21,7 +18,7 @@
     <body>
         %globalInsert(header.html)
         <div class="content">
-            %localInsert(doc.html)
+            %keyInsert(doc_dir)
             <script>loadThemedImages(theme_preference);</script>
         </div>
     </body>

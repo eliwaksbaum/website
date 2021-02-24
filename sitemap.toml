@@ -4,8 +4,8 @@ meta.has_subs = true
 
 data.index_dir = "home.html"
 
-    ### Games
-    [[subs]]
+### Games
+[[subs]]
     meta.path = "games"
     meta.template = "sectionhome"
     meta.has_subs = true
@@ -14,8 +14,8 @@ data.index_dir = "home.html"
     data.heading = "Game Development"
     data.intro = "I make games sometimes"
 
-        ### Flappy Bird
-        [[subs.subs]]
+    ### Flappy Bird
+    [[subs.subs]]
         meta.path = "flappy-bird"
         meta.template = "game"
         meta.has_subs = false
@@ -23,16 +23,16 @@ data.index_dir = "home.html"
         data.title = "Flappy Bird"
         data.summary = """flap flap flap flap shit."""
         data.intro = """\
-                        This is the second in a series of games Lorem ipsum dolor sit amet, consectetur adipiscing elit,\
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\
-                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."""
+        This is the second in a series of games Lorem ipsum dolor sit amet, consectetur adipiscing elit,\
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur\
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."""
         data.width = "1080"
         data.height = "675"
 
-        ### Pong
-        [[subs.subs]]
+    ### Pong
+    [[subs.subs]]
         meta.path = "pong"
         meta.template = "game"
         meta.has_subs = false
@@ -48,3 +48,71 @@ data.index_dir = "home.html"
         data.summary = "The world's first videogame is a good place to start."
         data.width = "1024"
         data.height = "576"
+
+### Math
+[[subs]]
+    meta.path = "math"
+    meta.template = "sectionhome"
+    meta.has_subs = true
+
+    data.title = "Math"
+    data.heading = "Math"
+    data.intro = "It's Mathematical."
+
+    ### Measuring Spoons
+    [[subs.subs]]
+        meta.path = "measuring-spoons"
+        meta.template = "blog"
+        meta.has_subs = false
+
+        data.doc_dir = "measuring-spoons.html"
+
+### Music
+[[subs]]
+    meta.path = "music"
+    meta.template = "sectionhome"
+    meta.has_subs = true
+
+    data.title = "Music"
+    data.heading = "Music"
+    data.intro = "I play the clarinet and stuff."
+
+    ### Dancing
+    [[subs.subs]]
+        meta.path = "dancing"
+        meta.template = "music"
+        meta.has_subs = false
+
+        data.title = "Dancing"
+        data.heading = "Dancing (From <i>Hello, Dolly!</i>) [Duet]"
+        data.intro = """\
+        This might be my favorite arrangement I've made. Hello, Dolly! is my favorite musical and it was so fun to try and fit all\
+        the musical brilliance and joy that's happening in the song into two lines two clarinets can play. Maybe I'll do the whole song one\
+        day, but for now, the piece starts with the dance break after the vocals are done, includes the first few choruses, and then skips to\
+        the end."""
+        data.summary = "Hello, Dolly!"
+        data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
+
+    ### He Is They Are
+    [[subs.subs]]
+        meta.path = "he-is-they-are"
+        meta.template = "music"
+        meta.has_subs = false
+
+        data.title = "He Is, They Are"
+        data.heading = "He Is, They Are"
+        data.intro = """/
+        A great track from Harry Connick, Jr's album <i>Blue Light, Red Light</i>./
+        I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
+        data.summary = "Harry Connick, Jr"
+        data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
+
+### Other
+[[subs]]
+    meta.path = "other"
+    meta.template = "sectionhome"
+    meta.has_subs = false
+
+    data.title = "Other Projects"
+    data.heading = "Other Projects"
+    data.intro = "These aren't like the others"

@@ -186,11 +186,12 @@ def editDoc(_doc, edits):
 def carryOut(edits, line, lookup):
     new_line = line
     for edit in edits:
-        print(edit.command, edit.argument)
         if edit.command == "globalInsert":
             new_line = globalInsert(edit.argument)
         # elif edit.command == "localInsert":
         #     new_line = localInsert(edit.argument)
+        elif edit.command == "keyInsert":
+            new_line = keyInsert(edit.argument, new_line, lookup)
         elif edit.command == "txt":
             new_line = txt(edit.argument, new_line, lookup)
         # elif edit.command == "sectiontxt":
@@ -211,7 +212,23 @@ def globalInsert(html):
     with open(read_path / "inserts" / html, "r") as insert_text:
         for line in insert_text:
             snippet = snippet + line
-    return (snippet)
+    return snippet
+
+#keyInsert should have one argument, the key whose value is an adress of the html to be inserted in relation to /src
+def keyInsert(key, orig, lookup):
+    adr = ""
+    snippet = ""
+
+    if key in lookup:
+        adr = lookup[key]
+        adr = read_path / adr
+    else:
+        return "bad key"
+
+    with open(adr, "r") as insert:
+        for line in insert:
+            snippet = snippet + line
+    return snippet
 
 #localInsert should have one argument, the adress of the html snippet to be inserted in relation to the specific article folder
 
