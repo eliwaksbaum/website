@@ -22,142 +22,7 @@ class Edit():
         self.argument = argument
         self.end = end
 
-def findEdit(line, start):
-    iPercent = line.find("%", start)
-    if iPercent != -1:
-        iOParen = line.index("(", iPercent)
-        iCParen = line.index(")", iOParen)
-        command = line[iPercent + 1:iOParen]
-        argument = line[iOParen+1:iCParen]
-        return Edit(command, argument, iCParen)
-    else:
-        return 0
-
-def parseLine(line):
-    edits = []
-    i = 0
-    while i < len(line):
-        edit = findEdit(line, i)
-        if edit != 0:
-            i = edit.end
-            edits.append(edit)
-        else:
-            i = len(line)
-    return edits
-
-def readDoc(address):
-    doc = []
-    with open(address, "r") as page:
-        doc = page.readlines()
-    return doc
-
-def parseDoc(doc, lookup = None):
-    line_edits = [] #list of tuples, where element 0 is the index of the line and element 1 is the new text
-
-    i = 0
-    for i, line in enumerate(doc, i):
-        results = parseLine(line) #a list of Edit objects, with properties for command, argument, and the index of the closing paren
-        if len(results) > 0:
-            new_line = carryOut(results, line, lookup) #every command function should return a single string, the text to overwrite the line where the command was written
-            if new_line == "bad commad":
-                print("Invalid command at line " + str(i) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
-            if new_line == "bad key":
-                print("Key does not exist at line " + str(i) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
-            else:
-                line_edits.append((i, new_line))
-
-    return line_edits
-
-def editDoc(_doc, edits):
-    doc = list(_doc)
-    for edit in edits:
-        doc[edit[0]] = edit[1]
-    return doc
-
-def writeDoc(address, doc):
-    with open(address, "w") as file:
-        for line in doc:
-            file.write(line)
-
-def carryOut(edits, line, lookup):
-    new_line = line
-    for edit in edits:
-        if edit.command == "globalInsert":
-            new_line = globalInsert(edit.argument)
-        elif edit.command == "localInsert":
-            new_line = localInsert(edit.argument)
-        elif edit.command == "txt":
-            new_line = txt(edit.argument, new_line, lookup)
-        elif edit.command == "sectiontxt":
-            new_line = sectiontxt(edit.argument, new_line, lookup["section"])
-        elif edit.command == "path":
-            new_line = path(new_line)
-        elif edit.command == "fetchFile":
-            fetch(edit.argument, "file")
-        elif edit.command == "fetchFolder":
-            fetch(edit.argument, "folder")
-        else:
-            new_line = "bad command"
-    return new_line
-
-#globalInsert should have one argument, the adress of the html snippet to be inserted in relation to /src
-def globalInsert(html):
-    snippet = ""
-    with open(read_path / "inserts" / html, "r") as insert_text:
-        for line in insert_text:
-            snippet = snippet + line
-    return (snippet)
-
-#localInsert should have one argument, the adress of the html snippet to be inserted in relation to the specific article folder
-def localInsert(html):
-    snippet = ""
-    with open(current_page_read / html, "r") as insert_text:
-        for line in insert_text:
-            snippet = snippet + line
-    return (snippet)
-
-#txt should have one argument, the key for the appropriate value in the corresponding toml file
-def txt(key, orig, lookup):
-    if key in lookup:
-        value = lookup[key]
-        new_line = orig.replace("%txt(" + key + ")", value)
-        return new_line
-    else:
-        return "bad key"
-
-def sectiontxt(key, orig, lookup):
-    if key in lookup:
-        value = lookup[key]
-        new_line = orig.replace("%sectiontxt(" + key + ")", value)
-        return new_line
-    else:
-        return "bad key"
-
-def path(orig):
-    pathname = current_page_read.name
-    new = orig.replace("%path()", pathname)
-    return new
-
-# the fetches should have one or two arguments. the first is the path to the folder or file you want to
-# include in the dst (starting from the current page's src directory). the second is the destination folder,
-# which if not included will default to the page's folder.
-def fetch(argument, mode):
-    arguments = argument.split("|")
-    read = current_page_read / arguments[0]
-    if len(arguments) == 1:
-        write = current_page_write / arguments[0]
-    else:
-        write = arguments[1] / arguments[0]
-    if mode == "file":
-        copyfile(read, write)
-    elif mode == "folder":
-        copytree(read, write, dirs_exist_ok = True)
-
-def createPage(template_address, dst, lookup=None):
-    template = readDoc(template_address)
-    edits = parseDoc(template, lookup)
-    page = editDoc(template, edits)
-    writeDoc(dst, page)
+# -----------------------------------------------------------------------------------------------------
 
 ##meh
 def buildElse():
@@ -251,6 +116,157 @@ def buildSections():
 
         createPage(read_path / "sectionhome.html", current_section_write / "index.html", section_toml)
 
+# -----------------------------------------------------------------------------------------------------
+
+
+# CREATING PAGE FROM TEMPLATE
+# -----------------------------------------------
+
+def createPage(template_address, dst, lookup=None):
+    template = readDoc(template_address)
+    edits = parseDoc(template, lookup)
+    page = editDoc(template, edits)
+    writeDoc(dst, page)
+
+def readDoc(address):
+    doc = []
+    with open(address, "r") as page:
+        doc = page.readlines()
+    return doc
+
+def parseDoc(doc, lookup = None):
+    line_edits = [] #list of tuples, where element 0 is the index of the line and element 1 is the new text
+
+    i = 0
+    for i, line in enumerate(doc, i):
+        results = parseLine(line) #a list of Edit objects, with properties for command, argument, and the index of the closing paren
+        if len(results) > 0:
+            new_line = carryOut(results, line, lookup) #every command function should return a single string, the text to overwrite the line where the command was written
+            if new_line == "bad commad":
+                print("Invalid command at line " + str(i) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
+            if new_line == "bad key":
+                print("Key does not exist at line " + str(i) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
+            else:
+                line_edits.append((i, new_line))
+
+    return line_edits
+
+def parseLine(line):
+    edits = []
+    i = 0
+    while i < len(line):
+        edit = findEdit(line, i)
+        if edit != 0:
+            i = edit.end
+            edits.append(edit)
+        else:
+            i = len(line)
+    return edits
+
+def findEdit(line, start):
+    iPercent = line.find("%", start)
+    if iPercent != -1:
+        iOParen = line.index("(", iPercent)
+        iCParen = line.index(")", iOParen)
+        command = line[iPercent + 1:iOParen]
+        argument = line[iOParen+1:iCParen]
+        return Edit(command, argument, iCParen)
+    else:
+        return 0
+
+def editDoc(_doc, edits):
+    doc = list(_doc)
+    for edit in edits:
+        doc[edit[0]] = edit[1]
+    return doc
+
+def writeDoc(address, doc):
+    with open(address, "w") as file:
+        for line in doc:
+            file.write(line)
+
+# COMMANDS
+# -----------------------------------------------
+
+def carryOut(edits, line, lookup):
+    new_line = line
+    for edit in edits:
+        if edit.command == "globalInsert":
+            new_line = globalInsert(edit.argument)
+        # elif edit.command == "localInsert":
+        #     new_line = localInsert(edit.argument)
+        elif edit.command == "txt":
+            new_line = txt(edit.argument, new_line, lookup)
+        # elif edit.command == "sectiontxt":
+        #     new_line = sectiontxt(edit.argument, new_line, lookup["section"])
+        elif edit.command == "path":
+            new_line = path(new_line)
+        # elif edit.command == "fetchFile":
+        #     fetch(edit.argument, "file")
+        # elif edit.command == "fetchFolder":
+        #     fetch(edit.argument, "folder")
+        else:
+            new_line = "bad command"
+    return new_line
+
+#globalInsert should have one argument, the adress of the html snippet to be inserted in relation to /src
+def globalInsert(html):
+    snippet = ""
+    with open(read_path / "inserts" / html, "r") as insert_text:
+        for line in insert_text:
+            snippet = snippet + line
+    return (snippet)
+
+#localInsert should have one argument, the adress of the html snippet to be inserted in relation to the specific article folder
+
+# def localInsert(html):
+#     snippet = ""
+#     with open(current_page_read / html, "r") as insert_text:
+#         for line in insert_text:
+#             snippet = snippet + line
+#     return (snippet)
+
+#txt should have one argument, the key for the appropriate value in the corresponding toml file
+def txt(key, orig, lookup):
+    if key in lookup:
+        value = lookup[key]
+        new_line = orig.replace("%txt(" + key + ")", value)
+        return new_line
+    else:
+        return "bad key"
+
+# def sectiontxt(key, orig, lookup):
+#     if key in lookup:
+#         value = lookup[key]
+#         new_line = orig.replace("%sectiontxt(" + key + ")", value)
+#         return new_line
+#     else:
+#         return "bad key"
+
+def path(orig):
+    pathname = current_page_read.name
+    new = orig.replace("%path()", pathname)
+    return new
+
+# the fetches should have one or two arguments. the first is the path to the folder or file you want to
+# include in the dst (starting from the current page's src directory). the second is the destination folder,
+# which if not included will default to the page's folder.
+
+# def fetch(argument, mode):
+#     arguments = argument.split("|")
+#     read = current_page_read / arguments[0]
+#     if len(arguments) == 1:
+#         write = current_page_write / arguments[0]
+#     else:
+#         write = arguments[1] / arguments[0]
+#     if mode == "file":
+#         copyfile(read, write)
+#     elif mode == "folder":
+#         copytree(read, write, dirs_exist_ok = True)
+
+# BUILD
+# -----------------------------------------------
+
 def buildDirectory(table:dict, last_write:Path):
     write = last_write / table["meta"]["path"]
 
@@ -263,20 +279,12 @@ def buildDirectory(table:dict, last_write:Path):
     
     createPage(Path("test_src/templates") / (table["meta"]["template"] + ".html"), write / "index.html", table["data"])
 
-    # with open(write / "index.html", "w") as html:
-    #     html.write(table["data"]["content"])
 
-
-
-# def buildSite():
-#     buildElse()
-#     buildSections()
-            
+# RUN            
+# -----------------------------------------------
             
 sitemap = 0
 with open ("sitemap.toml", "r") as read:
     sitemap = toml.load(read)
 
-#current_write = Path("test.com")
-#print(sitemap)
 buildDirectory(sitemap, Path("test.com"))
