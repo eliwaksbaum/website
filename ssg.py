@@ -4,8 +4,8 @@ from pathlib import Path
 from shutil import copyfile
 from shutil import copytree
 
-read_path = Path("test_src")
-write_path = Path("test.com")
+read_path = Path("src")
+write_path = Path(".com")
 current_section_read = "Path"
 current_section_write = "Path"
 current_page_read = "Path"
