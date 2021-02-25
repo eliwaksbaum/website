@@ -3,6 +3,8 @@ from datetime import datetime
 from pathlib import Path
 from shutil import copyfile
 from shutil import copytree
+from errors import CommandError
+from validate import validate
 
 read_path = Path("src")
 write_path = Path(".com")
@@ -124,7 +126,7 @@ def buildSections():
 
 def generate(template_address, lookup = None):
     template = readDoc(template_address)
-    edits = parseDoc(template, lookup)
+    edits = parseDoc(template, lookup["data"], lookup["meta"])
     doc = editDoc(template, edits)
     return doc
 
@@ -134,7 +136,7 @@ def readDoc(address):
         doc = page.readlines()
     return doc
 
-def parseDoc(doc, lookup = None):
+def parseDoc(doc, lookup = None, meta = None):
     line_edits = [] #list of tuples, where element 0 is the index of the line and element 1 is the new text
 
     i = 0
@@ -142,10 +144,10 @@ def parseDoc(doc, lookup = None):
         results = parseLine(line) #a list of Edit objects, with properties for command, argument, and the index of the closing paren
         if len(results) > 0:
             new_line = carryOut(results, line, lookup) #every command function should return a single string, the text to overwrite the line where the command was written
-            if new_line == "bad commad":
-                print("Invalid command at line " + str(i+1) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
+            if new_line == "bad command":
+                raise CommandError("Invalid command at line " + str(i+1) + " in the " + meta["template"] + " template while building " + meta["path"] + ".")
             if new_line == "bad key":
-                print("Key does not exist at line " + str(i+1) + " in " + current_section_read.name + "; " + current_page_read.name + ".")
+                raise CommandError("Key does not exist at line " + str(i+1) + " in the " + meta["template"] + " template while building " + meta["path"] + ".")
             else:
                 line_edits.append((i, new_line))
 
@@ -280,22 +282,25 @@ def path(orig, pathname):
 # -----------------------------------------------
 
 def buildDirectory(table:dict, last_write:Path):
-    write = last_write / table["meta"]["path"]
+    if validate(table["meta"], table["data"]):
+        meta = table["meta"]
+        data = table["data"]
+        write = last_write / meta["path"]
 
-    if not write.exists():
-        write.mkdir()
+        if not write.exists():
+            write.mkdir()
 
-    if table["meta"]["has_subs"]:
-        for sub in table["subs"]:
-            buildDirectory(sub, write)
-    
-    table["data"]["path"] = table["meta"]["path"]
+        if meta["has_subs"]:
+            for sub in table["subs"]:
+                buildDirectory(sub, write)
+        
+        data["path"] = meta["path"]
 
-    if table["meta"]["template"] == "none":
-        page = generate(read_path / table["data"]["index_dir"])
-    else:
-        page = generate(read_path / "templates" / (table["meta"]["template"] + ".html"),  table["data"])
-    writePage(write / "index.html", page)
+        if meta["template"] == "none":
+            page = generate(read_path / data["index_dir"], table)
+        else:
+            page = generate(read_path / "templates" / (meta["template"] + ".html"),  table)
+        writePage(write / "index.html", page)
 
 def writePage(address, doc):
     with open(address, "w") as file:
