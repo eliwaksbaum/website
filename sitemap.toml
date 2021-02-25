@@ -20,6 +20,7 @@ data.index_dir = "home.html"
     [[subs.subs]]
         meta.path = "flappy-bird"
         meta.template = "game"
+        meta.listing = "game"
         meta.has_subs = false
 
         data.title = "Flappy Bird"
@@ -37,6 +38,7 @@ data.index_dir = "home.html"
     [[subs.subs]]
         meta.path = "pong"
         meta.template = "game"
+        meta.listing = "game"
         meta.has_subs = false
 
         data.title = "Pong"
@@ -66,10 +68,14 @@ data.index_dir = "home.html"
     [[subs.subs]]
         meta.path = "measuring-spoons"
         meta.template = "blog"
+        meta.listing = "entry"
         meta.has_subs = false
 
         data.doc_dir = "measuring-spoons.html"
         data.title = "Measuring Spoons"
+        data.summary = """\
+        The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
+        What do you do?"""
 
 ### Music
 [[subs]]
@@ -86,6 +92,7 @@ data.index_dir = "home.html"
     [[subs.subs]]
         meta.path = "dancing"
         meta.template = "music"
+        meta.listing = "entry"
         meta.has_subs = false
 
         data.title = "Dancing"
@@ -102,6 +109,7 @@ data.index_dir = "home.html"
     [[subs.subs]]
         meta.path = "he-is-they-are"
         meta.template = "music"
+        meta.listing = "entry"
         meta.has_subs = false
 
         data.title = "He Is, They Are"
@@ -116,9 +124,11 @@ data.index_dir = "home.html"
 [[subs]]
     meta.path = "other"
     meta.template = "sectionhome"
-    meta.has_subs = false
+    meta.has_subs = true
     meta.list_subs = true
 
     data.title = "Other Projects"
     data.heading = "Other Projects"
     data.intro = "These aren't like the others"
+
+    [subs.subs]
