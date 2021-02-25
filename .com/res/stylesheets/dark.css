@@ -1,0 +1,46 @@
+body {
+    color: var(--dark-text);
+    background-color: var(--dark);
+}
+
+header {
+    color:var(--dark-text);
+}
+
+table, th, td{
+    border: 1px solid var(--dark-text);
+}
+
+/* YO THE SHADOW RGBA ISN'T THE VARIABLE */
+.shadow{
+    box-shadow: 0 4px 8px 0 rgba(235, 235, 235, 0.2);
+}
+
+a{
+    color:rgb(96, 147, 179)
+}
+
+a.menu{
+    color: var(--dark-text);
+    text-decoration: none;
+}
+
+a.menu:hover{
+    background-color: var(--dark-menu-hover);
+}
+
+#games:hover{
+    color: var(--games);
+}
+
+#math:hover{
+    color: var(--math);
+}
+
+#music:hover{
+    color: var(--music);
+}
+
+#other:hover{
+    color: var(--other);
+}
