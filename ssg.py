@@ -147,7 +147,7 @@ def buildDirectory(_table:tuple, last_write:Path, to_list:bool):
     if validate(table["meta"], table["data"], to_list):
         meta = table["meta"]
         data = table["data"]
-        write = last_write / meta["path"]
+        write = last_write / key
 
         # If a page has subs, we need to know if we're gonna have to keep track of them. If yes, we'll store them in listings
         is_list = meta["list_subs"] if meta["has_subs"] else False
