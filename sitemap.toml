@@ -82,7 +82,7 @@ data.index_dir = "home.html"
     data.heading = "Music"
     data.intro = "I play the clarinet and stuff."
 
-        [s.musc.s.dancing]
+        [s.music.s.dancing]
         meta.path = "dancing"
         meta.template = "music"
         meta.listing = "entry"

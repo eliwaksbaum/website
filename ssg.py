@@ -8,10 +8,6 @@ from validate import validate
 
 read_path = Path("src")
 write_path = Path(".com")
-current_section_read = Path("fuck.txt")
-current_section_write = Path("fuck.txt")
-current_page_read = Path("fuck.txt")
-current_page_write = Path("fuck.txt")
 
 class Listing():
     def __init__(self, li, date):
@@ -27,19 +23,18 @@ class Edit():
 # CREATING HTML FROM TEMPLATE
 # -----------------------------------------------
 
-def generate(template_address:Path, lookup:dict = None):
+def generate(template_address:Path, lookup:dict = None) -> list:
     template = readDoc(template_address)
     edits = parseDoc(template, lookup["data"], lookup["meta"])
     doc = editDoc(template, edits)
     return doc
 
-def readDoc(address:Path):
-    doc = []
+def readDoc(address:Path) -> list:
     with open(address, "r") as page:
         doc = page.readlines()
     return doc
 
-def parseDoc(doc:list, lookup:dict = None, meta:dict = None):
+def parseDoc(doc:list, lookup:dict = None, meta:dict = None) -> list:
     line_edits = [] #list of tuples, where element 0 is the index of the line and element 1 is the new text
 
     i = 0
@@ -56,7 +51,7 @@ def parseDoc(doc:list, lookup:dict = None, meta:dict = None):
 
     return line_edits
 
-def parseLine(line:str):
+def parseLine(line:str) -> list:
     edits = []
     i = 0
     while i < len(line):
@@ -79,7 +74,7 @@ def findEdit(line:str, start:int):
     else:
         return 0
 
-def editDoc(_doc:list, edits:list):
+def editDoc(_doc:list, edits:list) -> list:
     doc = list(_doc)
     for edit in edits:
         doc[edit[0]] = edit[1]
@@ -88,7 +83,7 @@ def editDoc(_doc:list, edits:list):
 # COMMANDS
 # -----------------------------------------------
 
-def carryOut(edits:list, line:str, lookup:dict):
+def carryOut(edits:list, line:str, lookup:dict) -> str:
     new_line = line
     for edit in edits:
         if edit.command == "globalInsert":
@@ -104,7 +99,7 @@ def carryOut(edits:list, line:str, lookup:dict):
     return new_line
 
 #globalInsert should have one argument, the adress of the html snippet to be inserted in relation to /src
-def globalInsert(html:str):
+def globalInsert(html:str) -> str:
     snippet = ""
     with open(read_path / "inserts" / html, "r") as insert_text:
         for line in insert_text:
@@ -112,7 +107,7 @@ def globalInsert(html:str):
     return snippet
 
 #keyInsert should have one argument, the key whose value is an adress of the html to be inserted in relation to /src
-def keyInsert(key:str, orig:str, lookup:dict):
+def keyInsert(key:str, orig:str, lookup:dict) -> str:
     snippet = ""
 
     if key in lookup:
@@ -127,7 +122,7 @@ def keyInsert(key:str, orig:str, lookup:dict):
     return snippet
 
 #txt should have one argument, the key for the appropriate value in the corresponding toml file
-def txt(key:str, orig:str, lookup:dict):
+def txt(key:str, orig:str, lookup:dict) -> str:
     if key in lookup:
         value = lookup[key]
         new_line = orig.replace("%txt(" + key + ")", value)
@@ -136,14 +131,18 @@ def txt(key:str, orig:str, lookup:dict):
         return "bad key"
 
 #path takes no arguments
-def path(orig:str, pathname:str):
+def path(orig:str, pathname:str) -> str:
     new = orig.replace("%path()", pathname)
     return new
 
 # BUILD
 # -----------------------------------------------
 
-def buildDirectory(table:dict, last_write:Path, to_list:bool):
+def buildDirectory(_table:tuple, last_write:Path, to_list:bool):
+    # Seperate the key and the dict
+    key = _table[0]
+    table = _table[1]
+
     # If we make it through validate without any errors, then everything's here! No if in's necessary
     if validate(table["meta"], table["data"], to_list):
         meta = table["meta"]
@@ -160,13 +159,13 @@ def buildDirectory(table:dict, last_write:Path, to_list:bool):
 
         if meta["has_subs"]:
             if is_list:
-                for sub in table["subs"]:
+                for sub in table["s"].items():
                     listings.append(buildDirectory(sub, write, True))
             else:
-                for sub in table["subs"]:
+                for sub in table["s"].items():
                     buildDirectory(sub, write, False)
 
-        data["path"] = meta["path"]
+        data["path"] = key
         if is_list:
             with open(read_path / "inserts/currententries.html", "w") as insert:
                 if len(listings) > 0:
@@ -189,7 +188,7 @@ def buildDirectory(table:dict, last_write:Path, to_list:bool):
         else:
             return None
 
-def writePage(address:Path, doc:list):
+def writePage(address:Path, doc:list) -> None:
     with open(address, "w") as file:
         for line in doc:
             file.write(line)
@@ -197,8 +196,8 @@ def writePage(address:Path, doc:list):
 # RUN            
 # -----------------------------------------------
             
-sitemap = 0
+sitemap:list
 with open ("sitemap.toml", "r") as read:
     sitemap = toml.load(read)
 
-buildDirectory(sitemap, Path(".com"), False)
+buildDirectory(("", sitemap), Path(".com"), False)
