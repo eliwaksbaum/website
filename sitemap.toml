@@ -5,8 +5,7 @@ meta.list_subs = false
 
 data.index_dir = "home.html"
 
-### Games
-[[subs]]
+    [s.games]
     meta.path = "games"
     meta.template = "sectionhome"
     meta.has_subs = true
@@ -16,8 +15,7 @@ data.index_dir = "home.html"
     data.heading = "Game Development"
     data.intro = "I make games sometimes"
 
-    ### Flappy Bird
-    [[subs.subs]]
+        [s.games.s.flappy-bird]
         meta.path = "flappy-bird"
         meta.template = "game"
         meta.listing = "game"
@@ -34,8 +32,7 @@ data.index_dir = "home.html"
         data.width = "1080"
         data.height = "675"
 
-    ### Pong
-    [[subs.subs]]
+        [s.games.s.pong]
         meta.path = "pong"
         meta.template = "game"
         meta.listing = "game"
@@ -53,8 +50,7 @@ data.index_dir = "home.html"
         data.width = "1024"
         data.height = "576"
 
-### Math
-[[subs]]
+    [s.math]
     meta.path = "math"
     meta.template = "sectionhome"
     meta.has_subs = true
@@ -64,8 +60,7 @@ data.index_dir = "home.html"
     data.heading = "Math"
     data.intro = "It's Mathematical."
 
-    ### Measuring Spoons
-    [[subs.subs]]
+        [s.math.s.measuring-spoons]
         meta.path = "measuring-spoons"
         meta.template = "blog"
         meta.listing = "entry"
@@ -77,8 +72,7 @@ data.index_dir = "home.html"
         The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
         What do you do?"""
 
-### Music
-[[subs]]
+    [s.music]
     meta.path = "music"
     meta.template = "sectionhome"
     meta.has_subs = true
@@ -88,8 +82,7 @@ data.index_dir = "home.html"
     data.heading = "Music"
     data.intro = "I play the clarinet and stuff."
 
-    ### Dancing
-    [[subs.subs]]
+        [s.musc.s.dancing]
         meta.path = "dancing"
         meta.template = "music"
         meta.listing = "entry"
@@ -105,8 +98,7 @@ data.index_dir = "home.html"
         data.summary = "Hello, Dolly!"
         data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
 
-    ### He Is They Are
-    [[subs.subs]]
+        [s.music.s.he-is-they-are]
         meta.path = "he-is-they-are"
         meta.template = "music"
         meta.listing = "entry"
@@ -120,8 +112,7 @@ data.index_dir = "home.html"
         data.summary = "Harry Connick, Jr"
         data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
 
-### Other
-[[subs]]
+    [s.other]
     meta.path = "other"
     meta.template = "sectionhome"
     meta.has_subs = true
@@ -131,4 +122,4 @@ data.index_dir = "home.html"
     data.heading = "Other Projects"
     data.intro = "These aren't like the others"
 
-    [subs.subs]
+    [s.other.s]
