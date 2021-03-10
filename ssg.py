@@ -7,6 +7,7 @@ from validate import validate
 
 read_path = Path("src")
 write_path = Path(".com")
+projects = []
 
 class Listing():
     def __init__(self, li, date):
@@ -165,23 +166,22 @@ def buildDirectory(_table:tuple, last_write:Path):
 
         # If it has a listing, generate it and store it in an object with its keys in app/projects.json
         if "listing" in meta:
-            listing = generate(read_path / "listings" / (meta["listing"] + ".html"), table)
-            
-            listing_string = ""
-            for line in listing:
-                listing_string = listing_string + line
-
-            obj = {"html": listing_string, "tags": data["tags"]}
-            json_obj = json.dump(obj)
-
-            with open(write_path / "app/projects.json", "w") as projects:
-                projects.write(json_obj)
-
+            addListing(meta["listing"], data["tags"], table)
 
 def writePage(address:Path, doc:list) -> None:
     with open(address, "w") as file:
         for line in doc:
             file.write(line)
+
+def addListing(listing:str, tags:list, table:dict) -> None:
+    listing = generate((read_path / "listings" / (listing + ".html")), table)
+            
+    listing_string = ""
+    for line in listing:
+        listing_string = listing_string + line
+
+    listing_obj = {"html": listing_string, "tags": tags}
+    projects.append(listing_obj)
 
 # RUN            
 # -----------------------------------------------
@@ -191,3 +191,6 @@ with open ("sitemap.toml", "r") as read:
     sitemap = toml.load(read)
 
 buildDirectory(("", sitemap), Path(".com"))
+
+with open (write_path/"app/projects.json", "w") as projects_file:
+    json.dump(projects, projects_file)
