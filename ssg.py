@@ -1,8 +1,7 @@
 import toml
+import json
 from datetime import datetime
 from pathlib import Path
-from shutil import copyfile
-from shutil import copytree
 from errors import CommandError
 from validate import validate
 
@@ -138,40 +137,25 @@ def path(orig:str, pathname:str) -> str:
 # BUILD
 # -----------------------------------------------
 
-def buildDirectory(_table:tuple, last_write:Path, to_list:bool):
-    # Seperate the key and the dict
-    key = _table[0]
-    table = _table[1]
-
+def buildDirectory(_table:tuple, last_write:Path):
     # If we make it through validate without any errors, then everything's here! No if in's necessary
-    if validate(table["meta"], table["data"], to_list):
+    if validate(_table):
+        # Seperate the key and the dict
+        key = _table[0]
+        table = _table[1]
+        
         meta = table["meta"]
         data = table["data"]
         write = last_write / key
-
-        # If a page has subs, we need to know if we're gonna have to keep track of them. If yes, we'll store them in listings
-        is_list = meta["list_subs"] if meta["has_subs"] else False
-        if is_list:
-            listings = []
 
         if not write.exists():
             write.mkdir()
 
         if meta["has_subs"]:
-            if is_list:
-                for sub in table["s"].items():
-                    listings.append(buildDirectory(sub, write, True))
-            else:
-                for sub in table["s"].items():
-                    buildDirectory(sub, write, False)
+            for sub in table["s"].items():
+                buildDirectory(sub, write)
 
         data["path"] = key
-        if is_list:
-            with open(read_path / "inserts/currententries.html", "w") as insert:
-                if len(listings) > 0:
-                    insert.writelines(listings)
-                else:
-                    insert.write("Nothing's here yet.")
 
         if meta["template"] == "none":
             page = generate(read_path / data["index_dir"], table)
@@ -179,7 +163,8 @@ def buildDirectory(_table:tuple, last_write:Path, to_list:bool):
             page = generate(read_path / "templates" / (meta["template"] + ".html"),  table)
         writePage(write / "index.html", page)
 
-        if to_list:
+        # If it has a listing, generate it and store it in an object with its keys in app/projects.json
+        if "listing" in meta:
             listing = generate(read_path / "listings" / (meta["listing"] + ".html"), table)
             listing_string = ""
             for line in listing:
@@ -200,4 +185,4 @@ sitemap:list
 with open ("sitemap.toml", "r") as read:
     sitemap = toml.load(read)
 
-buildDirectory(("", sitemap), Path(".com"), False)
+buildDirectory(("", sitemap), Path(".com"))
