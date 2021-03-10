@@ -1,7 +1,18 @@
 #!/usr/bin/env python
 
+import json
+
 def tagHandler(tag):
-    return "these are the posts with the " + tag + " tag."
+    out = ""
+
+    with open("/var/www/eli.waksbaum.com/app/projects.json", "r") as file:
+        projects = json.load(file)
+    
+    for proj in projects:
+        if tag in proj["tags"]:
+            out = out + proj["html"]
+    
+    return out
 
 def printHandler(txt):
     return txt
