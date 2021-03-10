@@ -166,12 +166,17 @@ def buildDirectory(_table:tuple, last_write:Path):
         # If it has a listing, generate it and store it in an object with its keys in app/projects.json
         if "listing" in meta:
             listing = generate(read_path / "listings" / (meta["listing"] + ".html"), table)
+            
             listing_string = ""
             for line in listing:
                 listing_string = listing_string + line
-            return listing_string
-        else:
-            return None
+
+            obj = {"html": listing_string, "tags": data["tags"]}
+            json_obj = json.dump(obj)
+
+            with open(write_path / "app/projects.json", "w") as projects:
+                projects.write(json_obj)
+
 
 def writePage(address:Path, doc:list) -> None:
     with open(address, "w") as file:
