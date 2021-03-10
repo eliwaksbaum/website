@@ -1,15 +1,20 @@
 <li class="game-home">
-    <div class="game-listing shadow">
-       <div>
-            <h2 class="listing">%txt(title)</h2>
-            <p class="listdate">txt(date)</p>
-            <p class="listing">%txt(summary)</p>
+    <div style="position: relative">
+        <div class="game-listing shadow">
+        <div>
+                <h2 class="listing">%txt(title)</h2>
+                <p class="listdate">txt(date)</p>
+                <p class="listing">%txt(summary)</p>
+            </div>
+            <img src="/res/previews/%path().jpg" style="vertical-align:middle" width=100px height=100px alt="%txt(title)">  
         </div>
-        <img src="/res/previews/%path().jpg" style="vertical-align:middle" width=100px height=100px alt="%txt(title)">  
+        <div class="game-links">
+            <a class="game-link shadow">Play</a>
+            <a class="game-link shadow">Notes</a>
+            <a class="game-link shadow">Hub</a>
+        </div>
     </div>
-    <div class="game-links">
-        <a class="game-link shadow">Play</a>
-        <a class="game-link shadow">Notes</a>
-        <a class="game-link shadow">Hub</a>
+    <div>
+        Tags: %txtList(tags)
     </div>
 </li>

@@ -83,6 +83,8 @@ def carryOut(edits:list, line:str, lookup:dict) -> str:
             new_line = txt(edit["argument"], new_line, lookup)
         elif edit["command"] == "path":
             new_line = path(new_line, lookup["path"])
+        elif edit["command"] == "txtList":
+            new_line = txtList(edit["argument"], new_line, lookup)
         else:
             new_line = "bad command"
     return new_line
@@ -110,7 +112,7 @@ def keyInsert(key:str, orig:str, lookup:dict) -> str:
             snippet = snippet + line
     return snippet
 
-#txt should have one argument, the key for the appropriate value in the corresponding toml file
+#txt should have one argument, the key for the appropriate value in the corresponding toml table
 def txt(key:str, orig:str, lookup:dict) -> str:
     if key in lookup:
         value = lookup[key]
@@ -124,10 +126,25 @@ def path(orig:str, pathname:str) -> str:
     new = orig.replace("%path()", pathname)
     return new
 
+#txtList should have one argument, the key whose value is a list
+def txtList(key:str, orig:str, lookup:dict) -> str:
+    insert = ""
+    with open(read_path / ("templates/" + key + ".html"), "r") as file:
+        template = file.readlines()
+
+    for i in lookup[key]:
+        out = ""
+        for line in template:
+            out = out + line.format(i)
+        insert = insert + out
+    
+    new = orig.replace("%txtList(" + key + ")", insert)
+    return new
+
 # BUILD
 # -----------------------------------------------
 
-def buildDirectory(_table:tuple, last_write:Path):
+def buildDirectory(_table:tuple, last_write:Path) -> None:
     # If we make it through validate without any errors, then everything's here! No if in's necessary
     if validate(_table):
         # Seperate the key and the dict
