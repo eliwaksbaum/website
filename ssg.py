@@ -9,17 +9,6 @@ read_path = Path("src")
 write_path = Path(".com")
 projects = []
 
-class Listing():
-    def __init__(self, li, date):
-        self.li = li
-        self.date = date
-
-class Edit():
-    def __init__(self, command, argument, end):
-        self.command = command
-        self.argument = argument
-        self.end = end
-
 # CREATING HTML FROM TEMPLATE
 # -----------------------------------------------
 
@@ -39,7 +28,7 @@ def parseDoc(doc:list, lookup:dict = None, meta:dict = None) -> list:
 
     i = 0
     for i, line in enumerate(doc, i):
-        results = parseLine(line) #a list of Edit objects, with properties for command, argument, and the index of the closing paren
+        results = parseLine(line) #a list of Edit dicts, with keys for command, argument, and the index of the closing paren
         if len(results) > 0:
             new_line = carryOut(results, line, lookup) #every command function should return a single string, the text to overwrite the line where the command was written
             if new_line == "bad command":
@@ -56,23 +45,23 @@ def parseLine(line:str) -> list:
     i = 0
     while i < len(line):
         edit = findEdit(line, i)
-        if edit != 0:
-            i = edit.end
+        if edit != {}:
+            i = edit["end"]
             edits.append(edit)
         else:
             i = len(line)
     return edits
 
-def findEdit(line:str, start:int):
+def findEdit(line:str, start:int) -> dict:
     iPercent = line.find("%", start)
     if iPercent != -1:
         iOParen = line.index("(", iPercent)
         iCParen = line.index(")", iOParen)
         command = line[iPercent + 1:iOParen]
         argument = line[iOParen+1:iCParen]
-        return Edit(command, argument, iCParen)
+        return {"command": command, "argument": argument, "end": iCParen}
     else:
-        return 0
+        return {}
 
 def editDoc(_doc:list, edits:list) -> list:
     doc = list(_doc)
@@ -86,13 +75,13 @@ def editDoc(_doc:list, edits:list) -> list:
 def carryOut(edits:list, line:str, lookup:dict) -> str:
     new_line = line
     for edit in edits:
-        if edit.command == "globalInsert":
-            new_line = globalInsert(edit.argument)
-        elif edit.command == "keyInsert":
-            new_line = keyInsert(edit.argument, new_line, lookup)
-        elif edit.command == "txt":
-            new_line = txt(edit.argument, new_line, lookup)
-        elif edit.command == "path":
+        if edit["command"] == "globalInsert":
+            new_line = globalInsert(edit["argument"])
+        elif edit["command"] == "keyInsert":
+            new_line = keyInsert(edit["argument"], new_line, lookup)
+        elif edit["command"] == "txt":
+            new_line = txt(edit["argument"], new_line, lookup)
+        elif edit["command"] == "path":
             new_line = path(new_line, lookup["path"])
         else:
             new_line = "bad command"
