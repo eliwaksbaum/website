@@ -79,6 +79,10 @@ a.game-link{
     text-align: center;
 }
 
+a.tag{
+    margin-right: 1%;
+}
+
 .listing-flex{
     display: flex;
     justify-content: space-between;

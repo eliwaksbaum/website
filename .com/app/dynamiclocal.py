@@ -38,7 +38,7 @@ bottom = """
 def getProjs(tag = ""):
     out = ""
 
-    with open("/var/www/eli.waksbaum.com/app/projects.json", "r") as file:
+    with open(".com/app/projects.json", "r") as file:
         projects = json.load(file)
     
     for proj in projects:
@@ -65,8 +65,8 @@ handlers = {
     "all-projects": allHandler
 }
 
-def application(env, start_response):
-    start_response('200 OK', [('Content-Type','text/html')])
+def application(env, start_response=None):
+    #start_response('200 OK', [('Content-Type','text/html')])
 
     path = env["PATH_INFO"].replace("/dynamic/", "", 1)
     pieces = path.split("/")
@@ -76,4 +76,12 @@ def application(env, start_response):
     else:
         out = pieces[0] + " doesn't have a handler"
         
-    return [out.encode()]
+    #return [out.encode()]
+    return out
+
+with open(".com/app/test.html", "w") as file:
+    file.write(top)
+    file.write("<ul>")
+    file.write(application({"PATH_INFO": "/dynamic/all-projects/"}))
+    file.write("</ul>")
+    file.write(bottom)
