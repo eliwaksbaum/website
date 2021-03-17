@@ -1,22 +1,22 @@
 <li class="game-home">
     <div style="position: relative">
         <div class="game-listing shadow">
-            <div class="listing-flex">
+            <a class="listing listing-flex" href="/projects/%path()/play">
                 <div>
                     <h2 class="listing">%txt(title)</h2>
                     <p class="listdate">txt(date)</p>
                     <p class="listing">%txt(summary)</p>
                 </div>
                 <img src="/res/previews/%path().jpg" style="vertical-align:middle" width=100px height=100px alt="%txt(title)">  
-            </div>
+            </a>
             <div>
                 Tags: %txtList(tags)
             </div>
         </div>
         <div class="game-links">
-            <a class="game-link shadow">Play</a>
-            <a class="game-link shadow">Notes</a>
-            <a class="game-link shadow">Hub</a>
+            <a class="game-link shadow" href="/projects/%path()/play">Play</a>
+            <a class="game-link shadow" href="/projects/%path()/read">Notes</a>
+            <a class="game-link shadow" href="https://github.com/eliwaksbaum/%path()">Hub</a>
         </div>
     </div>
 </li>
