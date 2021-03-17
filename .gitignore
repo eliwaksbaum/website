@@ -3,3 +3,5 @@ __pycache__/
 .com/*
 !.com/res/
 !.com/app/
+
+copy.bat

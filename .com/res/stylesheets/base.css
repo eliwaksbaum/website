@@ -69,9 +69,6 @@ th, td{
 a.listing{
     color: inherit;
     text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 a.game-link{
@@ -82,10 +79,13 @@ a.game-link{
     text-align: center;
 }
 
-.game-listing{
+.listing-flex{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.game-listing{
     border-radius: 20px;
     padding: 1%;
     width: 75%

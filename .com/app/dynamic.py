@@ -35,25 +35,35 @@ bottom = """
 </html>
 """
 
-def tagHandler(tag):
+def getProjs(tag = ""):
     out = ""
 
-    #with open("/var/www/eli.waksbaum.com/app/projects.json", "r") as file:
-    with open(".com/app/projects.json", "r") as file:
+    with open("/var/www/eli.waksbaum.com/app/projects.json", "r") as file:
+    #with open(".com/app/projects.json", "r") as file:
         projects = json.load(file)
     
     for proj in projects:
-        if tag in proj["tags"]:
+        if tag != "":
+            if tag in proj["tags"]:
+                out = out + proj["html"]
+        else:
             out = out + proj["html"]
     
-    return "<ul>" + out + "</ul>"
+    return out
+
+def tagHandler(tag):
+    return getProjs(tag)
+
+def allHandler(blank):
+    return getProjs()
 
 def printHandler(txt):
     return txt
 
 handlers = {
     "tag": tagHandler,
-    "print": printHandler
+    "print": printHandler,
+    "all-projects": allHandler
 }
 
 def application(env, start_response):
@@ -69,7 +79,7 @@ def application(env, start_response):
         
     return [out.encode()]
 
-with open(".com/app/test.html", "w") as file:
-    file.write(top)
-    file.write(tagHandler("Unity"))
-    file.write(bottom)
+# with open(".com/app/test.html", "w") as file:
+#     file.write(top)
+#     file.write(application({"PATH_INFO": "/dynamic/all-projects/"}))
+#     file.write(bottom)
