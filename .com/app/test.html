@@ -10,19 +10,22 @@
 <script>findCss();</script>        <title>Coming Soon</title>
     </head>
     <body>
-<header>
+<header id="header">
     <div class="clearfix">
         <nav>
-            <span class="menu" style="margin-left: 2vw; text-align: left;"><a href="/">EW</a></span>
-            <a href="/games" class="menu" id="games">Game Development</a>
-            <a href="/math" class="menu" id="math">Math</a>
-            <a href="/music" class="menu" id="music">Music</a>
-            <a href="/other" class="menu" id="other">Other Projects</a>
+            <div></div>
+            <a class="menu" href="/">EW</a>
+            <div>
+                <a href="/projects" class="menu">Projects</a>
+            </div>
+            <div>
+                <img id="theme-button">
+            </div>
         </nav>
-        <img id="theme-button">
         <script>findButton();</script>
+        <script>colorHeader(theme_preference);</script>
     </div>
-</header>        <div class="content">        
+</header>        <div class="content">      
 <ul><li class="game-home">
     <div style="position: relative">
         <div class="game-listing shadow">
