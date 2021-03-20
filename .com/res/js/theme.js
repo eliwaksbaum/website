@@ -27,7 +27,7 @@ function setButton(theme) {
 function setTheme(theme) {
     setButton(theme);
     setCss(theme);
-    highlightNav(theme);
+    /*highlightNav(theme);*/
     loadThemedImages(theme);
 }
 

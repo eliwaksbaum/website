@@ -1,7 +1,7 @@
 <li class="game-home">
     <div style="position: relative">
         <div class="game-listing shadow">
-            <a class="listing listing-flex" href="/projects/%path()/play">
+            <a class="listing listing-flex" href="/projects/%path()">
                 <div>
                     <h2 class="listing">%txt(title)</h2>
                     <p class="listdate">txt(date)</p>
@@ -16,7 +16,8 @@
         <div class="game-links">
             <a class="game-link shadow" href="/projects/%path()">Play</a>
             <a class="game-link shadow" href="/projects/%path()/notes">Notes</a>
-            <a class="game-link shadow" href="https://github.com/eliwaksbaum/%path()">Hub</a>
+            <a class="game-link shadow" href="https://github.com/eliwaksbaum/%path()"><img class="themed game-link" data-themedSrc="/res/png/github_theme.png"></a>
+            <script>loadThemedImages(theme_preference);</script>
         </div>
     </div>
 </li>

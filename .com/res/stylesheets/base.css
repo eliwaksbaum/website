@@ -72,6 +72,7 @@ a.listing{
 }
 
 a.game-link{
+    position: relative;
     border-radius: 20px;
     height: 80%;
     width: 33%;
@@ -81,6 +82,15 @@ a.game-link{
 
 a.tag{
     margin-right: 1%;
+}
+
+img.game-link{
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
 }
 
 .listing-flex{
