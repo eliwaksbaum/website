@@ -1,6 +1,8 @@
 var css;
 var button;
 
+var colors = ["#e772ac", "#9edf5e", "skyblue", "tomato"]
+
 var theme_preference = localStorage.getItem("theme");
 if (theme_preference == null) {
     theme_preference = "light";
@@ -27,7 +29,7 @@ function setButton(theme) {
 function setTheme(theme) {
     setButton(theme);
     setCss(theme);
-    /*highlightNav(theme);*/
+    colorHeader(theme);
     loadThemedImages(theme);
 }
 
@@ -53,21 +55,16 @@ function findButton() {
     button.addEventListener("click", toggleTheme);
 }
 
-function highlightNav(theme) {
-    var root = document.documentElement;
-    var style = getComputedStyle(root);
-    var color = style.getPropertyValue("--" + current_section);
-    var dark = style.getPropertyValue("--dark-menu-hover");
-    var light = style.getPropertyValue("--light");
-
-    var nav = document.getElementById(current_section);
+function colorHeader(theme) {
+    var header = document.getElementById("header");
+    var i = Math.floor((Math.random() * colors.length));
+    var color = colors[i];
+    
     if (theme == "light") {
-        nav.style.backgroundColor = color;
-        nav.style.color = light;
+        header.style.backGroundColor = color;
     }
     else {
-        nav.style.backgroundColor = dark;
-        nav.style.color = color;
+        header.style.color = color;
     }
 }
 
