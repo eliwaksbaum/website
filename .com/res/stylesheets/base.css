@@ -40,7 +40,7 @@ h2.listing{
 
 nav {
     display: grid;
-    grid-template-columns: 2vw 10vw 83vw 5vw;
+    grid-template-columns: 1vw 4vw 90vw 5vw;
     grid-template-rows: 9vh;
     text-align: center;
 }
