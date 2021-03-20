@@ -61,10 +61,11 @@ function colorHeader(theme) {
     var color = colors[i];
     
     if (theme == "light") {
-        header.style.backGroundColor = color;
+        header.style.backgroundColor = "skyblue";
+        header.style.color = 
     }
     else {
-        header.style.color = color;
+        header.style.color = "lightblue";
     }
 }
 

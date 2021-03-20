@@ -19,7 +19,7 @@ data.index_dir = "home.html"
         data.intro = """This is the second in a series of games inspired by Harvard's CS50G course. \
         The focus here was on the concept of state (check out that pause button), as well as implementing the classic
         infinite runner style game."""
-        data.controls = "Press space or click to flap."
+        data.controls = "Press space or up to flap."
         data.width = "1080"
         data.height = "675"
         data.tags = ["Game Development", "Unity"]
