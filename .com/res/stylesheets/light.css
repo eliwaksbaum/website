@@ -28,19 +28,3 @@ a.menu{
 a.menu:hover{
     color:var(--light);
 }
-
-#games:hover{
-    background-color:var(--games);
-}
-
-#math:hover{
-    background-color: var(--math);
-}
-
-#music:hover{
-    background-color: var(--music);
-}
-
-#other:hover{
-    background-color: var(--other);
-}

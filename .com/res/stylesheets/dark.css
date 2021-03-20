@@ -26,21 +26,5 @@ a.menu{
 }
 
 a.menu:hover{
-    background-color: var(--dark-menu-hover);
-}
-
-#games:hover{
-    color: var(--games);
-}
-
-#math:hover{
-    color: var(--math);
-}
-
-#music:hover{
-    color: var(--music);
-}
-
-#other:hover{
-    color: var(--other);
+    color: var(--dark);
 }

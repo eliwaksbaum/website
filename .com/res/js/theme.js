@@ -8,7 +8,10 @@ if (theme_preference == null) {
     theme_preference = "light";
 }
 
-var current_section = window.location.href.split("/")[3];
+var root = document.documentElement;
+var style = getComputedStyle(root);
+var dark = style.getPropertyValue("--dark");
+var light = style.getPropertyValue("--light");
 
 function setCss(theme) {
     css.href = "/res/stylesheets/" + theme + ".css";
@@ -61,11 +64,10 @@ function colorHeader(theme) {
     var color = colors[i];
     
     if (theme == "light") {
-        header.style.backgroundColor = "skyblue";
-        header.style.color = 
+        header.style.backgroundColor = color;
     }
     else {
-        header.style.color = "lightblue";
+        header.style.backgroundColor = color;
     }
 }
 
