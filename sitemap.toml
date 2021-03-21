@@ -28,7 +28,7 @@ data.index_dir = "home.html"
             meta.template = "blog"
             meta.has_subs = false
 
-            data.doc_dir = "flappy-notes.html"
+            data.doc_dir = "blog-docs/flappy-notes.html"
             data.title = "Flappy Bird"
 
         [s.projects.s.pong]
@@ -49,7 +49,7 @@ data.index_dir = "home.html"
             meta.template = "blog"
             meta.has_subs = false
 
-            data.doc_dir = "pong-notes.html"
+            data.doc_dir = "blog-docs/pong-notes.html"
             data.title = "Pong"
 
         [s.projects.s.measuring-spoons]
@@ -58,7 +58,7 @@ data.index_dir = "home.html"
         meta.listing = "entry"
         meta.has_subs = false
 
-        data.doc_dir = "measuring-spoons.html"
+        data.doc_dir = "blog-docs/measuring-spoons.html"
         data.title = "Measuring Spoons"
         data.summary = """\
         The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \

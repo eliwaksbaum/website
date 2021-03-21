@@ -14,7 +14,6 @@
                     <iframe class="youtube" src=%txt(youtube) frameborder="0"></iframe>
                     <div class="musescore-download">
                         <a class="musescore-link" href="/res/scores/%path()/%path().mscz" target=_blank><img class="themed" data-themedSrc="/res/svg/mscz_theme.svg" style="height:179px; width:293px" alt="Edit Sheetmusic"></a>
-                        <script>loadThemedImages(theme_preference);</script>
                         <br>
                         <a class="musescore-link" href="/res/scores/%path()/%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
                     </div>
@@ -22,5 +21,6 @@
                 <embed class="sheetmusic" src="/res/scores/%path()/%path().pdf">
             </div>
         </div>
+        %globalInsert(footer.html)
     </body>
 </html>
