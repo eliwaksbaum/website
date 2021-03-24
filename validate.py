@@ -12,8 +12,8 @@ keys = {
     },
     
     "listings": {
-        "entry": ["summary", "tags"],
-        "game": ["summary", "tags"]
+        "entry": ["summary", "tags", "date"],
+        "game": ["summary", "tags", "date"]
     }
 }
 

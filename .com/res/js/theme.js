@@ -1,7 +1,7 @@
 var css;
 var button;
 
-var colors = ["#e772ac", "#9edf5e", "skyblue", "tomato"]
+var colors = ["rgb(146, 101, 243)", "rgb(236, 79, 19)", "rgb(77, 196, 295)", "rgb(19, 236, 205)", "rgb(255, 77, 255)", "rgb(255, 136, 77)", "rgb(0, 213, 0)"]
 
 var theme_preference = localStorage.getItem("theme");
 if (theme_preference == null) {
