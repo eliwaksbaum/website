@@ -7,34 +7,34 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="dark.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 167.2872 182.41156"
+   width="167.2872mm"
    height="182.41156mm"
-   width="167.2872mm">
+   viewBox="0 0 167.2872 182.41156"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="dark.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     inkscape:window-maximized="1"
-     inkscape:window-y="-11"
-     inkscape:window-x="-11"
-     inkscape:window-height="986"
-     inkscape:window-width="1920"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="371.56841"
-     inkscape:cx="481.2573"
-     inkscape:zoom="0.7"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#ffffff"
-     id="base" />
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="481.2573"
+     inkscape:cy="371.56841"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -43,19 +43,19 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-4.2498242,-25.559516)"
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     id="layer1"
+     transform="translate(-4.2498242,-25.559516)">
     <path
-       transform="matrix(0.26458333,0,0,0.26458333,4.250059,25.559751)"
+       id="path1011"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ebebeb;fill-opacity:1;stroke:#ebebeb;stroke-width:9.2674;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        d="M 344.71484,4.6328125 A 340.0806,340.0806 0 0 0 4.6328125,344.71484 340.0806,340.0806 0 0 0 344.71484,684.79492 340.0806,340.0806 0 0 0 627.63281,533.42773 297.00803,297.00803 0 0 1 503.57227,560.58008 297.00803,297.00803 0 0 1 206.5625,263.57227 297.00803,297.00803 0 0 1 357.6543,4.8808594 340.0806,340.0806 0 0 0 344.71484,4.6328125 Z"
-       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#202020;fill-opacity:1;stroke:#202020;stroke-width:9.2674;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
-       id="path1011" />
+       transform="matrix(0.26458333,0,0,0.26458333,4.250059,25.559751)" />
   </g>
 </svg>
