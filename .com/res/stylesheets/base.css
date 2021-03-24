@@ -53,6 +53,10 @@ p.intro{
     margin: 2vw 0;
 }
 
+p.controls{
+    font-size: 105%;
+}
+
 p.listdate{
     font-size: 95%;
     margin: 0;

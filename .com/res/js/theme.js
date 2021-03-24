@@ -32,7 +32,6 @@ function setButton(theme) {
 function setTheme(theme) {
     setButton(theme);
     setCss(theme);
-    colorHeader(theme);
     loadThemedImages(theme);
 }
 
@@ -58,17 +57,12 @@ function findButton() {
     button.addEventListener("click", toggleTheme);
 }
 
-function colorHeader(theme) {
+function colorHeader() {
     var header = document.getElementById("header");
     var i = Math.floor((Math.random() * colors.length));
     var color = colors[i];
     
-    if (theme == "light") {
-        header.style.backgroundColor = color;
-    }
-    else {
-        header.style.backgroundColor = color;
-    }
+    header.style.backgroundColor = color;
 }
 
 function loadThemedImages(theme) {

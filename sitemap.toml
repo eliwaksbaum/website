@@ -42,8 +42,8 @@ data.index_dir = "home.html"
         This was my first real stab at trying something in Unity so I thought I'd start with the basics."""
         data.summary = "The world's first videogame is a good place to start."
         data.controls = "Use the W and S to move Player 1 up and down and use the up and down arrows for Player 2."
-        data.width = "71.68"#"1024"
-        data.height = "40.32"#"576"
+        data.width = "71.68"
+        data.height = "40.32"
         data.tags = ["Game Development", "Unity"]
         data.date = "03/24/2021"
 
