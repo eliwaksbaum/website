@@ -95,6 +95,11 @@ a.tag{
     margin-right: 1%;
 }
 
+a.menu{
+    color: inherit;
+    text-decoration: none;
+}
+
 img.game-link{
     height: 32px;
     width: 32px;
