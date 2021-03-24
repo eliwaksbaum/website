@@ -9,28 +9,28 @@ data.index_dir = "home.html"
 
     data.index_dir = "projects.html"
 
-        [s.projects.s.flappy-bird]
-        meta.template = "game"
-        meta.listing = "game"
-        meta.has_subs = true
+        # [s.projects.s.flappy-bird]
+        # meta.template = "game"
+        # meta.listing = "game"
+        # meta.has_subs = true
 
-        data.title = "Flappy Bird"
-        data.summary = "Remember Flappy Bird? I made it in Unity."
-        data.intro = """This is the second in a series of games inspired by Harvard's CS50G course. \
-        The focus here was on the concept of state (check out that pause button), as well as implementing the classic
-        infinite runner style game."""
-        data.controls = "Press space or up to flap."
-        data.width = "1080"
-        data.height = "675"
-        data.tags = ["Game Development", "Unity"]
-        data.date = "09/30/2019"
+        # data.title = "Flappy Bird"
+        # data.summary = "Remember Flappy Bird? I made it in Unity."
+        # data.intro = """This is the second in a series of games inspired by Harvard's CS50G course. \
+        # The focus here was on the concept of state (check out that pause button), as well as implementing the classic
+        # infinite runner style game."""
+        # data.controls = "Press space or up to flap."
+        # data.width = "1080"
+        # data.height = "675"
+        # data.tags = ["Game Development", "Unity"]
+        # data.date = "09/30/2019"
 
-            [s.projects.s.flappy-bird.s.notes]
-            meta.template = "blog"
-            meta.has_subs = false
+        #     [s.projects.s.flappy-bird.s.notes]
+        #     meta.template = "blog"
+        #     meta.has_subs = false
 
-            data.doc_dir = "blog-docs/flappy-notes.html"
-            data.title = "Flappy Bird"
+        #     data.doc_dir = "blog-docs/flappy-notes.html"
+        #     data.title = "Flappy Bird"
 
         [s.projects.s.pong]
         meta.template = "game"
@@ -45,7 +45,7 @@ data.index_dir = "home.html"
         data.width = "1024"
         data.height = "576"
         data.tags = ["Game Development", "Unity"]
-        data.date = "11/03/2020"
+        data.date = "03/24/2021"
 
             [s.projects.s.pong.s.notes]
             meta.template = "blog"
@@ -54,50 +54,50 @@ data.index_dir = "home.html"
             data.doc_dir = "blog-docs/pong-notes.html"
             data.title = "Pong"
 
-        [s.projects.s.measuring-spoons]
-        meta.path = "measuring-spoons"
-        meta.template = "blog"
-        meta.listing = "entry"
-        meta.has_subs = false
+        # [s.projects.s.measuring-spoons]
+        # meta.path = "measuring-spoons"
+        # meta.template = "blog"
+        # meta.listing = "entry"
+        # meta.has_subs = false
 
-        data.doc_dir = "blog-docs/measuring-spoons.html"
-        data.title = "Measuring Spoons"
-        data.summary = """\
-        The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
-        What do you do?"""
-        data.tags = ["Math"]
-        data.date = "03/23/2021"
+        # data.doc_dir = "blog-docs/measuring-spoons.html"
+        # data.title = "Measuring Spoons"
+        # data.summary = """\
+        # The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
+        # What do you do?"""
+        # data.tags = ["Math"]
+        # data.date = "03/23/2021"
 
-        [s.projects.s.dancing]
-        meta.path = "dancing"
-        meta.template = "music"
-        meta.listing = "entry"
-        meta.has_subs = false
+        # [s.projects.s.dancing]
+        # meta.path = "dancing"
+        # meta.template = "music"
+        # meta.listing = "entry"
+        # meta.has_subs = false
 
-        data.title = "Dancing"
-        data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
-        data.intro = """\
-        This might be my favorite arrangement I've made. Hello, Dolly! is my favorite musical and it was so fun to try and fit all\
-        the musical brilliance and joy that's happening in the song into two lines two clarinets can play. Maybe I'll do the whole song one\
-        day, but for now, the piece starts with the dance break after the vocals are done, includes the first few choruses, and then skips to\
-        the end."""
-        data.summary = "Hello, Dolly!"
-        data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
-        data.tags = ["Music", "Duet"]
-        data.date = "03/19/2021"
+        # data.title = "Dancing"
+        # data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
+        # data.intro = """\
+        # This might be my favorite arrangement I've made. Hello, Dolly! is my favorite musical and it was so fun to try and fit all\
+        # the musical brilliance and joy that's happening in the song into two lines two clarinets can play. Maybe I'll do the whole song one\
+        # day, but for now, the piece starts with the dance break after the vocals are done, includes the first few choruses, and then skips to\
+        # the end."""
+        # data.summary = "Hello, Dolly!"
+        # data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
+        # data.tags = ["Music", "Duet"]
+        # data.date = "03/19/2021"
 
-        [s.projects.s.he-is-they-are]
-        meta.path = "he-is-they-are"
-        meta.template = "music"
-        meta.listing = "entry"
-        meta.has_subs = false
+        # [s.projects.s.he-is-they-are]
+        # meta.path = "he-is-they-are"
+        # meta.template = "music"
+        # meta.listing = "entry"
+        # meta.has_subs = false
 
-        data.title = "He Is, They Are"
-        data.heading = "He Is, They Are"
-        data.intro = """/
-        A great track from Harry Connick, Jr's album <i>Blue Light, Red Light</i>./
-        I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
-        data.summary = "Harry Connick, Jr"
-        data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
-        data.tags = ["Music", "Solo"]
-        data.date = "03/16/2021"
+        # data.title = "He Is, They Are"
+        # data.heading = "He Is, They Are"
+        # data.intro = """/
+        # A great track from Harry Connick, Jr's album <i>Blue Light, Red Light</i>./
+        # I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
+        # data.summary = "Harry Connick, Jr"
+        # data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
+        # data.tags = ["Music", "Solo"]
+        # data.date = "03/16/2021"
