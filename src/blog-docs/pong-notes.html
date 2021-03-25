@@ -35,12 +35,13 @@
     <li>Seems silly to subscribe to your own event, right? Not sure why I didn't just call the Lost function when I called the WinEvent.</li>
     <li>It looks like I was too lazy to get the camera bounds in the part that prevents the paddles from exiting the screen, which would break if I ever decided
         to resize the view. Unity really should make it easier to get the extents of the screen though. I think AS3's stage object is what I miss most from Flash.</li>
-    <li>I'm not entirely sure what's going on in the collision, but it illustrates the drawback of using Unity for 2D games like this. There's a very powerful
+    <li>There was some game-breaking stuff happening in the collision that I had to fix, but I left the old version as comments. What's there now still isn't perfect
+        and it illustrates the drawback of using Unity for 2D games like this. There's a very powerful
         and realistic physics engine at my disposal, but I hardly ever want purely realistic physics. Making things move how I want is definitely what I get most 
-        stuck on and frustrated over in Unity. Here I think the issue was having the angle of incidence equal the angle of reflection made the bounces boring and
-        static, so I randomly set the angle. But why is that being acheived by adding a purely vertical force to the ball? And why is that force being mulitplied
-        by a bounce scaler when the ball is already using a material that has 1.1 bounce (which is definitely already too much). I sympathize with my past self,
-        though. I feel like I would arrive at something similarly confusing today after hours of trying to get a ball to behave to laws of physics parallel to our own.</li>
+        stuck on and frustrated over in Unity. Here the issue is that with purely realistic bounces, it's possible to get stuck with the ball moving in a straight line between
+        the paddles, which is boring. The old solution was to add a random vertical force, multiplied by a bounce scaler (even though the ball's material is already bouncy), but that really
+        messed with how the ball moved. Without spending too much time on it, I instead made it so the vertical velocity is adjusted directly a little on each bounce, 
+        so any flat bounce loops shouldn't last more than a few hits.</li>
     <li>If you stomach it out to 10 points, you'll see the little dance they do! I just wanted to include a coroutine since it was one of the topics
         in the intermediate C# tutorial I was using.</li>
     <li>Displaying the score should probably be another component's job. The GameObject with the text could do it itself, getting the score either from the paddles
