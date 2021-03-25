@@ -8,9 +8,12 @@ def getProjs(tag = ""):
     with open("/var/www/eli.waksbaum.com/app/projects.json", "r") as file:
         projects = json.load(file)
     
+    tag = tag.lower()
+
     for proj in projects:
         if tag != "":
-            if tag in proj["tags"]:
+            tags = [x.lower() for x in proj["tags"]]
+            if tag in tags:
                 out = out + proj["html"]
         else:
             out = out + proj["html"]

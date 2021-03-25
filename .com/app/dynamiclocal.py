@@ -43,9 +43,12 @@ def getProjs(tag = ""):
     with open(".com/app/projects.json", "r") as file:
         projects = json.load(file)
     
+    tag = tag.lower()
+
     for proj in projects:
         if tag != "":
-            if tag in proj["tags"]:
+            tags = [x.lower() for x in proj["tags"]]
+            if tag in tags:
                 out = out + proj["html"]
         else:
             out = out + proj["html"]
@@ -84,6 +87,6 @@ def application(env, start_response=None):
 with open(".com/app/test.html", "w") as file:
     file.write(top)
     file.write("<ul>")
-    file.write(application({"PATH_INFO": "/dynamic/all-projects/"}))
+    file.write(application({"PATH_INFO": "/dynamic/tag/uNiTsy"}))
     file.write("</ul>")
     file.write(bottom)
