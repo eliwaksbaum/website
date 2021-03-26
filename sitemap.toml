@@ -54,19 +54,19 @@ data.index_dir = "home.html"
             data.doc_dir = "blog-docs/pong-notes.html"
             data.title = "Pong"
 
-        # [s.projects.s.measuring-spoons]
-        # meta.path = "measuring-spoons"
-        # meta.template = "blog"
-        # meta.listing = "entry"
-        # meta.has_subs = false
+        [s.projects.s.measuring-spoons]
+        meta.path = "measuring-spoons"
+        meta.template = "blog"
+        meta.listing = "entry"
+        meta.has_subs = false
 
-        # data.doc_dir = "blog-docs/measuring-spoons.html"
-        # data.title = "Measuring Spoons"
-        # data.summary = """\
-        # The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
-        # What do you do?"""
-        # data.tags = ["Math"]
-        # data.date = "03/23/2021"
+        data.doc_dir = "blog-docs/measuring-spoons.html"
+        data.title = "Measuring Spoons"
+        data.summary = """\
+        The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
+        What do you do?"""
+        data.tags = ["Math"]
+        data.date = "03/25/2021"
 
         # [s.projects.s.dancing]
         # meta.path = "dancing"

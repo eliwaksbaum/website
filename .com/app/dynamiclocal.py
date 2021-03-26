@@ -87,6 +87,6 @@ def application(env, start_response=None):
 with open(".com/app/test.html", "w") as file:
     file.write(top)
     file.write("<ul>")
-    file.write(application({"PATH_INFO": "/dynamic/tag/uNiTsy"}))
+    file.write(application({"PATH_INFO": "/dynamic/all-projects/"}))
     file.write("</ul>")
     file.write(bottom)

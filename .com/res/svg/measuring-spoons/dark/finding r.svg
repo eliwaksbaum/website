@@ -30,11 +30,11 @@
   <sodipodi:namedview
      inkscape:current-layer="svg101"
      inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="0"
-     inkscape:cy="228.7642"
-     inkscape:cx="455.53935"
-     inkscape:zoom="1.6782304"
+     inkscape:window-y="110"
+     inkscape:window-x="294"
+     inkscape:cy="131.09033"
+     inkscape:cx="435.54698"
+     inkscape:zoom="0.29667203"
      showgrid="false"
      id="namedview103"
      inkscape:window-height="480"
@@ -255,13 +255,13 @@
          stroke-miterlimit="10.0375"
          stroke-linejoin="round"
          stroke-linecap="round"
-         stroke="#0000ff"
+         stroke="#1052ed"
          fill="none"
          d="M 342.933 172.217C 338.791 183.598 318.492 183.598 302.286 183.598L 235.735 183.598C 220.266 183.598 201.659 183.598 195.088 194.979C 188.517 183.598 169.911 183.598 154.441 183.598L 87.8902 183.598C 71.6843 183.598 51.3857 183.598 47.2434 172.217" />
     </g>
     <g
        id="g90"
-       fill="#00f">
+       fill="#1052ed">
       <use
          id="use76"
          xlink:href="#g1-82"

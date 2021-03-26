@@ -32,9 +32,9 @@
      inkscape:window-maximized="0"
      inkscape:window-y="0"
      inkscape:window-x="0"
-     inkscape:cy="154.98944"
-     inkscape:cx="105.3507"
-     inkscape:zoom="0.53936341"
+     inkscape:cy="187.73083"
+     inkscape:cx="159.65325"
+     inkscape:zoom="1.0787268"
      showgrid="false"
      id="namedview283"
      inkscape:window-height="480"
@@ -678,7 +678,7 @@
     </g>
     <g
        id="g230"
-       fill="#00f">
+       fill="#1052ed">
       <use
          id="use218"
          xlink:href="#g1-37"
@@ -776,7 +776,7 @@
       <circle
          id="circle256"
          r="1.50562"
-         fill="#0000ff"
+         fill="#1052ed"
          cy="248.061"
          cx="92.8548" />
     </g>
@@ -786,7 +786,7 @@
       <circle
          id="circle260"
          r="1.50562"
-         fill="#0000ff"
+         fill="#1052ed"
          cy="147.309"
          cx="116.783" />
     </g>
@@ -796,7 +796,7 @@
       <circle
          id="circle264"
          r="1.50562"
-         fill="#0000ff"
+         fill="#1052ed"
          cy="98.787"
          cx="140.71" />
     </g>
@@ -806,7 +806,7 @@
       <circle
          id="circle268"
          r="1.50562"
-         fill="#0000ff"
+         fill="#1052ed"
          cy="71.7048"
          cx="164.638" />
     </g>
@@ -816,7 +816,7 @@
       <circle
          id="circle272"
          r="1.50562"
-         fill="#0000ff"
+         fill="#1052ed"
          cy="42.8494"
          cx="212.493" />
     </g>
@@ -826,7 +826,7 @@
       <circle
          id="circle276"
          r="1.50562"
-         fill="#0000ff"
+         fill="#1052ed"
          cy="27.75"
          cx="260.349" />
     </g>
