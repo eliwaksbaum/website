@@ -200,6 +200,13 @@ with open ("sitemap.toml", "r") as read:
 
 buildDirectory(("", sitemap), Path(".com"))
 
+#ahhhhhhhhhhh
+page = generate(read_path / "404.html", {"data":{}, "meta":{}})
+writePage(Path(".com/html/404.html"), page)
+page = generate(read_path/"403.html", {"data":{}, "meta":{}})
+writePage(Path(".com/html/403.html"), page)
+#ahhhhhhhhhhhh
+
 projects = sorted(projects, key = lambda x: datetime.strptime(x["date"], "%m/%d/%Y"), reverse=True)
 
 with open (write_path/"app/projects.json", "w") as projects_file:
