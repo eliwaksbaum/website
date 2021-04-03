@@ -38,7 +38,7 @@ data.index_dir = "home.html"
         meta.has_subs = true
 
         data.title = "Pong"
-        data.intro = """This is the first in a series of games inspired by Harvard's CS50G course. \
+        data.intro = """This is the first in a series of games inspired by Harvard's CS50G course. 
         This was my first real stab at trying something in Unity so I thought I'd start with the basics."""
         data.summary = "The world's first videogame is a good place to start."
         data.controls = "Use the W and S to move Player 1 up and down and use the up and down arrows for Player 2."
@@ -62,8 +62,7 @@ data.index_dir = "home.html"
 
         data.doc_dir = "blog-docs/measuring-spoons.html"
         data.title = "Measuring Spoons"
-        data.summary = """\
-        The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. \
+        data.summary = """The recipe calls for one fourth of a teaspoon of salt, but all you have is a 1/2 tsp spoon. 
         What do you do?"""
         data.tags = ["Math"]
         data.date = "03/25/2021"
@@ -86,18 +85,17 @@ data.index_dir = "home.html"
         # data.tags = ["Music", "Duet"]
         # data.date = "03/19/2021"
 
-        # [s.projects.s.he-is-they-are]
-        # meta.path = "he-is-they-are"
-        # meta.template = "music"
-        # meta.listing = "entry"
-        # meta.has_subs = false
+        [s.projects.s.he-is-they-are]
+        meta.path = "he-is-they-are"
+        meta.template = "music"
+        meta.listing = "entry"
+        meta.has_subs = false
 
-        # data.title = "He Is, They Are"
-        # data.heading = "He Is, They Are"
-        # data.intro = """/
-        # A great track from Harry Connick, Jr's album <i>Blue Light, Red Light</i>./
-        # I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
-        # data.summary = "Harry Connick, Jr"
-        # data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
-        # data.tags = ["Music", "Solo"]
-        # data.date = "03/16/2021"
+        data.title = "He Is, They Are"
+        data.heading = "He Is, They Are"
+        data.intro = """A great track from Harry Connick, Jr's album Blue Light, Red Light. 
+        I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
+        data.summary = "Harry Connick, Jr"
+        data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
+        data.tags = ["Music", "Solo"]
+        data.date = "03/29/2021"

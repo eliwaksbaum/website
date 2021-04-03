@@ -18,7 +18,12 @@
                         <a class="musescore-link" href="/res/scores/%path()/%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
                     </div>
                 </div>
-                <embed class="sheetmusic" src="/res/scores/%path()/%path().pdf">
+                <!--<embed class="sheetmusic" src="/res/scores/%path()/%path().pdf">-->
+                <object class="sheetmusic" data="/res/scores/%path()/%path().pdf">
+                    <!--put google docs viewer in here when we have a real url maybe-->
+                    <p>Looks like your browser can't show you this pdf.</p>
+                    <a href="/res/scores/%path()/%path().pdf">Click here to download it instead.</a>
+                </object>
             </div>
         </div>
         %globalInsert(footer.html)
