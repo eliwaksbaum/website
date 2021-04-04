@@ -16,8 +16,8 @@ data.index_dir = "home.html"
 
         # data.title = "Flappy Bird"
         # data.summary = "Remember Flappy Bird? I made it in Unity."
-        # data.intro = """This is the second in a series of games inspired by Harvard's CS50G course. \
-        # The focus here was on the concept of state (check out that pause button), as well as implementing the classic
+        # data.intro = """This is the second in a series of games inspired by Harvard's CS50G course. 
+        # The focus here was on the concept of state (check out that pause button), as well as implementing the classic 
         # infinite runner style game."""
         # data.controls = "Press space or up to flap."
         # data.width = "1080"
@@ -67,23 +67,22 @@ data.index_dir = "home.html"
         data.tags = ["Math"]
         data.date = "03/25/2021"
 
-        # [s.projects.s.dancing]
-        # meta.path = "dancing"
-        # meta.template = "music"
-        # meta.listing = "entry"
-        # meta.has_subs = false
+        [s.projects.s.dancing]
+        meta.path = "dancing"
+        meta.template = "music"
+        meta.listing = "entry"
+        meta.has_subs = false
 
-        # data.title = "Dancing"
-        # data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
-        # data.intro = """\
-        # This might be my favorite arrangement I've made. Hello, Dolly! is my favorite musical and it was so fun to try and fit all\
-        # the musical brilliance and joy that's happening in the song into two lines two clarinets can play. Maybe I'll do the whole song one\
-        # day, but for now, the piece starts with the dance break after the vocals are done, includes the first few choruses, and then skips to\
-        # the end."""
-        # data.summary = "Hello, Dolly!"
-        # data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
-        # data.tags = ["Music", "Duet"]
-        # data.date = "03/19/2021"
+        data.title = "Dancing"
+        data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
+        data.intro = """This is one of my favorite arrangements. Hello, Dolly! is my favorite musical and it was so fun to try and fit all 
+        the musical brilliance and joy that's happening in the song into just two lines clarinets can play. Maybe I'll do the whole song one 
+        day, but for now, the piece starts with the dance break after the vocals, includes the first few choruses, and then skips to 
+        the end."""
+        data.summary = "The wonderful, whirling waltz from <i>Hello, Dolly!</i> as a duet for clarinets."
+        data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
+        data.tags = ["Music", "Duet"]
+        data.date = "03/30/2021"
 
         [s.projects.s.he-is-they-are]
         meta.path = "he-is-they-are"
@@ -95,7 +94,19 @@ data.index_dir = "home.html"
         data.heading = "He Is, They Are"
         data.intro = """A great track from Harry Connick, Jr's album Blue Light, Red Light. 
         I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
-        data.summary = "Harry Connick, Jr"
+        data.summary = "Melody and solo from a Harry Connick, Jr balad."
         data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
         data.tags = ["Music", "Solo"]
         data.date = "03/29/2021"
+
+        [s.projects.s.latex2svg]
+        meta.path = "latex2svg"
+        meta.template = "blog"
+        meta.listing = "hub"
+        meta.has_subs = false
+
+        data.doc_dir = "blog-docs/latex2svg.html"
+        data.title = "LaTeX2Svg"
+        data.summary = """I wanted to display Latex equations with my own locally hosted SVG images, so I made this."""
+        data.tags = ["Programming"]
+        data.date = "04/01/2021"
