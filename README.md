@@ -1,4 +1,4 @@
-This is the weird and wonderful way I make my website, eli.waksbaum.com. I don't really recommend anyone else use this, so 
+This is the weird and wonderful way I make my website, <eli.waksbaum.com>. I don't really recommend anyone else use this, so 
 the following is just for me to remember how it all works.
 
 ## sitemap.toml
@@ -33,17 +33,17 @@ block for it, and it does a uwsgi_pass to the dyanmic.py mini-server. That then 
 in order to serve up the correct project listings.
 
 ## Template Commands
-%txt(key)
+##### %txt(key)
     looks up the key in the page's toml table and inserts the corresponding value string
 
-%path()
+##### %path()
     inserts the current page's path
 
-%globalInsert(address)
+##### %globalInsert(address)
     inserts the whole text of the html document found at src/inserts/address
 
-%keyInsert(key)
+##### %keyInsert(key)
     looks up the key in the page's toml table and inserts the whole text of the html found at src/value
 
-%txtList(key)
+##### %txtList(key)
     looks up the key in the page's toml table and inserts every element of the list found at that value
