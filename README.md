@@ -1,5 +1,4 @@
-This is the weird and wonderful way I make my website, <eli.waksbaum.com>. I don't really recommend anyone else use this, so 
-the following is just for me to remember how it all works.
+This is the weird and wonderful way I make my website, [eli.waksbaum.com](https://eli.waksbaum.com). I don't really recommend anyone else use this, so the following is just for me to remember how it all works.
 
 ## sitemap.toml
 This is what ssg.py reads to build the site. Every directory is on here as a seperate table. It's keys 
@@ -34,16 +33,16 @@ in order to serve up the correct project listings.
 
 ## Template Commands
 ##### %txt(key)
-    looks up the key in the page's toml table and inserts the corresponding value string
+looks up the key in the page's toml table and inserts the corresponding value string
 
 ##### %path()
-    inserts the current page's path
+inserts the current page's path
 
 ##### %globalInsert(address)
-    inserts the whole text of the html document found at src/inserts/address
+inserts the whole text of the html document found at src/inserts/address
 
 ##### %keyInsert(key)
-    looks up the key in the page's toml table and inserts the whole text of the html found at src/value
+looks up the key in the page's toml table and inserts the whole text of the html found at src/value
 
 ##### %txtList(key)
-    looks up the key in the page's toml table and inserts every element of the list found at that value
+looks up the key in the page's toml table and inserts every element of the list found at that value
