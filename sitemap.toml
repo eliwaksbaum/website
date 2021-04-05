@@ -107,6 +107,18 @@ data.index_dir = "home.html"
 
         data.doc_dir = "blog-docs/latex2svg.html"
         data.title = "LaTeX2Svg"
-        data.summary = """I wanted to display Latex equations with my own locally hosted SVG images, so I made this."""
+        data.summary = "I wanted to display Latex equations with my own locally hosted SVG images, so I made this."
         data.tags = ["Programming"]
         data.date = "04/01/2021"
+
+        [s.projects.s.website]
+        meta.path = "website"
+        meta.template = "blog"
+        meta.listing = "hub"
+        meta.has_subs = false
+
+        data.doc_dir = "blog-docs/website.html"
+        data.title = "Website"
+        data.summary = "It's where you're at right now."
+        data.tags = ["Programming"]
+        data.date = "04/05/2021"
