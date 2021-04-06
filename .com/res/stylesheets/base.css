@@ -118,15 +118,15 @@ img.game-link{
 .game-listing{
     border-radius: 20px;
     padding: 1%;
-    width: 75%
+    width: 65%
 }
 
 .game-links{
     height: 100%;
-    width: 20%;
+    width: 15%;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 15%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -139,13 +139,13 @@ ul{
 li.game-home{
     position: relative;
     margin-bottom: 3%;
-    width: 85%
+    /*width: 75%*/
 }
 
 li.section-home{
     margin-bottom: 3%;
     padding: 1%;
-    max-width: 70%;
+    width: 65%;
     border-radius: 20px;
 }
 
