@@ -225,11 +225,20 @@ a.musescore-link{
     text-align: center;
 }
 
-.sheetmusic{
+.music-holder{
     order: 2;
     flex: 2 1 60%;
+}
+
+.sheetmusic{
     height: 100vh;
+    width: 98%;
     margin: 1vw
+}
+
+p.thank-you{
+    margin-left: 1vw;
+    font-size: 90%;
 }
 
 .formula{

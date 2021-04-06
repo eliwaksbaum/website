@@ -18,14 +18,17 @@
                         <a class="musescore-link" href="/res/scores/%path()/%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
                     </div>
                 </div>
-                <!--<embed class="sheetmusic" src="/res/scores/%path()/%path().pdf">-->
-                <object class="sheetmusic" data="/res/scores/%path()/%path().pdf">
-                    <!--put google docs viewer in here when we have a real url maybe-->
-                    <p>
-                        Looks like your browser can't show you this pdf.
-                        <a href="/res/scores/%path()/%path().pdf">Click here to download it instead.</a>
-                    </p>
-                </object>
+                <div class="music-holder">
+                    <iframe class="sheetmusic" src="https://docs.google.com/gview?url=https://eli.waksbaum.com/res/scores/%path()/%path().pdf&embedded=true" frameborder="0"></iframe>
+                    <!-- <object class="sheetmusic" data="/res/scores/%path()/%path().pdf">
+                        <p>
+                            Looks like your browser can't show you this pdf.
+                            <a href="/res/scores/%path()/%path().pdf">Click here to download it instead.</a>
+                        </p>
+                    </object> -->
+                    <p class="thank-you">Huge shoutout to <a href="https://houndogschiller.com/">Jeff "Houndog" Schiller</a>, my clarinet teacher for many years, who helped 
+                    me with all my arrangements.</p>
+                </div>
             </div>
         </div>
         %globalInsert(footer.html)
