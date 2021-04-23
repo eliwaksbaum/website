@@ -1,5 +1,4 @@
 var css;
-var button;
 
 var colors = ["rgb(146, 101, 243)", "rgb(236, 79, 19)", "rgb(77, 196, 295)", "rgb(19, 236, 205)", "rgb(255, 77, 255)", "rgb(255, 136, 77)", "rgb(0, 213, 0)"]
 
@@ -17,7 +16,7 @@ function setCss(theme) {
     css.href = "/res/stylesheets/" + theme + ".css";
 }
 
-function setButton(theme) {
+function setButton(button, theme) {
     var anti;
     if (theme == "light") {
         anti = "dark";
@@ -52,22 +51,28 @@ function findCss() {
 }
 
 function findButton() {
-    button = document.getElementById("theme-button");
-    setButton(theme_preference);
+    var button = document.getElementById("theme-button-desktop");
+    setButton(button, theme_preference);
     button.addEventListener("click", toggleTheme);
+
+    // button = document.getElementById("theme-button-mobile");
+    // setButton(button, theme_preference);
+    // button.addEventListener("click", toggleTheme);
 }
 
 function colorHeader() {
-    var header = document.getElementById("header");
+    var headers = document.getElementsByTagName("header");
     var i = Math.floor((Math.random() * colors.length));
     var color = colors[i];
     
-    header.style.backgroundColor = color;
+    for (var header of headers) {
+        header.style.backgroundColor = color;
+    }
 }
 
 function loadThemedImages(theme) {
     var imgs = document.getElementsByClassName("themed");
-    for (img of imgs) {
+    for (var img of imgs) {
         var themedSrc = img.getAttribute("data-themedSrc");
         var src = themedSrc.replace("theme", theme);
         img.src = src;

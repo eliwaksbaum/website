@@ -1,16 +1,22 @@
-<header id="header">
+<header id="header" class="desktop">
     <div class="clearfix">
-        <nav>
+        <nav class="desktop">
             <div></div>
             <a class="menu" href="/">EW</a>
             <div>
                 <a href="/projects" class="menu">Projects</a>
             </div>
             <div>
-                <img id="theme-button">
+                <img id="theme-button-desktop">
             </div>
         </nav>
         <script>findButton();</script>
-        <script>colorHeader();</script>
     </div>
 </header>
+<header class="mobile">
+    <nav class="mobile">
+        <a class="menu mobile-left" href="/">EW</a>
+        <img class="mobile-right themed" data-themedSrc="/res/svg/hamburger_theme.svg">
+    </nav>
+</header>
+<script>colorHeader();</script>
