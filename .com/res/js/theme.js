@@ -1,4 +1,7 @@
 var css;
+var desktop_button;
+var mobile_button;
+
 
 var colors = ["rgb(146, 101, 243)", "rgb(236, 79, 19)", "rgb(77, 196, 295)", "rgb(19, 236, 205)", "rgb(255, 77, 255)", "rgb(255, 136, 77)", "rgb(0, 213, 0)"]
 
@@ -16,7 +19,7 @@ function setCss(theme) {
     css.href = "/res/stylesheets/" + theme + ".css";
 }
 
-function setButton(button, theme) {
+function setButton(theme) {
     var anti;
     if (theme == "light") {
         anti = "dark";
@@ -24,8 +27,10 @@ function setButton(button, theme) {
     else {
         anti = "light";
     }
-    button.src = "/res/svg/" + anti + ".svg";
-    button.alt = anti;
+    desktop_button.src = "/res/svg/" + anti + ".svg";
+    desktop_button.alt = anti;
+    // mobile_button.src = "/res/svg/" + anti + ".svg";
+    // mobile_button.alt = anti;
 }
 
 function setTheme(theme) {
@@ -51,13 +56,9 @@ function findCss() {
 }
 
 function findButton() {
-    var button = document.getElementById("theme-button-desktop");
-    setButton(button, theme_preference);
-    button.addEventListener("click", toggleTheme);
-
-    // button = document.getElementById("theme-button-mobile");
-    // setButton(button, theme_preference);
-    // button.addEventListener("click", toggleTheme);
+    desktop_button = document.getElementById("theme-button-desktop");
+    // mobile_button = document.getElementById("theme-button-mobile");
+    setButton(theme_preference);
 }
 
 function colorHeader() {

@@ -1,13 +1,14 @@
 <header id="header" class="desktop">
     <div class="clearfix">
         <nav class="desktop">
-            <div></div>
-            <a class="menu" href="/">EW</a>
+            <a class="menu header-left" href="/">EW</a>
             <div>
                 <a href="/projects" class="menu">Projects</a>
             </div>
-            <div>
-                <img id="theme-button-desktop">
+            <div class="desktop-right">
+                <button onClick="toggleTheme()" class="chill">
+                    <img id="theme-button-desktop">
+                </button>
             </div>
         </nav>
         <script>findButton();</script>
@@ -15,7 +16,7 @@
 </header>
 <header class="mobile">
     <nav class="mobile">
-        <a class="menu mobile-left" href="/">EW</a>
+        <a class="menu header-left" href="/">EW</a>
         <img class="mobile-right themed" data-themedSrc="/res/svg/hamburger_theme.svg">
     </nav>
 </header>

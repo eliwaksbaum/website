@@ -161,11 +161,6 @@ li.section-home{
     border: 5px black solid
 }
 
-#theme-button-desktop{
-    padding-top: 2vh;
-    height: 60% 
-}
-
 .clearfix::after {
     content: "";
     clear: both;
@@ -264,16 +259,33 @@ p.thank-you{
     height: fit-content;
 }
 
-.mobile-left{
+#theme-button-desktop{
+    height:100%;
+}
+
+button.chill{
+    border:none;
+    background-color: inherit;
+    height: 100%;
+}
+
+.header-left{
     position: absolute;
     left: 2%
 }
 
 .mobile-right{
     position: absolute;
-    height: 50%;
     right: 2%;
+    height: 50%;
     top: 25%;
+}
+
+.desktop-right{
+    position: absolute;
+    right: 1%;
+    height: 60%;
+    top: 20%;
 }
 
 @media (max-width: 800px) {
