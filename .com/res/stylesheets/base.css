@@ -36,9 +36,6 @@ h2.listing{
 }
 
 nav.desktop {
-    display: grid;
-    grid-template-columns: 1% 4% 90% 5%;
-    grid-template-rows: 9vh;
     text-align: center;
 }
 
@@ -157,6 +154,12 @@ li.section-home{
     line-height: 9vh;
 }
 
+.menu-span{
+    display: inline-block;
+    width: 10%;
+    margin: 0 5%;
+}
+
 .box{
     border: 5px black solid
 }
@@ -266,7 +269,7 @@ p.thank-you{
 button.chill{
     border:none;
     background-color: inherit;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .header-left{
@@ -277,18 +280,18 @@ button.chill{
 .mobile-right{
     position: absolute;
     right: 2%;
-    height: 50%;
-    top: 25%;
+    height: 40%;
+    top: 30%;
 }
 
 .desktop-right{
     position: absolute;
     right: 1%;
-    height: 60%;
-    top: 20%;
+    height: 66%;
+    top: 17%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
     header.desktop {
         display: none;
     }
@@ -305,7 +308,7 @@ button.chill{
         width: 100%;
     }
 }
-@media (min-width: 801px) {
+@media (min-width: 701px) {
     header.desktop {
         display: block;
     }
