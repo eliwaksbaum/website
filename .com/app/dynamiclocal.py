@@ -6,30 +6,47 @@ top = """
 <!DOCTYPE html>
 <html lang="en">
     <head>
-<meta charset="utf-8">
+        <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/res/js/theme.js"></script>
+<script src="/res/js/mobile.js"></script>
 <link id="base" rel="stylesheet" href="/res/stylesheets/base.css">
 <link id="theme" rel="stylesheet">
-<script>findCss();</script>        <title>Coming Soon</title>
+<script>findCss();</script>
     </head>
     <body>
-<header id="header">
+        <header id="header" class="desktop colorful">
     <div class="clearfix">
-        <nav>
-            <div></div>
-            <a class="menu" href="/">EW</a>
-            <div>
-                <a href="/projects" class="menu">Projects</a>
-            </div>
-            <div>
-                <img id="theme-button">
-            </div>
+        <nav class="desktop">
+            <a class="menu header-left" href="/">EW</a>
+            <span>
+                <a href="/projects" class="menu menu-span">Projects</a>
+                <a class="menu menu-span">Say Hi</a>
+            </span>
+            <button onClick="toggleTheme()" class="chill desktop-right">
+                <img id="theme-button-desktop">
+            </button>
         </nav>
         <script>findButton();</script>
-        <script>colorHeader(theme_preference);</script>
     </div>
-</header>        <div class="content">      
+</header>
+<header class="mobile colorful">
+    <nav class="mobile">
+        <a class="menu header-left" href="/">EW</a>
+        <div class="dropcont">
+            <button onClick="menuDown()" class="chill">
+                <img class="mobile-right themed" data-themedSrc="/res/svg/hamburger_theme.svg">
+            </button>
+            <div id="dropdown" class="dropdown">
+                <a class="colorful menu" href="/projects">Projects</a>
+                <a class="colorful menu">Say Hi</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<script>colorize();</script>
+    </body>
+</html>    
 """
 bottom = """
         </div> 
