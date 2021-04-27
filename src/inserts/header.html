@@ -1,4 +1,4 @@
-<header id="header" class="desktop">
+<header id="header" class="desktop colorful">
     <div class="clearfix">
         <nav class="desktop">
             <a class="menu header-left" href="/">EW</a>
@@ -13,10 +13,18 @@
         <script>findButton();</script>
     </div>
 </header>
-<header class="mobile">
+<header class="mobile colorful">
     <nav class="mobile">
         <a class="menu header-left" href="/">EW</a>
-        <img class="mobile-right themed" data-themedSrc="/res/svg/hamburger_theme.svg">
+        <div class="dropcont">
+            <button onClick="menuDown()" class="chill">
+                <img class="mobile-right themed" data-themedSrc="/res/svg/hamburger_theme.svg">
+            </button>
+            <div id="dropdown" class="dropdown">
+                <a class="colorful menu" href="/projects">Projects</a>
+                <a class="colorful menu">Say Hi</a>
+            </div>
+        </div>
     </nav>
 </header>
-<script>colorHeader();</script>
+<script>colorize();</script>

@@ -61,8 +61,8 @@ function findButton() {
     setButton(theme_preference);
 }
 
-function colorHeader() {
-    var headers = document.getElementsByTagName("header");
+function colorize() {
+    var headers = document.getElementsByClassName("colorful");
     var i = Math.floor((Math.random() * colors.length));
     var color = colors[i];
     

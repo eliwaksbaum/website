@@ -279,7 +279,7 @@ button.chill{
 
 .mobile-right{
     position: absolute;
-    right: 2%;
+    right: 100%;
     height: 40%;
     top: 30%;
 }
@@ -290,6 +290,27 @@ button.chill{
     height: 66%;
     top: 17%;
 }
+
+.dropcont{
+    position: relative;
+    height: 100%;
+    float: right;
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+}
+
+.dropdown a{
+    float: right;
+    text-align: center;
+    width: 200%;
+}
+
+.show {display:block}
 
 @media (max-width: 700px) {
     header.desktop {
