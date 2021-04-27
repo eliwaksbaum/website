@@ -140,3 +140,9 @@ data.index_dir = "home.html"
         data.youtube = "https://www.youtube.com/embed/trrH4sVZ0dQ"
         data.tags = ["Music", "Duet"]
         data.date = "04/06/2021"
+
+    [s.contact]
+    meta.template = "none"
+    meta.has_subs = false
+
+    data.index_dir = "contact.html"
