@@ -14,21 +14,25 @@ or change what keys one of them needs, make sure to reflect those changes in tho
 
 ## The src Folder
 blog-docs - the html files that get inserted as the body of pages using the blog template.
+
 inserts - header, footer, head. Stuff that gets inserted.
+
 listings - the templates for the listings.
+
 templates - the templates for the pages. (the tags template is in here too, but that's a bit of a mess)
+
 Any pages with the none template need their own html files, and those go here too.
 
 ## The .com Folder
 This is where all the generated stuff goes, and to make your life easier, it's also where we keep 
-the res, app, and html folders. res is for images, unity files, javascript, downloads, etc. html for 
-is just the error pages. app has a few things for testing, but the only important part is dynamic.py, 
+the res, app, and html folders. res is for images, unity files, javascript, downloads, etc. html  
+is just for the error pages for now. app has a few things for testing, but the only important part is dynamic.py, 
 the uwsgi server.
 
 ### dynamic.py, the Projects page, and ajax
-So most of this is static, but the project page isn't. It makes an ajax request to /dyanmic/blah, where 
-the blah is determined by the url. /dynamic isn't a real directory, but the nginx server has a location 
-block for it, and it does a uwsgi_pass to the dyanmic.py mini-server. That then parses the blah 
+So most of this is static, but the project page isn't. It makes an ajax request to /dyanmic/param, where 
+the param is determined by the url. /dynamic isn't a real directory, but the nginx server has a location 
+block for it, and it does a uwsgi_pass to the dyanmic.py mini-server. That then parses the param 
 in order to serve up the correct project listings.
 
 ## Template Commands
