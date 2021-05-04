@@ -5,7 +5,9 @@
     <title>%txt(title)</title>
     <script src="/res/unity/%path()/UnityLoader.js"></script>
     <script>
-      UnityLoader.instantiate("unityContainer", "/res/unity/%path()/%path().json");
+      if (!UnityLoader.SystemInfo.mobile) {
+        UnityLoader.instantiate("unityContainer", "/res/unity/%path()/%path().json");
+      }
     </script>
   </head>
   <body>
@@ -16,7 +18,10 @@
       <p class="controls">Controls: %txt(controls)</p>
       <div class="center-inline">
         <div class="unity">
-          <div id="unityContainer" style="width:%txt(width)vw; height:%txt(height)vw"></div>
+          <div id="unityContainer" style="width:%txt(width)vw; height:%txt(height)vw">
+            <p class="mobile-unity-top">Sorry, Unity WebGL is not supported on mobile browsers.</p>
+            <p class="mobile-unity-bottom">Please view this page on a desktop to play the game.</p>
+          </div>
         </div>
       </div>
     </div>
