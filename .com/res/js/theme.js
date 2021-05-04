@@ -66,16 +66,16 @@ function colorize() {
     var i = Math.floor((Math.random() * colors.length));
     var color = colors[i];
     
-    for (var header of headers) {
-        header.style.backgroundColor = color;
+    for (var i = 0; i < headers.length; i++) {
+        headers[i].style.backgroundColor = color;
     }
 }
 
 function loadThemedImages(theme) {
     var imgs = document.getElementsByClassName("themed");
-    for (var img of imgs) {
-        var themedSrc = img.getAttribute("data-themedSrc");
+    for (var i = 0; i < imgs.length; i++) {
+        var themedSrc = imgs[i].getAttribute("data-themedSrc");
         var src = themedSrc.replace("theme", theme);
-        img.src = src;
+        imgs[i].src = src;
     }
 }

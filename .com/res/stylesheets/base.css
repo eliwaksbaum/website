@@ -1,10 +1,3 @@
-:root{
-    --dark: rgb(32, 32, 32);
-    --dark-text: rgb(235, 235, 235);
-    --light:  rgb(250, 250, 250);
-    --dark-menu-hover: #4d4d52;
-}
-
 body {
     font-family: Georgia, serif;
     margin: 0;
@@ -77,6 +70,10 @@ th, td{
     padding: 15px
 }
 
+a{
+    color:rgb(96, 147, 179)
+}
+
 a.listing{
     color: inherit;
     text-decoration: none;
@@ -127,12 +124,13 @@ img.listing{
 }
 
 .game-links{
+    display: flex;
+
     height: 100%;
     width: 15%;
     position: absolute;
     bottom: 0;
     right: 15%;
-    display: flex;
     align-items: center;
     justify-content: space-between;
 }
@@ -215,6 +213,7 @@ li.section-home{
 .left-music-column{
     order: 1;
     flex: 1 2 40%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -281,8 +280,6 @@ p.thank-you{
 
 button.chill{
     border:none;
-    background-color: inherit;
-    /*height: 100%;*/
 }
 
 .header-left{
