@@ -29,8 +29,8 @@ function setButton(theme) {
     }
     desktop_button.src = "/res/svg/" + anti + ".svg";
     desktop_button.alt = anti;
-    // mobile_button.src = "/res/svg/" + anti + ".svg";
-    // mobile_button.alt = anti;
+    mobile_button.src = "/res/svg/" + anti + ".svg";
+    mobile_button.alt = anti;
 }
 
 function setTheme(theme) {
@@ -57,7 +57,7 @@ function findCss() {
 
 function findButton() {
     desktop_button = document.getElementById("theme-button-desktop");
-    // mobile_button = document.getElementById("theme-button-mobile");
+    mobile_button = document.getElementById("theme-button-mobile");
     setButton(theme_preference);
 }
 

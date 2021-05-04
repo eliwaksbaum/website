@@ -299,8 +299,16 @@ p.thank-you{
     height:100%;
 }
 
+#theme-button-mobile{
+    height: 30%;
+    width: 30%;
+    padding: 5% 0;
+    text-align: center;
+}
+
 button.chill{
     border:none;
+    border-radius: 0;
 }
 
 .header-left{
@@ -338,6 +346,11 @@ button.chill{
 .dropdown a{
     float: right;
     text-align: center;
+    width: 200%;
+}
+
+.dropdown button{
+    float: right;
     width: 200%;
 }
 

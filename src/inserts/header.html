@@ -9,20 +9,23 @@
                 <img id="theme-button-desktop">
             </button>
         </nav>
-        <script>findButton();</script>
 </header>
 <header class="mobile colorful">
     <nav class="mobile">
         <a class="menu header-left" href="/">EW</a>
         <div class="dropcont">
-            <button onClick="menuDown()" class="chill">
+            <button onClick="menuDown()" class="chill colorful">
                 <img class="mobile-right themed" data-themedSrc="/res/svg/hamburger_theme.svg">
             </button>
             <div id="dropdown" class="dropdown">
                 <a class="colorful menu" href="/projects">Projects</a>
                 <a class="colorful menu" href="/contact">Say Hi</a>
+                <button onClick="toggleTheme()" class="chill colorful">
+                    <img id="theme-button-mobile">
+                </button>
             </div>
         </div>
     </nav>
 </header>
+<script>findButton();</script>
 <script>colorize();</script>
