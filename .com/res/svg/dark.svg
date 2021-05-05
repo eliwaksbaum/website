@@ -7,34 +7,38 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="167.2872mm"
-   height="182.41156mm"
-   viewBox="0 0 167.2872 182.41156"
-   version="1.1"
-   id="svg8"
+   sodipodi:docname="dark.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="dark.svg">
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 157.73889 212"
+   height="212mm"
+   width="157.73889mm">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="481.2573"
-     inkscape:cy="371.56841"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="986"
-     inkscape:window-x="-11"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-bottom="20"
+     fit-margin-top="20"
+     inkscape:window-maximized="1"
      inkscape:window-y="-11"
-     inkscape:window-maximized="1" />
+     inkscape:window-x="-11"
+     inkscape:window-height="986"
+     inkscape:window-width="1920"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="427.48357"
+     inkscape:cx="463.21326"
+     inkscape:zoom="0.7"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -43,19 +47,18 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
+     transform="translate(-9.0239769,-10.765296)"
      id="layer1"
-     transform="translate(-4.2498242,-25.559516)">
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
     <path
-       id="path1011"
-       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ebebeb;fill-opacity:1;stroke:#ebebeb;stroke-width:9.2674;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
-       d="M 344.71484,4.6328125 A 340.0806,340.0806 0 0 0 4.6328125,344.71484 340.0806,340.0806 0 0 0 344.71484,684.79492 340.0806,340.0806 0 0 0 627.63281,533.42773 297.00803,297.00803 0 0 1 503.57227,560.58008 297.00803,297.00803 0 0 1 206.5625,263.57227 297.00803,297.00803 0 0 1 357.6543,4.8808594 340.0806,340.0806 0 0 0 344.71484,4.6328125 Z"
-       transform="matrix(0.26458333,0,0,0.26458333,4.250059,25.559751)" />
+       d="m 95.024222,31.921321 a 84.843864,84.843864 0 0 0 -84.84422,84.844219 84.843864,84.843864 0 0 0 84.84422,84.84373 84.843864,84.843864 0 0 0 70.582828,-37.76333 74.098049,74.098049 0 0 1 -30.95082,6.77401 A 74.098049,74.098049 0 0 1 60.557751,96.52196 74.098049,74.098049 0 0 1 98.25238,31.983204 84.843864,84.843864 0 0 0 95.024222,31.921321 Z"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ebebeb;fill-opacity:1;stroke:#ebebeb;stroke-width:2.31205;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       id="path1011" />
   </g>
 </svg>
