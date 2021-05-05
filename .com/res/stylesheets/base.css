@@ -249,8 +249,8 @@ li.section-home{
 .youtube{
     order: 1;
     margin: 1vh 1vw;
-    height: 220px;
-    width: 392px
+    height: 22vw;
+    width: 39.2vw;
 }
 
 .musescore-download{
@@ -389,6 +389,10 @@ button.chill{
     }
     .flexrow {
       flex-direction:column-reverse
+    }
+    .youtube {
+        height: 44vw;
+        width: 78.4vw;
     }
     .listing-flex {
         flex-direction: column;
