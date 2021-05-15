@@ -141,6 +141,28 @@ data.index_dir = "home.html"
         data.tags = ["Music", "Duet"]
         data.date = "04/06/2021"
 
+        [s.projects.s.breakout]
+        meta.template = "game"
+        meta.listing = "game"
+        meta.has_subs = true
+
+        data.title = "Breakout"
+        data.intro = """This is the third (and last) in a series of games inspired by Harvard's CS50G course. 
+        I think it represents a lot of progress from where I started with Pong, both in terms of gameplay and development principles."""
+        data.summary = "Break all the bricks."
+        data.controls = "Use the arrow keys to aim the ball and move the paddle side to side. Use spacebar to serve."
+        data.width = "71.68"
+        data.height = "40.32"
+        data.tags = ["Game Development", "Unity"]
+        data.date = "02/22/2222"
+
+            [s.projects.s.breakout.s.notes]
+            meta.template = "blog"
+            meta.has_subs = false
+
+            data.doc_dir = "blog-docs/breakout-notes.html"
+            data.title = "Breakout"
+
     [s.contact]
     meta.template = "none"
     meta.has_subs = false
