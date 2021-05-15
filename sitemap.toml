@@ -154,7 +154,7 @@ data.index_dir = "home.html"
         data.width = "71.68"
         data.height = "40.32"
         data.tags = ["Game Development", "Unity"]
-        data.date = "02/22/2222"
+        data.date = "02/22/2021"
 
             [s.projects.s.breakout.s.notes]
             meta.template = "blog"
