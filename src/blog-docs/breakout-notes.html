@@ -1,2 +1,168 @@
-<h1>Breakout</h1>
-<p>This is how I made breakout.</p>
+<h1>The Making of Breakout</h1>
+<p>
+Breakout, or as I knew it, Brick Breaker, used to be my favorite video game. It was about the only video game I knew for 
+a time, and I would play for hours on my dad's Blackberry phone with a physical keyboard and scroll-wheel. So I was pretty 
+excited to see it was the third game in the CS50G curriculum. I started working on it about a year ago, right after finishing 
+Pong and Flappy Bird. I left it half-way done at the time, though, so while I just had to do some touch-ups for the other 
+two, a good amount of this game was built in the month before writing. It's the biggest game I've made so far, and I think 
+it will be the last one I'll take out of CS50G's playbook before thinking up my own projects.
+</p>
+<p>
+I feel like at this point I have the experience and knowledge required to start making my own games, and while 
+obviously I could learn a lot more from the rest of the lectures in the class, I'd rather venture out on my own. You could 
+also argue that I already did that with this project, since if you look at CS50G's version of Breakout and the techniques 
+students are supposed to learn from it, you'll see what I've done diverges quite a bit. Most flagrantly, the course uses 
+Breakout as an example of how to implement random level generation, but I took the alternate route of exploring deliberate 
+level design.
+</p>
+
+<h2>Game Design</h2>
+<p>
+Compared to Pong and Flappy Bird, Breakout required a lot of Game Design, by which I mean everything that's involved in 
+making a game outside of its code. I tried to make each level unique and visually interesting, and to have each one 
+introduce a new concept or challenge. The goal was ten levels that didn't feel repetetive and that ramped up the difficulty 
+in a natural progression. Because I did want this game to be difficult; if I did it right you won't get too far without 
+really focusing. And that's because I want this game to actually be fun to play. I wanted the player to feel some drama 
+and excitement in actually losing lives, reaching unlock milestones, and chasing down the ball or an elusive 1-up.
+</p>
+<p>
+How the player feels while playing is of course also affected by the rest of the game's design: the art, sound, music, 
+lighting, animation etc. Thankfully, Breakout being a 2D arcade game, I could get away with just some basic vector art 
+and 16-bit sound effects, which I did create myself (and which took me long enough to wonder how more involved games 
+ever get made). I did the art in <a target="_blank" href="https://inkscape.org">Inkscape</a>, a neat, open source Illustrator alternative, and made the sounds with 
+<a target="_blank" href="https://www.bfxr.net">Bfxr</a>. I'm very pleased with how it all turned out and think the highlights on the blocks and the physical thud 
+of the ball hitting the paddle greatly elevate the game. Most of what I've been working on, though, was diving back into 
+the code (which you can check out <a target="_blank" href="https://github.com/eliwaksbaum/breakout/tree/main/Assets/Scripts">here</a>) and fixing it all up.
+</p>
+
+<h2>Reacquainting</h2>
+<p>
+Stepping back into the project after about a year was actually not too bad. I could definitely stand to comment more, 
+but I think I did a pretty good job from the start with decoupling. That made it so I didn't have to wade through any huge webs 
+of interconnected classes, trying to piece together how a simple result was acheived in the code. I was able to fix bugs and add 
+features without having to first understand how the whole project worked. Systems were well contained, and some like loading 
+levels or saving data I didn’t need to touch at all (until I eventually had to totally redesign them later). The one thing that did 
+require a lot of cross-referencing between classes was the way I was using Scriptable Objects.
+</p>
+
+<h2>The Scriptable Object</h2>
+<p>
+Most classes that you’ll write in Unity are MonoBehaviours, i.e. components that will be attached to 
+GameObjects which live in a scene. Scriptable Objects, however, function independently from GameObjects 
+and live in your Assets folder. Components can reference them by exposing a public field of type [MyScriptableObjectClass], 
+into which you can drag a Scriptable Object instance in the Editor. They can be very useful, and I recommend watching 
+two Unite conference talks by <a target="_blank" href="https://www.youtube.com/watch?v=6vmRwLYWNRo">Richard Fine</a> and <a target="_blank" href="https://www.youtube.com/watch?v=raQ3iHhE_Kk">Ryan Hipple</a> which are responsible for the Scriptable 
+Object architecture I used for Breakout.
+</p>
+<p>
+There are three main ways I use Scriptable Objects in the game. The first is to store what I’ll call static data, constants that are set before 
+the game starts, things like speeds, max healths, or lists of sprites. That’s what the BrickData, PaddlesData, PaddleSizes, and 
+PowerData classes are. So instead of each instance of the Power class having its own speed field set to the same value, they 
+all reference the same Scriptable Object with a single speed field. This also makes testing and balancing much easier, since 
+changes to Scriptable Objects made in play mode persist, unlike those made to MonoBehaviours. Whereas before I could fiddle 
+for ten minutes with parameters only to forget what the final value I settled on was once I left play mode, now that final value just 
+stays.
+</p>
+<p>
+Sometimes the data I want to store is just a single field, though. That’s where the Value classes come in. BoolValue, IntValue, 
+FloatValue, and SpriteValue all contain just one field: Value. So instead of storing the paddle’s speed in a float field, I do it in 
+a FloatValue field. That doesn’t sound all that exciting, but these Value classes are at the heart of my second main use of Scriptable 
+Objects: storing dynamic data, things that are going to change throughout the game like a player’s health or score. These are 
+values that lots of different classes need to access. Instead of using a globally accessible singleton, the data they need can be handed to 
+them through the Unity Editor. So when the ball exits the screen, the BallExit class modifies the health IntValue, which the HealthDisplay 
+class is looking at to update the number of hearts displayed on the screen. BallExit and HealthDisplay don’t ever know about each other, 
+they just have references to the same IntValue object. This also helps with testing, because if I’m not doing well, I can set health back 
+to 3 in the Inspector to keep going, and I’ll see the hearts pop back up by themselves.
+</p>
+<p>
+Those two main uses, storing static and dynamic data, are well outlined in Fine’s and Hipple’s talks, and I was really happy 
+with what I was able to do with them for Breakout. But then I had an idea. What if the Value I was storing in my Scriptable 
+Object wasn’t a float or a bool, but a function?
+</p>
+
+<h2>Callables</h2>
+<p>
+So I made the Callable class. Instead of a single field called Value, it has a single method called Call. Now I could pass around 
+references to Callable objects, and therefore to the methods they contained. Sounds great, but it led to my reinventing 
+functionality that already exists within Unity and even C# itself.
+</p>
+
+<h3>The Game Event</h3>
+<p>
+I think the silliest thing that my Scriptable Object zeal lead me to was the GameEvent class. It holds a reference to an Action 
+(a delegate with no parameters that returns void) and has methods for subscribing to and unsubscribing from that Action. 
+It extends Callable, and its Call method calls the Action. If that sounds like a clumsy, useless alternative to a C# public static 
+event, that’s because it is. I made three instances of the GameEvent class, and two of them are only ever called by one class. 
+So I was constantly dragging these objects through the Editor so that the classes who needed a reference to these delegates 
+could have them, essentially for no reason at all. There is the case of ServeEvent, which is triggered by two different classes, 
+(BallExit when a ball leaves the screen and LevelLoader when a new level starts) a behavior that a public static event could 
+not emulate. But I’m sure that could be accomplished another way, and does not defend the use of GameEvent.
+</p>
+
+<h3>Buttons</h3>
+<p>
+Besides the GameEvent class, I mostly used Callables for buttons. If you take a look at the buttons in the game, you’ll see 
+that I inexplicably created my own class, GameButton, that copies what the built-in Unity UIButton does. Except Unity’s button 
+doesn’t need the method that the button calls to be stored in a Callable Scriptable Object. It can call any method on any class in 
+the scene or in the Assets folder. That functionality would have made the buttons in the paddle selector scene so much cleaner 
+than what I ended up doing, which involved manually checking for the user’s click and having the buttons and the paddle 
+displayer hold references to each other.
+</p>
+<p>
+For methods that don’t live on GameObjects in the scene, though, I think Scriptable Objects might actually present a 
+good solution. Some buttons in the game load levels or change scenes. It doesn’t make a ton of sense for the classes that 
+do those actions to be MonoBehaviours, attached to empty GameObjects. Using a Scriptable Object means that you can place a 
+button into your scene, drag over the reference to the object, and you’re done. No need to add a whole another GameObject to 
+the scene to hold that method. Also, a Scriptable Object can hold references to audio or prefabs, where with a MonoBehaviour, 
+you’d have to drag in those references for each instance.
+</p>
+
+<h3>The Level Loader</h3>
+<p>
+The LevelLoader class is one of the Callables I think I would keep for buttons to reference. It holds references 
+to all the level prefabs, and as a MonoBehaviour it would have to be added to multiple scenes. It took a while for 
+the LevelLoader to arrive at its current incarnation, though.
+</p>
+<p>
+At first glance, the idea of storing levels as prefabs and having a whole class responsible for loading and destroying 
+those prefabs looks like I’m reinventing the wheel again. Why not just have multiple level scenes? I probably could 
+have figured out how to do it with separate scenes, but I like this way better. There are a lot of things that I want 
+to persist between levels (the paddle, the ball, health display, score display, and more). I could use DontDestroyOnLoad, 
+but then I’d have to differentiate between loading a level scene, when the player beats a level, or another scene, when the 
+player loses all their lives or beats the tenth level. Checking the scene’s name for the sub-string “level” seemed janky. I think 
+my system is more elegant, and makes it easier to edit and swap around levels on the fly.
+</p>
+<p>
+I initially planned on loading these level prefabs using Addressable Assets, but once I started actually building to WebGL, 
+I ran into some big problems. Namely, that I do not understand how Addressable Assets work at all. I really tried to  
+get it working, but eventually decided faster loading times couldn’t be worth the suffering (though now that I see 
+how long loading really does take, I’m reconsidering a little). But abandoning Addressable Assets gave me a big problem: How 
+do I store references to the level prefabs? The LevelLoader class at that point was just a bunch of public static methods and 
+couldn’t interact with anything in the Editor.
+</p>
+<p>
+This was one of the last problems I was trying to fix, and desperately wanting to wrap up the project, I turned to the unsavory 
+possibility of making the LevelLoader a singleton. Before I gave in, though, I consulted <a target="_blank" href="http://gameprogrammingpatterns.com/contents.html">Game Programming Patterns</a> 
+to see what wisdom Bob Nystrom could offer. In the chapter on singletons, he mentions that potential singletons are often 
+unnecessary managers, doing tasks that the “managed” objects would be better off doing themselves. This turned out to be 
+true in my case; only one class was ever calling the public static methods of the LevelLoader. A bit of re-configuring, and 
+the LevelLoader became a Scriptable Object with a public GameObject array to store the level prefabs and a Call method for 
+the buttons.
+</p>
+
+<h2>Messing with Reality</h2>
+<p>
+The last thing I want to talk about is my continued frustration with making things move how I want them to. A Breakout game with 
+realistic, physics-bound bounces would be a disaster. If the ball’s angle gets too shallow, it gets stuck traveling back and forth across 
+the screen for minutes. The ball can get trapped between a block and the ceiling forever; it can somehow lose all of its momentum 
+by hitting two bricks at once, it can do all sorts of things that I wish it would not. So I slapped BadAngleFixers and ZeroXFixers 
+everywhere, and I’m hoping that’s enough to keep the ball moving in a productive way. But I’m left thinking that there’s got to be a better way to 
+do this than to employ a sophisticated physics engine and then clumsily tamper with it. If you know of one, please let me know.
+</p>
+
+<p>
+And so, over a year after first finding the CS50G course, I finally finish my journey with it. The first three lectures of it, anyhow. 
+The general spirit of those first three lectures, anyhow. And regardless of how faithfully I followed the material, it did inspire me 
+to give learning Unity another chance, to seek out other great resources, and to explore making games again. So thank you very 
+much, Colton Ogden and edX for that, and for whatever comes next.
+</p>
