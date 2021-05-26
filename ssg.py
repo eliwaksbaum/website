@@ -20,7 +20,7 @@ def generate(template_address:Path, lookup:dict = None) -> list:
     return doc
 
 def readDoc(address:Path) -> list:
-    with open(address, "r") as page:
+    with open(address, "r", encoding="utf-8") as page:
         doc = page.readlines()
     return doc
 
@@ -93,7 +93,7 @@ def carryOut(edits:list, line:str, lookup:dict) -> str:
 #globalInsert should have one argument, the adress of the html snippet to be inserted in relation to /src
 def globalInsert(html:str) -> str:
     snippet = ""
-    with open(read_path / "inserts" / html, "r") as insert_text:
+    with open(read_path / "inserts" / html, "r", encoding="utf-8") as insert_text:
         for line in insert_text:
             snippet = snippet + line
     return snippet
@@ -108,7 +108,7 @@ def keyInsert(key:str, orig:str, lookup:dict) -> str:
     else:
         return "bad key"
 
-    with open(adr, "r") as insert:
+    with open(adr, "r", encoding="utf-8") as insert:
         for line in insert:
             snippet = snippet + line
     return snippet
@@ -130,7 +130,7 @@ def path(orig:str, pathname:str) -> str:
 #txtList should have one argument, the key whose value is a list
 def txtList(key:str, orig:str, lookup:dict) -> str:
     insert = ""
-    with open(read_path / ("templates/" + key + ".html"), "r") as file:
+    with open(read_path / ("templates/" + key + ".html"), "r", encoding="utf-8") as file:
         template = file.readlines()
 
     for i in lookup[key]:
@@ -176,7 +176,7 @@ def buildDirectory(_table:tuple, last_write:Path) -> None:
             addListing(meta["listing"], data["tags"], data["date"], table)
 
 def writePage(address:Path, doc:list) -> None:
-    with open(address, "w") as file:
+    with open(address, "w", encoding="utf-8") as file:
         for line in doc:
             file.write(line)
 
@@ -195,7 +195,7 @@ def addListing(listing:str, tags:list, date:str, table:dict) -> None:
 # -----------------------------------------------
             
 sitemap:list
-with open ("sitemap.toml", "r") as read:
+with open ("sitemap.toml", "r", encoding="utf-8") as read:
     sitemap = toml.load(read)
 
 buildDirectory(("", sitemap), Path(".com"))
@@ -209,5 +209,5 @@ writePage(Path(".com/html/403.html"), page)
 
 projects = sorted(projects, key = lambda x: datetime.strptime(x["date"], "%m/%d/%Y"), reverse=True)
 
-with open (write_path/"app/projects.json", "w") as projects_file:
+with open (write_path/"app/projects.json", "w", encoding="utf-8") as projects_file:
     json.dump(projects, projects_file)
