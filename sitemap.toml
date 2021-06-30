@@ -163,6 +163,24 @@ data.index_dir = "home.html"
             data.doc_dir = "blog-docs/breakout-notes.html"
             data.title = "Breakout"
 
+        [s.projects.s.algiers]
+        meta.template = "none"
+        meta.listing = "game"
+        meta.has_subs = "true"
+
+        data.index_dir = "algiers.html"
+        data.title = "Algiers"
+        data.summary = "A text-adventure creative thesis on Albert Camus' <i>The Stranger</i> written in C#."
+        data.tags = ["Game Development"]
+        data.date = "06/30/2021"
+
+            [s.projects.s.algiers.s.notes]
+            meta.template = "blog"
+            meta.has_subs = false
+
+            data.doc_dir = "blog-docs/algiers-notes.html"
+            data.title = "Algiers"
+
     [s.contact]
     meta.template = "none"
     meta.has_subs = false
