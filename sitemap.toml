@@ -75,7 +75,7 @@ data.index_dir = "home.html"
 
         data.title = "Dancing"
         data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
-        data.intro = """This was a really fun arrangement to make. Hello, Dolly! is my favorite musical and it was so fun to try and fit all 
+        data.intro = """This was a really fun arrangement to make. <i class="anti">Hello, Dolly!</i> is my favorite musical and it was so fun to try and fit all 
         the musical brilliance and joy that's happening in the song into just two lines clarinets can play. Maybe I'll do the whole song one 
         day, but for now, the piece starts with the dance break after the vocals, includes the first few choruses, and then skips to 
         the end."""
