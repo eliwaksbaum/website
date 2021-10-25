@@ -163,23 +163,23 @@ data.index_dir = "home.html"
             data.doc_dir = "blog-docs/breakout-notes.html"
             data.title = "Breakout"
 
-        [s.projects.s.algiers]
+        [s.projects.s.a-night-in-algiers]
         meta.template = "none"
         meta.listing = "game"
         meta.has_subs = "true"
 
-        data.index_dir = "algiers.html"
-        data.title = "Algiers"
-        data.summary = "A text-adventure creative thesis on Albert Camus' <i>The Stranger</i> written in C#."
+        data.index_dir = "a-night-in-algiers.html"
+        data.title = "A Night in Algiers"
+        data.summary = "A text-adventure creative thesis on Albert Camus' <i>The Stranger</i> written with my home-made C# interactive fiction system."
         data.tags = ["Game Development"]
         data.date = "06/30/2021"
 
-            [s.projects.s.algiers.s.notes]
+            [s.projects.s.a-night-in-algiers.s.notes]
             meta.template = "blog"
             meta.has_subs = false
 
-            data.doc_dir = "blog-docs/algiers-notes.html"
-            data.title = "Algiers"
+            data.doc_dir = "blog-docs/a-night-in-algiers-notes.html"
+            data.title = "a-night-in-algiers"
 
     [s.contact]
     meta.template = "none"
