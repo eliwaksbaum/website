@@ -6,7 +6,8 @@ keys = {
     "templates": {
         "none": ["index_dir"],
         "blog": ["title", "doc_dir"],
-        "game": ["title", "intro", "width", "height", "controls"],
+        "unity": ["title", "intro", "width", "height", "controls"],
+        "algiers": ["title", "intro"],
         "music": ["title", "heading", "intro", "youtube"],
         "sectionhome": ["title", "heading", "intro"]
     },

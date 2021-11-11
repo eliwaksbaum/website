@@ -10,7 +10,7 @@ data.index_dir = "home.html"
     data.index_dir = "projects.html"
 
         [s.projects.s.flappy-bird]
-        meta.template = "game"
+        meta.template = "unity"
         meta.listing = "game"
         meta.has_subs = true
 
@@ -33,7 +33,7 @@ data.index_dir = "home.html"
             data.title = "Flappy Bird"
 
         [s.projects.s.pong]
-        meta.template = "game"
+        meta.template = "unity"
         meta.listing = "game"
         meta.has_subs = true
 
@@ -142,7 +142,7 @@ data.index_dir = "home.html"
         data.date = "04/06/2021"
 
         [s.projects.s.breakout]
-        meta.template = "game"
+        meta.template = "unity"
         meta.listing = "game"
         meta.has_subs = true
 
@@ -164,14 +164,17 @@ data.index_dir = "home.html"
             data.title = "Breakout"
 
         [s.projects.s.a-night-in-algiers]
-        meta.template = "none"
+        meta.template = "algiers"
         meta.listing = "game"
         meta.has_subs = "true"
 
-        data.index_dir = "a-night-in-algiers.html"
+        #data.index_dir = "a-night-in-algiers.html"
         data.title = "A Night in Algiers"
+        data.intro = """I originally made this game inspired by <i class="anti">The Stranger</i> in high school, but it didn't work so well and I've wanted to 
+        revisit it ever since. I finally got around to it, and I ended up making a pretty neat tool for writing parser-based 
+        interactive fiction with C# in the process."""
         data.summary = "A text-adventure creative thesis on Albert Camus' <i>The Stranger</i> written with my home-made C# interactive fiction system."
-        data.tags = ["Game Development"]
+        data.tags = ["Game Development", "Algiers"]
         data.date = "06/30/2021"
 
             [s.projects.s.a-night-in-algiers.s.notes]
