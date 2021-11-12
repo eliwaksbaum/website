@@ -26,7 +26,7 @@ data.index_dir = "home.html"
         data.date = "04/02/2021"
 
             [s.projects.s.flappy-bird.s.notes]
-            meta.template = "blog"
+            meta.template = "game-notes"
             meta.has_subs = false
 
             data.doc_dir = "blog-docs/flappy-notes.html"
@@ -48,7 +48,7 @@ data.index_dir = "home.html"
         data.date = "03/24/2021"
 
             [s.projects.s.pong.s.notes]
-            meta.template = "blog"
+            meta.template = "game-notes"
             meta.has_subs = false
 
             data.doc_dir = "blog-docs/pong-notes.html"
@@ -131,7 +131,7 @@ data.index_dir = "home.html"
 
         data.title = "A Lovely Night"
         data.heading = "A Lovely Night (From <i>La La Land</i>)"
-        data.intro = """I think this my favorite of the arrangement's I've made so far. I really love this song and a big 
+        data.intro = """I think this is my favorite of the arrangement's I've made so far. I really love this song and a big 
         part of why is the dynamic between the characters. So I tried to keep some space between the lines and to preserve 
         that sort of friendly-competition feel established in the vocals. I imagine that's easier to do if the lines are played 
         by different instruments, but it was also fun to try and play with a personality distinct from my duet partner 
@@ -149,7 +149,7 @@ data.index_dir = "home.html"
         data.title = "Breakout"
         data.intro = """This is the third (and last) in a series of games inspired by Harvard's CS50G course. 
         I think it represents a lot of progress from where I started with Pong, both in terms of gameplay and development principles."""
-        data.summary = "Break .. all the bricks."
+        data.summary = "Break ... all the bricks."
         data.controls = "Use the arrow keys to aim the ball and move the paddle side to side. Use spacebar to serve."
         data.width = "71.68"
         data.height = "40.32"
@@ -157,7 +157,7 @@ data.index_dir = "home.html"
         data.date = "05/26/2021"
 
             [s.projects.s.breakout.s.notes]
-            meta.template = "blog"
+            meta.template = "game-notes"
             meta.has_subs = false
 
             data.doc_dir = "blog-docs/breakout-notes.html"

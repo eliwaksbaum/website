@@ -8,6 +8,7 @@ keys = {
         "blog": ["title", "doc_dir"],
         "unity": ["title", "intro", "width", "height", "controls"],
         "algiers": ["title", "intro"],
+        "game-notes": ["title", "doc_dir"],
         "music": ["title", "heading", "intro", "youtube"],
         "sectionhome": ["title", "heading", "intro"]
     },

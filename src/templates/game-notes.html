@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        %globalInsert(head.html)
+        <title>%txt(title)</title>
+        <style>
+            h2{
+                padding-left: 15vw;
+            }
+            h3{
+                padding-left: 15vw;
+                margin-bottom: 0em;
+            }
+            p{
+                text-align: justify;
+                padding: 0 15vw;
+                font-size: 15pt;
+                line-height: 1.5;
+            }
+            ul{
+                margin-top: .5em;
+                text-align: justify;
+                padding: 0 15vw;
+                font-size: 15pt;
+                line-height: 1.5;
+                list-style: disc inside;
+                /*hello*/
+            }
+            .flexed{
+                margin: 0 3vw;
+            }
+            @media(max-width:500px) {
+                p, ul{
+                    font-size: 12pt;
+                    padding: 0 6vw;
+                }
+                h2, h3{
+                    padding-left: 6vw;
+                }
+                .diagram{
+                    padding: 0 15vw;
+                }
+                .formula{
+                    padding: 0 20vw;
+                }
+            }
+            @media(max-width:600px) {
+                .flexed{
+                    margin: 0 auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        %globalInsert(header.html)
+        <div class="content">
+            <h1>The Making of %txt(title)</h1>
+            <p style="padding: 0;"><a href="/projects/%parent()">Back to the Game</a> | <a target="_blank" href="https://github.com/eliwaksbaum/%parent()">See the Code</a></p>
+            %keyInsert(doc_dir)
+        </div>
+        %globalInsert(footer.html)
+    </body>
+</html>
