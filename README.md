@@ -40,7 +40,10 @@ in order to serve up the correct project listings.
 looks up the key in the page's toml table and inserts the corresponding value string
 
 ##### %path()
-inserts the current page's path
+inserts the current page's dir
+
+##### %parent()
+inserts the parent dir
 
 ##### %globalInsert(address)
 inserts the whole text of the html document found at src/inserts/address

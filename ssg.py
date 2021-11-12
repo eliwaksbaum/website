@@ -84,6 +84,8 @@ def carryOut(edits:list, line:str, lookup:dict) -> str:
             new_line = txt(edit["argument"], new_line, lookup)
         elif edit["command"] == "path":
             new_line = path(new_line, lookup["path"])
+        elif edit["command"] == "parent":
+            new_line = parent(new_line, lookup["parent"])
         elif edit["command"] == "txtList":
             new_line = txtList(edit["argument"], new_line, lookup)
         else:
@@ -127,6 +129,11 @@ def path(orig:str, pathname:str) -> str:
     new = orig.replace("%path()", pathname)
     return new
 
+#parent takes no arguments
+def parent(orig:str, parentname:str) -> str:
+    new = orig.replace("%parent()", parentname)
+    return new
+
 #txtList should have one argument, the key whose value is a list
 def txtList(key:str, orig:str, lookup:dict) -> str:
     insert = ""
@@ -145,7 +152,7 @@ def txtList(key:str, orig:str, lookup:dict) -> str:
 # BUILD
 # -----------------------------------------------
 
-def buildDirectory(_table:tuple, last_write:Path) -> None:
+def buildDirectory(_table:tuple, last_write:Path, parent:str) -> None:
     # If we make it through validate without any errors, then everything's here! No if in's necessary
     if validate(_table):
         # Seperate the key and the dict
@@ -161,8 +168,9 @@ def buildDirectory(_table:tuple, last_write:Path) -> None:
 
         if meta["has_subs"]:
             for sub in table["s"].items():
-                buildDirectory(sub, write)
+                buildDirectory(sub, write, key)
 
+        data["parent"] = parent
         data["path"] = key
 
         if meta["template"] == "none":
@@ -198,7 +206,7 @@ sitemap:list
 with open ("sitemap.toml", "r", encoding="utf-8") as read:
     sitemap = toml.load(read)
 
-buildDirectory(("", sitemap), Path(".com"))
+buildDirectory(("", sitemap), Path(".com"), "")
 
 #ahhhhhhhhhhh
 page = generate(read_path / "404.html", {"data":{}, "meta":{}})
