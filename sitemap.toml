@@ -178,11 +178,33 @@ data.index_dir = "home.html"
         data.date = "06/30/2021"
 
             [s.projects.s.a-night-in-algiers.s.notes]
-            meta.template = "blog"
+            meta.template = "game-notes"
             meta.has_subs = false
 
-            data.doc_dir = "blog-docs/a-night-in-algiers-notes.html"
-            data.title = "a-night-in-algiers"
+            data.doc_dir = "blog-docs/algiers-notes.html"
+            data.title = "A Night in Algiers"
+        
+        [s.projects.s.breakout-redux]
+        meta.template = "godot"
+        meta.listing = "game"
+        meta.has_subs = true
+
+        data.title = "Breakout Redux"
+        data.intro = """I've wanted to try out Godot for a while now, so I decided to remake my latest project, Breakout, with it. Most 
+        of what I've learned with Unity carried over, and I'm excited to keep working with this awesome open-source editor."""
+        data.summary = "The same game, but in Godot."
+        data.controls = "Use the arrow keys to aim the ball and move the paddle side to side. Use spacebar to serve."
+        data.width = "71.68"
+        data.height = "40.32"
+        data.tags = ["Game Development", "Godot"]
+        data.date = "11/11/2021"
+
+            [s.projects.s.breakout-redux.s.notes]
+            meta.template = "game-notes"
+            meta.has_subs = false
+
+            data.doc_dir = "blog-docs/breakout-redux-notes.html"
+            data.title = "Breakout Redux"
 
     [s.contact]
     meta.template = "none"

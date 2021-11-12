@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="message"></div>
+        <canvas id="canvas"></canvas>
+        <script src=$GODOT_URL></script>
+        <script>
+            if (!Engine.isWebGLAvailable())
+            {
+                document.getElementById("message").innerText = "Sorry, WebGL is not available on your browser.";
+            }
+
+            var engine = new Engine($GODOT_CONFIG);
+            
+            function printProgress(current, total) {
+                document.getElementById("message").innerText = "Loaded " + Math.floor(current/1000000) + " of " + Math.floor(total/1000000) + " MB";
+            }
+
+            engine.startGame({ onProgress: printProgress });
+        </script>
+    </body>
+</html>
