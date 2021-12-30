@@ -239,8 +239,32 @@ li.section-home{
     justify-content: center;
 }
 
-.homelink{
-    flex: .33
+.homeflex{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    width: 90%;
+    height: 20vh;
+    margin: auto
+}
+.homediv{
+    flex: .33;
+}
+a.homelink{
+    display: inline-block;
+    border-radius: 20px;
+    width: 80%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+}
+span.homelink{
+    font-size: 150%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .left-music-column{
@@ -388,6 +412,11 @@ button.chill{
         top: 30%;
     }
 }
+@media(max-width: 700px) {
+    span.homelink{
+        font-size: 125%
+    }
+}
 @media (max-width: 600px) {
     header.desktop {
         display: none;
@@ -396,7 +425,7 @@ button.chill{
         display: block;
     }
     .flexrow {
-      flex-direction:column-reverse
+      flex-direction: column-reverse
     }
     .youtube {
         height: 44vw;
@@ -430,6 +459,15 @@ button.chill{
     .mobile-unity-top{
         top: 1%;
         font-size: 70%;
+    }
+    .homeflex {
+        flex-direction: column;
+        height: 35vh
+    }
+    a.homelink {
+        width: 60%;
+        height: 80%;
+        border-radius: 10px;
     }
 }
 @media(max-width:400px) {
