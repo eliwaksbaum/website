@@ -55,7 +55,6 @@ data.index_dir = "home.html"
             data.title = "Pong"
 
         [s.projects.s.measuring-spoons]
-        meta.path = "measuring-spoons"
         meta.template = "blog"
         meta.listing = "entry"
         meta.has_subs = false
@@ -68,7 +67,6 @@ data.index_dir = "home.html"
         data.date = "03/25/2021"
 
         [s.projects.s.dancing]
-        meta.path = "dancing"
         meta.template = "music"
         meta.listing = "entry"
         meta.has_subs = false
@@ -85,7 +83,6 @@ data.index_dir = "home.html"
         data.date = "03/30/2021"
 
         [s.projects.s.he-is-they-are]
-        meta.path = "he-is-they-are"
         meta.template = "music"
         meta.listing = "entry"
         meta.has_subs = false
@@ -100,7 +97,6 @@ data.index_dir = "home.html"
         data.date = "03/29/2021"
 
         [s.projects.s.latex2svg]
-        meta.path = "latex2svg"
         meta.template = "blog"
         meta.listing = "hub"
         meta.has_subs = false
@@ -112,7 +108,6 @@ data.index_dir = "home.html"
         data.date = "04/01/2021"
 
         [s.projects.s.website]
-        meta.path = "website"
         meta.template = "blog"
         meta.listing = "hub"
         meta.has_subs = false
@@ -124,7 +119,6 @@ data.index_dir = "home.html"
         data.date = "04/05/2021"
 
         [s.projects.s.a-lovely-night]
-        meta.path = "a-lovely-night"
         meta.template = "music"
         meta.listing = "entry"
         meta.has_subs = false
