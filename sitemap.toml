@@ -200,6 +200,17 @@ data.index_dir = "home.html"
             data.doc_dir = "blog-docs/breakout-redux-notes.html"
             data.title = "Breakout Redux"
 
+        [s.projects.s.aoc21]
+        meta.template = "blog"
+        meta.listing = "hub"
+        meta.has_subs = false
+
+        data.doc_dir = "blog-docs/aoc21.html"
+        data.title = "Advent of Code 2021"
+        data.summary = "My first Advent of Code! I got all the stars and it was a lot of fun."
+        data.tags = ["Programming"]
+        data.date = "12/30/2021"
+
     [s.contact]
     meta.template = "none"
     meta.has_subs = false
