@@ -239,6 +239,10 @@ li.section-home{
     justify-content: center;
 }
 
+.homelink{
+    flex: .33
+}
+
 .left-music-column{
     order: 1;
     flex: 1 2 40%;
