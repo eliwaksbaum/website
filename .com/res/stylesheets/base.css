@@ -411,9 +411,13 @@ button.chill{
     .homeflex {
         flex-direction: column;
     }
+    .homdediv {
+        margin: 5px 0
+    }
     a.homelink {
-        width: 80%;
+        width: 70%;
         height: auto;
+        padding: 5px 0
     }
 }
 @media(max-width: 900px) {
