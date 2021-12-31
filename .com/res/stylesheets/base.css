@@ -466,9 +466,11 @@ button.chill{
     }
     li.section-home {
         padding: 2%;
+        margin-bottom: 15px;
     }
     .game-listing {
         padding: 2%;
+        margin-bottom: 15px;
     }
     .hub-link {
         right: 10%
