@@ -432,6 +432,12 @@ button.chill{
         top: 30%;
     }
 }
+@media(max-width: 800px){
+    #homepop{
+        height: 30vh;
+        width: 30vh
+    }
+}
 @media (max-width: 600px) {
     header.desktop {
         display: none;
@@ -475,10 +481,6 @@ button.chill{
         top: 1%;
         font-size: 70%;
     }
-    #homepop{
-        height: 20vh;
-        width: 20vh
-    }
 }
 @media(max-width:400px) {
     li.section-home {
@@ -507,15 +509,17 @@ button.chill{
         font-size: 125%
     }
 }
+@media (min-width: 801px) {
+    #homepop{
+        height: 12vw;
+        width: 48vw
+    }
+}
 @media (min-width: 601px) {
     header.desktop {
         display: block;
     }
     header.mobile {
         display: none;
-    }
-    #homepop{
-        height: 15vw;
-        width: 60vw
     }
 }
