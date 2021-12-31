@@ -487,6 +487,9 @@ button.chill{
         top: 1%;
         font-size: 70%;
     }
+    .homeflex{
+        margin: 0 auto
+    }
 }
 @media(max-width:400px) {
     li.section-home {
