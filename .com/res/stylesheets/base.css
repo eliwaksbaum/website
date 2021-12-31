@@ -393,6 +393,7 @@ button.chill{
     position: absolute;
     right: 0;
     top: 100%;
+    z-index: 1;
 }
 
 .dropdown a{
