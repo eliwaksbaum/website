@@ -12,7 +12,7 @@ table, th, td{
 }
 
 .shadow{
-    box-shadow: 0 4px 8px 0 rgba(235, 235, 235, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
 }
 
 a.menu:hover, a.menu:focus{
@@ -20,5 +20,5 @@ a.menu:hover, a.menu:focus{
 }
 
 img.homelink{
-    box-shadow: 8px 8px 6px 0px rgb(0, 0, 0, 0.8)
+    box-shadow: 8px 8px 6px 0px rgba(0, 0, 0, 0.8)
 }
