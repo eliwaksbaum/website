@@ -243,8 +243,8 @@ li.section-home{
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    width: 90%;
-    height: 20vh;
+    width: 95%;
+    /* height: 20vh; */
     margin: auto
 }
 .homediv{
@@ -252,19 +252,21 @@ li.section-home{
 }
 a.homelink{
     display: inline-block;
-    border-radius: 20px;
-    width: 80%;
-    height: 100%;
     text-decoration: none;
     position: relative;
 }
 span.homelink{
+    color: rgb(235, 235, 235);
     font-size: 150%;
     width: 100%;
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+}
+img.homelink{
+    width: 90%;
+    height: auto
 }
 
 .left-music-column{
@@ -396,7 +398,15 @@ button.chill{
 }
 
 .show {display:block}
-
+@media(max-width: 1100px) {
+    .homeflex {
+        flex-direction: column;
+    }
+    a.homelink {
+        width: 80%;
+        height: auto;
+    }
+}
 @media(max-width: 900px) {
     .game-links {
         flex-direction: column;
@@ -460,15 +470,6 @@ button.chill{
         top: 1%;
         font-size: 70%;
     }
-    .homeflex {
-        flex-direction: column;
-        height: 35vh
-    }
-    a.homelink {
-        width: 60%;
-        height: 80%;
-        border-radius: 10px;
-    }
 }
 @media(max-width:400px) {
     li.section-home {
@@ -489,6 +490,9 @@ button.chill{
     }
     .game-links {
         right: 5%
+    }
+    a.homelink {
+        width: 100%;
     }
 }
 @media (min-width: 601px) {

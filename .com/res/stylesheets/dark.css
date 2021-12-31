@@ -3,7 +3,7 @@ body {
     background-color: rgb(32, 32, 32);;
 }
 
-header, a.homelink {
+header{
     color: rgb(32, 32, 32);;
 }
 
@@ -15,6 +15,6 @@ table, th, td{
     box-shadow: 0 4px 8px 0 rgba(235, 235, 235, 0.2);
 }
 
-a.menu:hover, a.menu:focus, a.homelink:hover, a.homelink:focus{
+a.menu:hover, a.menu:focus{
     color: rgb(235, 235, 235);
 }
