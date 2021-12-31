@@ -243,9 +243,8 @@ li.section-home{
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    width: 95%;
-    /* height: 20vh; */
-    margin: auto
+    width: 100%;
+    margin: 0 auto 15px
 }
 .homediv{
     flex: .33;
@@ -255,7 +254,7 @@ a.homelink{
     position: relative;
     display: inline-block;
     text-decoration: none;
-    width: 90%
+    width: 95%
 }
 span.homelink{
     display: none;
