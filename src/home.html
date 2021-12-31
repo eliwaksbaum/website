@@ -9,7 +9,10 @@
         %globalInsert(header.html)
         <div class="content">        
             <div class="center-inline">
-                <img src="/res/svg/homepop.svg" style="width:60vw; height:15vw" alt="It's Me!">
+                <picture>
+                    <source media="(max-width:600px)" srcset="/res/svg/homepopsquare.svg">
+                    <img id="homepop" src="/res/svg/homepop.svg" alt="It's Me!">
+                </picture>
                 <br>
                 <h1>Hello, World!</h1>
                 <p>My name is Eli and I learn best by doing.</p>

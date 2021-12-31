@@ -427,6 +427,10 @@ button.chill{
         top: 1%;
         font-size: 70%;
     }
+    #homepop{
+        height: 20vh;
+        width: 20vh
+    }
 }
 @media(max-width:400px) {
     li.section-home {
@@ -455,5 +459,9 @@ button.chill{
     }
     header.mobile {
         display: none;
+    }
+    #homepop{
+        height: 15vw;
+        width: 60vw
     }
 }
