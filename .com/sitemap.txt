@@ -13,3 +13,8 @@ https://eli.waksbaum.com/projects/pong/
 https://eli.waksbaum.com/projects/pong/notes/
 https://eli.waksbaum.com/projects/breakout/
 https://eli.waksbaum.com/projects/breakout/notes/
+https://eli.waksbaum.com/projects/breakout-redux/
+https://eli.waksbaum.com/projects/breakout-redux/notes/
+https://eli.waksbaum.com/projects/a-night-in-algiers/
+https://eli.waksbaum.com/projects/a-night-in-algiers/notes/
+https://eli.waksbaum.com/projects/aoc21/
