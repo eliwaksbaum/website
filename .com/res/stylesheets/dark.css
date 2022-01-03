@@ -22,3 +22,7 @@ a.menu:hover, a.menu:focus{
 img.homelink{
     box-shadow: 8px 8px 6px 0px rgba(0, 0, 0, 0.8)
 }
+
+span.spoiler{
+    background-color: rgb(235, 235, 235);
+}
