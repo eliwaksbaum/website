@@ -4,6 +4,39 @@
         %globalInsert(head.html)
         <title>Eli Waksbaum</title>
         <meta name="description" content="My name is Eli Waksbaum and I learn best by doing. Here are some things that I've done.">
+        <style>
+            .homediv{
+                flex: .33;
+                position: relative;
+            }
+            a.homelink{
+                position: relative;
+                display: inline-block;
+                text-decoration: none;
+                width: 95%
+            }
+            span.homelink{
+                display: none;
+                color: rgb(255, 255, 255);
+                font-size: 150%;
+                width: 100%;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            img.homelink{
+                width: 100%;
+                height: auto;
+            }
+            a.homelink:focus > img.homelink, a.homelink:hover > img.homelink{
+                filter: blur(1px) contrast(0.8) grayscale(0.1) brightness(0.8)
+            }
+            a.homelink:focus > span.homelink, a.homelink:hover > span.homelink{
+                display: inline;
+            }
+        </style>
     </head>
     <body>
         %globalInsert(header.html)

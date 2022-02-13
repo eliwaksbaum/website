@@ -4,6 +4,90 @@
         %globalInsert(head.html)
         <title>Projects</title>
         <script src="/res/js/tags.js"></script>
+        <style>
+            p.listdate{
+                font-size: 95%;
+                margin: 0;
+            }
+
+            p.listing{
+                margin: 2vh 0;
+                margin-right: 2vw;
+                padding-left: 2vw
+            }
+
+            a.game-link{
+                position: relative;
+                border-radius: 20px;
+                height: 80%;
+                width: 33%;
+                float: right;
+                text-align: center;
+            }
+
+            a.tag{
+                margin-right: 1%;
+            }
+
+            img.game-link{
+                height: 32px;
+                width: 32px;
+                position: absolute;
+                top: 50%;
+                right: 50%;
+                transform: translate(50%, -50%);
+            }
+
+            .listing-flex{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            img.listing{
+                width: 130px;
+                height: 130px;
+            }
+
+            .game-listing{
+                border-radius: 20px;
+                padding: 1%;
+                width: 65%
+            }
+
+            .game-links{
+                display: flex;
+
+                height: 100%;
+                width: 15%;
+                position: absolute;
+                bottom: 0;
+                right: 15%;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .hub-link{
+                height: 80%;
+                width: 5%;
+                position: absolute;
+                bottom: 10%;
+                right: 25%;
+                border-radius: 20px;
+            }
+
+            li.game-home{
+                position: relative;
+                margin-bottom: 3%;
+            }
+
+            li.section-home{
+                margin-bottom: 3%;
+                padding: 1%;
+                width: 65%;
+                border-radius: 20px;
+            }
+        </style>
     </head>
     <body>
         %globalInsert(header.html)

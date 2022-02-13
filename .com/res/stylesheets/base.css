@@ -50,17 +50,6 @@ p.controls{
     font-size: 105%;
 }
 
-p.listdate{
-    font-size: 95%;
-    margin: 0;
-}
-
-p.listing{
-    margin: 2vh 0;
-    margin-right: 2vw;
-    padding-left: 2vw
-}
-
 i.anti{
     font-style: normal;
 }
@@ -87,85 +76,13 @@ a.listing{
     text-decoration: none;
 }
 
-a.game-link{
-    position: relative;
-    border-radius: 20px;
-    height: 80%;
-    width: 33%;
-    float: right;
-    text-align: center;
-}
-
-a.tag{
-    margin-right: 1%;
-}
-
 a.menu{
     color: inherit;
     text-decoration: none;
 }
 
-img.game-link{
-    height: 32px;
-    width: 32px;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-}
-
-.listing-flex{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-img.listing{
-    width: 130px;
-    height: 130px;
-}
-
-.game-listing{
-    border-radius: 20px;
-    padding: 1%;
-    width: 65%
-}
-
-.game-links{
-    display: flex;
-
-    height: 100%;
-    width: 15%;
-    position: absolute;
-    bottom: 0;
-    right: 15%;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hub-link{
-    height: 80%;
-    width: 5%;
-    position: absolute;
-    bottom: 10%;
-    right: 25%;
-    border-radius: 20px;
-}
-
 ul{
     list-style-type: none;
-}
-
-li.game-home{
-    position: relative;
-    margin-bottom: 3%;
-}
-
-li.section-home{
-    margin-bottom: 3%;
-    padding: 1%;
-    width: 65%;
-    border-radius: 20px;
 }
 
 .menu{
@@ -207,32 +124,6 @@ li.section-home{
     margin-right: 2vw;
 }
 
-.unity{
-    display: inline-block;
-    position: relative;
-    margin-bottom: 2vh;
-    background-image: url("/res/svg/unity.svg");
-    background-size: 100% 100%;
-}
-
-.mobile-unity-top{
-    color: rgb(235, 235, 235);
-    position: absolute;
-    top: 5%;
-    text-align: center;
-    width: 100%;
-    font-size: 100%;
-}
-
-.mobile-unity-bottom{
-    color: rgb(235, 235, 235);
-    position: absolute;
-    bottom: 5%;
-    text-align: center;
-    width: 100%;
-    font-size: 100%;
-}
-
 .flexrow{
     display: flex;
     flex-flow: row nowrap;
@@ -245,101 +136,6 @@ li.section-home{
     justify-content: center;
     width: 100%;
     margin: 0 auto 15px
-}
-.homediv{
-    flex: .33;
-    position: relative;
-}
-a.homelink{
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    width: 95%
-}
-span.homelink{
-    display: none;
-    color: rgb(255, 255, 255);
-    font-size: 150%;
-    width: 100%;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-}
-img.homelink{
-    width: 100%;
-    height: auto;
-}
-a.homelink:focus > img.homelink, a.homelink:hover > img.homelink{
-    filter: blur(1px) contrast(0.8) grayscale(0.1) brightness(0.8)
-}
-a.homelink:focus > span.homelink, a.homelink:hover > span.homelink{
-    display: inline;
-}
-
-.left-music-column{
-    order: 1;
-    flex: 1 2 40%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1vh 1vw
-}
-
-.youtube{
-    order: 1;
-    margin: 1vh 1vw;
-    height: 22vw;
-    width: 39.2vw;
-}
-
-.musescore-download{
-    order: 2;
-    margin: 1vh 1vw;
-    text-align: center;
-}
-
-a.musescore-link{
-    text-align: center;
-}
-
-.music-holder{
-    order: 2;
-    flex: 2 1 60%;
-}
-
-.sheetmusic{
-    height: 100vh;
-    width: 98%;
-    margin: 1vw
-}
-
-p.thank-you{
-    margin-left: 1vw;
-    font-size: 90%;
-}
-
-.formula{
-    padding: 0 35vw;
-    text-align: center;
-    font-size: 15pt
-}
-
-.diagram{
-    padding: 0 25vw;
-    text-align: center
-}
-
-.math-display{
-    width: 100%;
-    margin: 2vh 0
-}
-
-.math-inline{
-    height: fit-content;
 }
 
 #theme-button-mobile{
@@ -408,6 +204,7 @@ button.chill{
 }
 
 .show {display:block}
+
 @media(max-width: 1100px) {
     .homeflex {
         flex-direction: column;
