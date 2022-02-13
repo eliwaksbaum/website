@@ -216,3 +216,17 @@ data.index_dir = "home.html"
     meta.has_subs = false
 
     data.index_dir = "contact.html"
+
+    [s.secrets]
+    meta.template = "none"
+    meta.has_subs = true
+
+    data.index_dir = "secrets.html"
+
+        [s.secrets.s.session21-beta]
+        meta.template = "algiers"
+        meta.has_subs = false
+
+        data.title = "Session21 Beta Testing"
+        data.intro = """Take it through its paces. Please let me know if you find any bugs, typos, or inconsistencies, or if 
+        something doesn't make sense or if you get stuck, or really any feedback you have, <a href=mailto:eli@waksbaum.com?subject=Session21_Beta_Testing>here</a>."""
