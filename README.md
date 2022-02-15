@@ -36,20 +36,20 @@ block for it, and it does a uwsgi_pass to the dyanmic.py mini-server. That then 
 in order to serve up the correct project listings.
 
 ## Template Commands
-##### %txt(key)
+##### %@%txt(key)
 looks up the key in the page's toml table and inserts the corresponding value string
 
-##### %path()
+##### %@%path()
 inserts the current page's dir
 
-##### %parent()
+##### %@%parent()
 inserts the parent dir
 
-##### %globalInsert(address)
+##### %@%globalInsert(address)
 inserts the whole text of the html document found at src/inserts/address
 
-##### %keyInsert(key)
+##### %@%keyInsert(key)
 looks up the key in the page's toml table and inserts the whole text of the html found at src/value
 
-##### %txtList(key)
+##### %@%txtList(key)
 looks up the key in the page's toml table and inserts every element of the list found at that value

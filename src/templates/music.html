@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        %globalInsert(head.html)
-        <title>%txt(title)</title>
+        %@%globalInsert(head.html)
+        <title>%@%txt(title)</title>
         <style>
             .left-music-column{
                 order: 1;
@@ -50,27 +50,27 @@
         </style>
     </head>
     <body>
-        %globalInsert(header.html)
+        %@%globalInsert(header.html)
         <div class="content">
-            <h1>%txt(heading)</h1>
-            <p class="intro">%txt(intro)</p>
+            <h1>%@%txt(heading)</h1>
+            <p class="intro">%@%txt(intro)</p>
             <div class="flexrow">
                 <div class="left-music-column">
-                    <iframe class="youtube" src=%txt(youtube) frameborder="0"></iframe>
+                    <iframe class="youtube" src=%@%txt(youtube) frameborder="0"></iframe>
                     <div class="musescore-download">
-                        <a class="musescore-link" href="/res/scores/%path()/%path().mscz" target=_blank><img class="themed" data-themedSrc="/res/svg/mscz_theme.svg" style="height:179px; width:293px" alt="Edit Sheetmusic"></a>
+                        <a class="musescore-link" href="/res/scores/%@%path()/%@%path().mscz" target=_blank><img class="themed" data-themedSrc="/res/svg/mscz_theme.svg" style="height:179px; width:293px" alt="Edit Sheetmusic"></a>
                         <br>
-                        <a class="musescore-link" href="/res/scores/%path()/%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
+                        <a class="musescore-link" href="/res/scores/%@%path()/%@%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
                     </div>
                 </div>
                 <div class="music-holder">
-                    <object class="sheetmusic" data="/res/scores/%path()/%path().pdf">
-                        <iframe class="sheetmusic" src="https://docs.google.com/gview?url=https://eli.waksbaum.com/res/scores/%path()/%path().pdf&embedded=true" frameborder="0"></iframe>
+                    <object class="sheetmusic" data="/res/scores/%@%path()/%@%path().pdf">
+                        <iframe class="sheetmusic" src="https://docs.google.com/gview?url=https://eli.waksbaum.com/res/scores/%@%path()/%@%path().pdf&embedded=true" frameborder="0"></iframe>
                     </object>
                     <p class="thank-you">Huge shoutout to <a target="_blank" href="https://houndogschiller.com/">Jeff "Houndog" Schiller</a>, my clarinet teacher for many years</p>
                 </div>
             </div>
         </div>
-        %globalInsert(footer.html)
+        %@%globalInsert(footer.html)
     </body>
 </html>

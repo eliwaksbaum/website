@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        %globalInsert(head.html)
-        <title>%txt(title)</title>
+        %@%globalInsert(head.html)
+        <title>%@%txt(title)</title>
         <style>
             h2{
                 padding-left: 15vw;
@@ -68,10 +68,10 @@
         </style>
     </head>
     <body>
-        %globalInsert(header.html)
+        %@%globalInsert(header.html)
         <div class="content">
-            %keyInsert(doc_dir)
+            %@%keyInsert(doc_dir)
         </div>
-        %globalInsert(footer.html)
+        %@%globalInsert(footer.html)
     </body>
 </html>

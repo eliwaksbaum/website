@@ -54,11 +54,11 @@ def parseLine(line:str) -> list:
     return edits
 
 def findEdit(line:str, start:int) -> dict:
-    iPercent = line.find("%", start)
+    iPercent = line.find("%@%", start)
     if iPercent != -1:
         iOParen = line.index("(", iPercent)
         iCParen = line.index(")", iOParen)
-        command = line[iPercent + 1:iOParen]
+        command = line[iPercent + 3:iOParen]
         argument = line[iOParen+1:iCParen]
         return {"command": command, "argument": argument, "end": iCParen}
     else:
@@ -119,19 +119,19 @@ def keyInsert(key:str, orig:str, lookup:dict) -> str:
 def txt(key:str, orig:str, lookup:dict) -> str:
     if key in lookup:
         value = lookup[key]
-        new_line = orig.replace("%txt(" + key + ")", value)
+        new_line = orig.replace("%@%txt(" + key + ")", value)
         return new_line
     else:
         return "bad key"
 
 #path takes no arguments
 def path(orig:str, pathname:str) -> str:
-    new = orig.replace("%path()", pathname)
+    new = orig.replace("%@%path()", pathname)
     return new
 
 #parent takes no arguments
 def parent(orig:str, parentname:str) -> str:
-    new = orig.replace("%parent()", parentname)
+    new = orig.replace("%@%parent()", parentname)
     return new
 
 #txtList should have one argument, the key whose value is a list
@@ -146,7 +146,7 @@ def txtList(key:str, orig:str, lookup:dict) -> str:
             out = out + line.format(i)
         insert = insert + out
     
-    new = orig.replace("%txtList(" + key + ")", insert)
+    new = orig.replace("%@%txtList(" + key + ")", insert)
     return new
 
 # BUILD

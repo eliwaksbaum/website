@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    %globalInsert(head.html)
-    <title>%txt(title)</title>
+    %@%globalInsert(head.html)
+    <title>%@%txt(title)</title>
   </head>
   <body>
-    %globalInsert(header.html)
+    %@%globalInsert(header.html)
     <div class="content">
-      <h1>%txt(title)</h1>
-      <p class="intro">%txt(intro) Read more about how I made it <a href="/projects/%path()/notes/">here</a>.</p>
-      <p class="controls">Controls: %txt(controls)</p>
+      <h1>%@%txt(title)</h1>
+      <p class="intro">%@%txt(intro) Read more about how I made it <a href="/projects/%@%path()/notes/">here</a>.</p>
+      <p class="controls">Controls: %@%txt(controls)</p>
       <div class="center-inline">
-        <iframe scrolling="no" src="/res/godot/%path()/" frameborder="0" style="width:%txt(width)vw; height:%txt(height)vw"></iframe>
+        <iframe scrolling="no" src="/res/godot/%@%path()/" frameborder="0" style="width:%@%txt(width)vw; height:%@%txt(height)vw"></iframe>
       </div>
     </div>
-    %globalInsert(footer.html)
+    %@%globalInsert(footer.html)
   </body>
 </html>

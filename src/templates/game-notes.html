@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        %globalInsert(head.html)
-        <title>%txt(title)</title>
+        %@%globalInsert(head.html)
+        <title>%@%txt(title)</title>
         <style>
             h2{
                 padding-left: 15vw;
@@ -52,12 +52,12 @@
         </style>
     </head>
     <body>
-        %globalInsert(header.html)
+        %@%globalInsert(header.html)
         <div class="content">
-            <h1>The Making of %txt(title)</h1>
-            <p style="padding: 0;"><a href="/projects/%parent()">Back to the Game</a> | <a target="_blank" href="https://github.com/eliwaksbaum/%parent()">See the Code</a></p>
-            %keyInsert(doc_dir)
+            <h1>The Making of %@%txt(title)</h1>
+            <p style="padding: 0;"><a href="/projects/%@%parent()">Back to the Game</a> | <a target="_blank" href="https://github.com/eliwaksbaum/%@%parent()">See the Code</a></p>
+            %@%keyInsert(doc_dir)
         </div>
-        %globalInsert(footer.html)
+        %@%globalInsert(footer.html)
     </body>
 </html>

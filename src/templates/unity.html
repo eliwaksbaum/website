@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    %globalInsert(head.html)
-    <title>%txt(title)</title>
-    <script src="/res/unity/%path()/UnityLoader.js"></script>
+    %@%globalInsert(head.html)
+    <title>%@%txt(title)</title>
+    <script src="/res/unity/%@%path()/UnityLoader.js"></script>
     <script>
       if (!UnityLoader.SystemInfo.mobile) {
-        UnityLoader.instantiate("unityContainer", "/res/unity/%path()/%path().json");
+        UnityLoader.instantiate("unityContainer", "/res/unity/%@%path()/%@%path().json");
       }
     </script>
     <style>
@@ -38,20 +38,20 @@
     </style>
   </head>
   <body>
-    %globalInsert(header.html)
+    %@%globalInsert(header.html)
     <div class="content">
-      <h1>%txt(title)</h1>
-      <p class="intro">%txt(intro) Read more about how I made it <a href="/projects/%path()/notes/">here</a>.</p>
-      <p class="controls">Controls: %txt(controls)</p>
+      <h1>%@%txt(title)</h1>
+      <p class="intro">%@%txt(intro) Read more about how I made it <a href="/projects/%@%path()/notes/">here</a>.</p>
+      <p class="controls">Controls: %@%txt(controls)</p>
       <div class="center-inline">
         <div class="unity">
-          <div id="unityContainer" style="width:%txt(width)vw; height:%txt(height)vw">
+          <div id="unityContainer" style="width:%@%txt(width)vw; height:%@%txt(height)vw">
             <p class="mobile-unity-top">Sorry, Unity WebGL is not supported on mobile browsers.</p>
             <p class="mobile-unity-bottom">Please view this page on a desktop to play the game.</p>
           </div>
         </div>
       </div>
     </div>
-    %globalInsert(footer.html)
+    %@%globalInsert(footer.html)
   </body>
 </html>
