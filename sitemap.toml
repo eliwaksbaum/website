@@ -162,7 +162,6 @@ data.index_dir = "home.html"
         meta.listing = "game"
         meta.has_subs = "true"
 
-        #data.index_dir = "a-night-in-algiers.html"
         data.title = "A Night in Algiers"
         data.intro = """I originally made this game inspired by <i class="anti">The Stranger</i> in high school, but it didn't work so well and I've wanted to 
         revisit it ever since. I finally got around to it, and I ended up making a pretty neat tool for writing parser-based 
@@ -211,22 +210,35 @@ data.index_dir = "home.html"
         data.tags = ["Programming"]
         data.date = "12/30/2021"
 
+        [s.projects.s.session21]
+        meta.template = "algiers"
+        meta.listing = "game"
+        meta.has_subs = true
+
+        data.title = "Session21"
+        data.intro = """Ever since I finished A Night in Algiers I've wanted to add features to create a tool capable of bringing much 
+        bigger text adventures to life. The result is a new and improved Algiers 2.0, which I used to create a little showcase game 
+        centered around a playing blackjack in a saloon. Then I started watching Cowboy Bebop in the middle of development and it 
+        became a space-noir tale of action, mobsters, and revenge. That's just how it goes sometimes."""
+        data.summary = "The work, which becomes a new game itself, will be called ... SESSION21"
+        data.tags = ["Game Development", "Algiers"]
+        data.date = "02/17/2022"
+
+            [s.projects.s.session21.s.notes]
+            meta.template = "game-notes"
+            meta.has_subs = false
+
+            data.doc_dir = "blog-docs/session21-notes.html"
+            data.title = "Session21"
+
     [s.contact]
     meta.template = "none"
     meta.has_subs = false
 
     data.index_dir = "contact.html"
 
-    [s.secrets]
-    meta.template = "none"
-    meta.has_subs = true
+    # [s.secrets]
+    # meta.template = "none"
+    # meta.has_subs = true
 
-    data.index_dir = "secrets.html"
-
-        [s.secrets.s.session21-beta]
-        meta.template = "algiers"
-        meta.has_subs = false
-
-        data.title = "Session21 Beta Testing"
-        data.intro = """Take it through its paces. Please let me know if you find any bugs, typos, or inconsistencies, or if 
-        something doesn't make sense or if you get stuck, or really any feedback you have, <a href=mailto:eli@waksbaum.com?subject=Session21_Beta_Testing>here</a>."""
+    # data.index_dir = "secrets.html"
