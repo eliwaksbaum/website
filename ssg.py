@@ -33,9 +33,9 @@ def parseDoc(doc:list, lookup:dict = None, meta:dict = None) -> list:
         if len(results) > 0:
             new_line = carryOut(results, line, lookup) #every command function should return a single string, the text to overwrite the line where the command was written
             if new_line == "bad command":
-                raise CommandError("Invalid command at line " + str(i+1) + " in the " + meta["template"] + " template while building " + meta["path"] + ".")
+                raise CommandError("Invalid command at line " + str(i+1) + " in the '" + meta["template"] + "' template while building '" + lookup["path"] + "'.")
             if new_line == "bad key":
-                raise CommandError("Key does not exist at line " + str(i+1) + " in the " + meta["template"] + " template while building " + meta["path"] + ".")
+                raise CommandError("Key does not exist at line " + str(i+1) + " in the '" + meta["template"] + "' template while building '" + lookup["path"] + "'.")
             else:
                 line_edits.append((i, new_line))
 
