@@ -36,6 +36,46 @@
             a.homelink:focus > span.homelink, a.homelink:hover > span.homelink{
                 display: inline;
             }
+
+            @media(max-width: 1100px) {
+                .homeflex {
+                    flex-direction: column;
+                }
+                .homdediv {
+                    margin: 5px 0
+                }
+                a.homelink {
+                    width: 70%;
+                    height: auto;
+                    padding: 5px 0
+                }
+            }
+            @media(max-width: 800px){
+                #homepop{
+                    height: 30vh;
+                    width: 30vh
+                }
+            }
+            @media(max-width: 600px)
+            {
+                .homeflex{
+                    margin: 0 auto
+                }
+            }
+            @media(max-width:400px) {
+                a.homelink {
+                    width: 100%;
+                }
+                span.homelink{
+                    font-size: 125%
+                }
+            }
+            @media (min-width: 801px) {
+                #homepop{
+                    height: 12vw;
+                    width: 48vw
+                }
+            }
         </style>
     </head>
     <body>

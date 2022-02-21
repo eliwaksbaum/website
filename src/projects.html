@@ -87,6 +87,70 @@
                 width: 65%;
                 border-radius: 20px;
             }
+
+            @media(max-width: 900px) {
+                .game-links {
+                    flex-direction: column;
+                }
+                a.game-link {
+                    width: 100%;
+                    height: 30%
+                }
+                .hub-link {
+                    height: 40%;
+                    width: 15%;
+                    right: 15%;
+                    top: 30%;
+                }
+            }
+            @media(max-width: 600px)
+            {
+                .listing-flex {
+                    flex-direction: column;
+                }
+                img.listing {
+                    padding-bottom: 3%;
+                }
+                p.listing {
+                    font-size: 140%;
+                }
+                li.section-home {
+                    padding: 2%;
+                    margin-bottom: 15px;
+                }
+                .game-listing {
+                    padding: 2%;
+                    margin-bottom: 15px;
+                }
+                .hub-link {
+                    right: 10%
+                }
+                .game-links {
+                    right: 10%
+                }
+            }
+            @media(max-width: 400px)
+            {
+                li.section-home {
+                    padding: 5%;
+                }
+                .game-listing {
+                    padding: 5%;
+                }
+                p.listing {
+                    font-size: 120%;
+                }
+                img.listing {
+                    width: 60%;
+                    height: auto;
+                }
+                .hub-link {
+                    right: 5%
+                }
+                .game-links {
+                    right: 5%
+                }
+            }
         </style>
     </head>
     <body>

@@ -205,40 +205,6 @@ button.chill{
 
 .show {display:block}
 
-@media(max-width: 1100px) {
-    .homeflex {
-        flex-direction: column;
-    }
-    .homdediv {
-        margin: 5px 0
-    }
-    a.homelink {
-        width: 70%;
-        height: auto;
-        padding: 5px 0
-    }
-}
-@media(max-width: 900px) {
-    .game-links {
-        flex-direction: column;
-    }
-    a.game-link {
-        width: 100%;
-        height: 30%
-    }
-    .hub-link {
-        height: 40%;
-        width: 15%;
-        right: 15%;
-        top: 30%;
-    }
-}
-@media(max-width: 800px){
-    #homepop{
-        height: 30vh;
-        width: 30vh
-    }
-}
 @media (max-width: 600px) {
     header.desktop {
         display: none;
@@ -252,73 +218,6 @@ button.chill{
     .youtube {
         height: 44vw;
         width: 78.4vw;
-    }
-    .listing-flex {
-        flex-direction: column;
-    }
-    img.listing {
-        padding-bottom: 3%;
-    }
-    p.listing {
-        font-size: 140%;
-    }
-    li.section-home {
-        padding: 2%;
-        margin-bottom: 15px;
-    }
-    .game-listing {
-        padding: 2%;
-        margin-bottom: 15px;
-    }
-    .hub-link {
-        right: 10%
-    }
-    .game-links {
-        right: 10%
-    }
-    .mobile-unity-bottom{
-        bottom: 1%;
-        font-size: 70%;
-    }
-    .mobile-unity-top{
-        top: 1%;
-        font-size: 70%;
-    }
-    .homeflex{
-        margin: 0 auto
-    }
-}
-@media(max-width:400px) {
-    li.section-home {
-        padding: 5%;
-    }
-    .game-listing {
-        padding: 5%;
-    }
-    p.listing {
-        font-size: 120%;
-    }
-    img.listing {
-        width: 60%;
-        height: auto;
-    }
-    .hub-link {
-        right: 5%
-    }
-    .game-links {
-        right: 5%
-    }
-    a.homelink {
-        width: 100%;
-    }
-    span.homelink{
-        font-size: 125%
-    }
-}
-@media (min-width: 801px) {
-    #homepop{
-        height: 12vw;
-        width: 48vw
     }
 }
 @media (min-width: 601px) {
