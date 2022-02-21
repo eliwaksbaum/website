@@ -15,7 +15,6 @@
             <p class="intro">%@%txt(intro)</p>
 
             <div id="player"></div>
-            <object data="/res/scores/test/Test-1.svg" type="image/svg+xml"></object>
             
              <p class="thank-you">Huge shoutout to <a target="_blank" href="https://houndogschiller.com/">Jeff "Houndog" Schiller</a>, my clarinet teacher for many years</p>
         
@@ -27,6 +26,6 @@
             %@%keyInsert(pagesJSON)
         `;
         var svgPages = %@%txt(pagesSVG);
-        mpInit(json, svgPages, "/res/scores/%$%path()/%@%path().mp3");
+        mpInit(json, svgPages, "/res/scores/%@%path()/%@%path().mp3");
     </script>
 </html>
