@@ -7,6 +7,14 @@
            
         </style>
         <script src="/res/js/musicplayer.js"></script>
+        <script>
+            var json = `
+                %@%keyInsert(pagesJSON)
+            `;
+        </script>
+        <script>
+            var svgPages = %@%txt(pagesSVG);
+        </script>
     </head>
     <body>
         %@%globalInsert(header.html)
@@ -22,10 +30,6 @@
         %@%globalInsert(footer.html)
     </body>
     <script>
-        var json = `
-            %@%keyInsert(pagesJSON)
-        `;
-        var svgPages = %@%txt(pagesSVG);
         mpInit(json, svgPages, "/res/scores/%@%path()/%@%path().mp3");
     </script>
 </html>
