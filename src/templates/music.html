@@ -13,7 +13,10 @@
             `;
         </script>
         <script>
-            var svgPages = %@%txt(pagesSVG);
+            var svgPages = [];
+            for (let i = 0; i < %@%txt(numPages); i++) {
+                svgPages[i] = "/res/scores/%@%path()/%@%path()-" + (i+1) + ".svg";
+            }
         </script>
     </head>
     <body>
