@@ -11,6 +11,7 @@ var pageObjs = [];
 var curPage = 0;
 var timeouts = [];
 
+var isPlaying = false;
 var playButton;
 var pauseButton;
 var stopButton;
@@ -93,16 +94,18 @@ function mpInit(json, svgsrcs, audiosrc) {
 }
 
 function play() {
-    playButton.style.fill = blue;
-    playButton.style.stroke = blue;
+    if (!isPlaying) {
+        playButton.style.fill = blue;
+        playButton.style.stroke = blue;
 
-    sheets[displayPage].style.display = "none";
-    displayPage = curPage;
-    sheets[displayPage].style.display = "block";
+        sheets[displayPage].style.display = "none";
+        displayPage = curPage;
+        sheets[displayPage].style.display = "block";
 
-    pagePlay();
-    
-    music.play();
+        pagePlay();
+        
+        music.play();
+    }
 }
 
 function pagePlay() {
@@ -116,15 +119,17 @@ function stop() {
     music.pause();
     music.currentTime = 0;
     pageObjs[curPage].stop();
+    isPlaying = false;
+
+    playButton.style.fill = gray;
+    playButton.style.stroke = gray;
 
     sheets[curPage].style.display = "none";
     curPage = 0;
     displayPage = 0;
     sheets[curPage].style.display = "block";
 
-    for (let i = 0; i < timeouts.length; i++) {
-        window.clearTimeout(timeouts[i]);
-    }
+    Timer.stop();
 }
 
 function next() {
@@ -145,7 +150,6 @@ function prev() {
 class Page {
     constructor(num) {
         this.pageSVG = sheets[num].contentDocument.getElementsByTagName("svg")[0];
-        console.log(sheets[num].contentDocument);
         this.svgArrays = {"Note": this.pageSVG.getElementsByClassName("Note"), "Rest": this.pageSVG.getElementsByClassName("Rest")};
         this.parts = pageDatas[num];
         this.flag = false;
@@ -195,20 +199,65 @@ class Page {
             svgArray[measureElement["index"]].style.stroke = "black";
             this.MEPlay(part, pIndex, eIndex + 1);
         }
-        timeouts.push(window.setTimeout(playnext, measureElement["duration"]*1000));
+        new Timer(playnext, measureElement["duration"]*1000);
     }
 
     stop() {
-        this.resetState();
         this.blackout();
+        this.resetState();
     }
 
     blackout() {
         for (let i = 0; i < this.parts.length; i++) {
-            var measureElement = this.parts[i][state[i]];
+            var measureElement = this.parts[i][this.state[i]];
             var svgArray = this.svgArrays[measureElement["class"]];
             svgArray[measureElement["index"]].style.fill = "black";
             svgArray[measureElement["index"]].style.stroke = "black";
+        }
+    }
+
+}
+
+class Timer {
+    constructor(call, wait) {
+        this.call = function() {Timer.timers.remove(this); call;};
+        this.id = window.setTimeout(call, wait);
+        this.start = Date.now();
+        this.elapsed = 0;
+        this.remaining = wait;
+        Timer.timers.push(this);
+    }
+
+    pause() {
+        window.clearTimeout(this.id);
+        this.elapsed = Date.now() - this.start;
+        this.remaining -= this.elapsed;
+    }
+
+    resume() {
+        this.id = window.setTimeout(this.call, this.remaining);
+        this.start = Date.now();
+    }
+
+    stop() {
+        window.clearTimeout(this.id);
+    }
+
+    static timers = [];
+    static pause() {
+        for (let i = 0; i < this.timers.length; i++) {
+            this.timers[i].pause();
+        }
+    }
+    static resume() {
+        for (let i = 0; i < this.timers.length; i++) {
+            this.timers[i].resume();
+        }
+    }
+    static stop() {
+        while (this.timers.length > 0) {
+            var t = this.timers.pop();
+            t.stop();
         }
     }
 
