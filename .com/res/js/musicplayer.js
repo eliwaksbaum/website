@@ -12,6 +12,8 @@ var curPage = 0;
 var timeouts = [];
 
 var isPlaying = false;
+var isPaused = false;
+
 var playButton;
 var pauseButton;
 var stopButton;
@@ -29,21 +31,29 @@ var panelHTML = `
 </defs>
 <g transform="translate(10.168 -70.38)">
 <rect transform="scale(-1,1)" x="-283.13" y="70.38" width="293.3" height="39.569" ry="4.8048" fill="url(#linearGradient1179)" stop-color="#000000"/>
-<g transform="translate(7.9722 1.8639)" fill="#2e2e2e" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round">
- <path id="play" transform="matrix(.16795 0 0 .16795 58.311 62.207)" d="m176.37 155.36-94.5 54.559v-109.12z" stop-color="#000000" stroke-width="9.031"/>
- <g id="pause" transform="matrix(.56732 0 0 .56732 79.852 60.148)" stroke-width="2.3894">
-  <rect x="71.102" y="33.329" width="6.2955" height="32.589" ry="3.1478" stop-color="#000000"/>
-  <rect x="89.804" y="33.329" width="6.2955" height="32.589" ry="3.1478" stop-color="#000000"/>
+<g transform="translate(7.9722 1.8639)">
+ <g id="playbox">
+  <rect x="68.241" y="76.454" width="22.098" height="23.548" ry="0" fill-opacity="0" stop-color="#000000"/>
+  <path id="play" transform="matrix(.16795 0 0 .16795 58.311 62.207)" d="m176.37 155.36-94.5 54.559v-109.12z" fill="#2e2e2e" stop-color="#000000" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="9.031"/>
  </g>
- <rect id="stop" x="166.64" y="79.146" width="18.309" height="18.309" ry="2.0212" stop-color="#000000" stroke-width="1.5343"/>
+ <g id="pausebox" transform="matrix(.56732 0 0 .56732 79.852 60.148)">
+  <g id="pause" fill="#2e2e2e" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3894">
+   <rect x="71.102" y="33.329" width="6.2955" height="32.589" ry="3.1478" stop-color="#000000"/>
+   <rect x="89.804" y="33.329" width="6.2955" height="32.589" ry="3.1478" stop-color="#000000"/>
+  </g>
+  <rect x="65.363" y="29.768" width="36.257" height="40.014" ry="0" fill-opacity="0" stop-color="#000000"/>
+ </g>
+ <rect id="stop" x="166.64" y="79.146" width="18.309" height="18.309" ry="2.0212" fill="#2e2e2e" stop-color="#000000" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5343"/>
 </g>
-<g id="next" fill="#2e2e2e" stroke-linecap="round" stroke-linejoin="round">
- <path transform="matrix(.079918 0 0 .10057 254.58 74.54)" d="m176.37 155.36-94.5 54.559v-109.12z" stop-color="#000000" stroke="#2e2e2e" stroke-width="9.031"/>
- <rect x="267.65" y="84.323" width="2.8587" height="11.783" ry="1.4293" stop-color="#000000" stroke-width="1.12"/>
+<g id="next">
+ <path transform="matrix(.079918 0 0 .10057 254.58 74.54)" d="m176.37 155.36-94.5 54.559v-109.12z" fill="#2e2e2e" stop-color="#000000" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="9.031"/>
+ <rect x="267.65" y="84.323" width="2.8587" height="11.783" ry="1.4293" fill="#2e2e2e" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.12"/>
+ <rect x="258.34" y="81.762" width="14.903" height="17.453" ry="0" fill-opacity="0" stop-color="#000000"/>
 </g>
-<g id="prev" transform="matrix(-1 0 0 1 170.44 -80.965)" fill="#2e2e2e" stroke-linecap="round" stroke-linejoin="round">
- <path transform="matrix(.079918 0 0 .10057 152.77 155.47)" d="m176.37 155.36-94.5 54.559v-109.12z" stop-color="#000000" stroke="#2e2e2e" stroke-width="9.031"/>
- <rect x="165.84" y="165.26" width="2.8587" height="11.783" ry="1.4293" stop-color="#000000" stroke-width="1.12"/>
+<g id="prev" transform="matrix(-1 0 0 1 170.44 -80.965)">
+ <path transform="matrix(.079918 0 0 .10057 152.77 155.47)" d="m176.37 155.36-94.5 54.559v-109.12z" fill="#2e2e2e" stop-color="#000000" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="9.031"/>
+ <rect x="165.84" y="165.26" width="2.8587" height="11.783" ry="1.4293" fill="#2e2e2e" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.12"/>
+ <rect transform="scale(-1,1)" x="-170.82" y="162.23" width="14.903" height="17.453" ry="0" fill-opacity="0" stop-color="#000000"/>
 </g>
 </g>
 </svg>
@@ -66,12 +76,16 @@ function mpInit(json, svgsrcs, audiosrc) {
     canvas.appendChild(panel);
 
     panelsvg = panel.getElementsByTagName("svg")[0];
-    playButton = panelsvg.getElementById("play")
-    playButton.addEventListener("click", play);
-    pauseButton = panelsvg.getElementById("pause")
-    //pauseButton.addEventListener("pause", pause);
+
+    playButton = panelsvg.getElementById("play");
+    panelsvg.getElementById("playbox").addEventListener("click", play);
+
+    pauseButton = panelsvg.getElementById("pause");
+    panelsvg.getElementById("pausebox").addEventListener("click", pause);
+
     stopButton = panelsvg.getElementById("stop");
     stopButton.addEventListener("click", stop);
+
     panelsvg.getElementById("next").addEventListener("click", next);
     panelsvg.getElementById("prev").addEventListener("click", prev);
 
@@ -98,12 +112,21 @@ function play() {
         playButton.style.fill = blue;
         playButton.style.stroke = blue;
 
-        sheets[displayPage].style.display = "none";
-        displayPage = curPage;
-        sheets[displayPage].style.display = "block";
+        if (isPaused) {
+            pauseButton.style.fill = gray;
+            pauseButton.style.stroke = gray;
 
-        pagePlay();
-        
+            isPaused = false;
+            Timer.resume();
+        } else {
+            sheets[displayPage].style.display = "none";
+            displayPage = curPage;
+            sheets[displayPage].style.display = "block";
+
+            pagePlay()
+        }
+
+        isPlaying = true;
         music.play();
     }
 }
@@ -120,6 +143,7 @@ function stop() {
     music.currentTime = 0;
     pageObjs[curPage].stop();
     isPlaying = false;
+    isPaused = false;
 
     playButton.style.fill = gray;
     playButton.style.stroke = gray;
@@ -130,6 +154,20 @@ function stop() {
     sheets[curPage].style.display = "block";
 
     Timer.stop();
+}
+
+function pause() {
+    if (isPlaying && !isPaused) {
+        playButton.style.fill = gray;
+        playButton.style.stroke = gray;
+        pauseButton.style.fill = blue;
+        pauseButton.style.stroke = blue;
+
+        isPlaying = false;
+        isPaused = true;
+        Timer.pause();
+        music.pause();
+    }
 }
 
 function next() {
@@ -190,6 +228,7 @@ class Page {
                     pagePlay();
                 } else {
                     curPage = 0;
+                    isPlaying = false;
                     playButton.style.fill = gray;
                     playButton.style.stroke = gray;
                 }
@@ -220,12 +259,12 @@ class Page {
 
 class Timer {
     constructor(call, wait) {
-        this.call = function() {Timer.timers.remove(this); call;};
-        this.id = window.setTimeout(call, wait);
+        this.call = () => {Timer.timers.delete(this); call();};
+        this.id = window.setTimeout(this.call, wait);
         this.start = Date.now();
         this.elapsed = 0;
         this.remaining = wait;
-        Timer.timers.push(this);
+        Timer.timers.add(this);
     }
 
     pause() {
@@ -241,22 +280,22 @@ class Timer {
 
     stop() {
         window.clearTimeout(this.id);
+        Timer.timers.delete(this);
     }
 
-    static timers = [];
+    static timers = new Set();
     static pause() {
-        for (let i = 0; i < this.timers.length; i++) {
-            this.timers[i].pause();
+        for (let t of this.timers) {
+            t.pause();
         }
     }
     static resume() {
-        for (let i = 0; i < this.timers.length; i++) {
-            this.timers[i].resume();
+        for (let t of this.timers) {
+            t.resume();
         }
     }
     static stop() {
-        while (this.timers.length > 0) {
-            var t = this.timers.pop();
+        for (let t of this.timers) {
             t.stop();
         }
     }
