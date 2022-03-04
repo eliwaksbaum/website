@@ -10,7 +10,7 @@ keys = {
         "godot": ["title", "intro", "width", "height", "controls"],
         "algiers": ["title", "intro"],
         "game-notes": ["title", "doc_dir"],
-        "music": ["title", "intro", "pagesJSON", "numPages"],
+        "music": ["title", "heading", "intro", "pagesJSON", "numPages"],
         "sectionhome": ["title", "heading", "intro"]
     },
     

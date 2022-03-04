@@ -66,35 +66,37 @@ data.index_dir = "home.html"
         data.tags = ["Math"]
         data.date = "03/25/2021"
 
-        # [s.projects.s.dancing]
-        # meta.template = "music"
-        # meta.listing = "entry"
-        # meta.has_subs = false
+        [s.projects.s.dancing]
+        meta.template = "music"
+        meta.listing = "entry"
+        meta.has_subs = false
 
-        # data.title = "Dancing"
-        # data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
-        # data.intro = """This was a really fun arrangement to make. <i class="anti">Hello, Dolly!</i> is my favorite musical and it was so fun to try and fit all 
-        # the musical brilliance and joy that's happening in the song into just two lines clarinets can play. Maybe I'll do the whole song one 
-        # day, but for now, the piece starts with the dance break after the vocals, includes the first few choruses, and then skips to 
-        # the end."""
-        # data.summary = "The wonderful, whirling waltz from <i>Hello, Dolly!</i> as a duet for clarinets."
-        # data.youtube = "https://www.youtube.com/embed/NKoB4U1-Zpo"
-        # data.tags = ["Music", "Duet"]
-        # data.date = "03/30/2021"
+        data.title = "Dancing"
+        data.heading = "Dancing (From <i>Hello, Dolly!</i>)"
+        data.intro = """This was a really fun arrangement to make. <i class="anti">Hello, Dolly!</i> is my favorite musical and it was so fun to try and fit all 
+        the musical brilliance and joy that's happening in the song into just two lines clarinets can play. Maybe I'll do the whole song one 
+        day, but for now, the piece starts with the dance break after the vocals, includes the first few choruses, and then skips to 
+        the end."""
+        data.pagesJSON = "scoreJSON/dancing.json"
+        data.numPages = "4"
+        data.summary = "The wonderful, whirling waltz from <i>Hello, Dolly!</i> as a duet for clarinets."
+        data.tags = ["Music", "Duet"]
+        data.date = "03/30/2021"
 
-        # [s.projects.s.he-is-they-are]
-        # meta.template = "music"
-        # meta.listing = "entry"
-        # meta.has_subs = false
+        [s.projects.s.he-is-they-are]
+        meta.template = "music"
+        meta.listing = "entry"
+        meta.has_subs = false
 
-        # data.title = "He Is, They Are"
-        # data.heading = "He Is, They Are"
-        # data.intro = """A great track from Harry Connick, Jr's album Blue Light, Red Light. 
-        # I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
-        # data.summary = "Melody and solo from a Harry Connick, Jr balad."
-        # data.youtube = "https://www.youtube.com/embed/YuzEs_Yo1W8"
-        # data.tags = ["Music", "Solo"]
-        # data.date = "03/29/2021"
+        data.title = "He Is, They Are"
+        data.heading = "He Is, They Are"
+        data.intro = """A great track from Harry Connick, Jr's album Blue Light, Red Light. 
+        I transcribed the melody as well as Leroy Jones's amazing trumpet solo."""
+        data.pagesJSON = "scoreJSON/he-is-they-are.json"
+        data.numPages = "2"
+        data.summary = "Melody and solo from a Harry Connick, Jr balad."
+        data.tags = ["Music", "Solo"]
+        data.date = "03/29/2021"
 
         [s.projects.s.latex2svg]
         meta.template = "blog"
@@ -118,22 +120,23 @@ data.index_dir = "home.html"
         data.tags = ["Programming"]
         data.date = "04/05/2021"
 
-        # [s.projects.s.a-lovely-night]
-        # meta.template = "music"
-        # meta.listing = "entry"
-        # meta.has_subs = false
+        [s.projects.s.a-lovely-night]
+        meta.template = "music"
+        meta.listing = "entry"
+        meta.has_subs = false
 
-        # data.title = "A Lovely Night"
-        # data.heading = "A Lovely Night (From <i>La La Land</i>)"
-        # data.intro = """I think this is my favorite of the arrangement's I've made so far. I really love this song and a big 
-        # part of why is the dynamic between the characters. So I tried to keep some space between the lines and to preserve 
-        # that sort of friendly-competition feel established in the vocals. I imagine that's easier to do if the lines are played 
-        # by different instruments, but it was also fun to try and play with a personality distinct from my duet partner 
-        # even as we were both playing clarinet."""
-        # data.summary = "I made the duet from La La Land even duet-ier."
-        # data.youtube = "https://www.youtube.com/embed/trrH4sVZ0dQ"
-        # data.tags = ["Music", "Duet"]
-        # data.date = "04/06/2021"
+        data.title = "A Lovely Night"
+        data.heading = "A Lovely Night (From <i>La La Land</i>)"
+        data.intro = """I think this is my favorite of the arrangement's I've made so far. I really love this song and a big 
+        part of why is the dynamic between the characters. So I tried to keep some space between the lines and to preserve 
+        that sort of friendly-competition feel established in the vocals. I imagine that's easier to do if the lines are played 
+        by different instruments, but it was also fun to try and play with a personality distinct from my duet partner 
+        even as we were both playing clarinet."""
+        data.pagesJSON = "scoreJSON/a-lovely-night.json"
+        data.numPages = "4"
+        data.summary = "I made the duet from La La Land even duet-ier."
+        data.tags = ["Music", "Duet"]
+        data.date = "04/06/2021"
 
         [s.projects.s.breakout]
         meta.template = "unity"
@@ -236,9 +239,10 @@ data.index_dir = "home.html"
         meta.has_subs = false
 
         data.title = "test"
+        data.heading = "test"
         data.intro = "test"
         data.pagesJSON = "scoreJSON/test.json"
-        data.pagesSVG = '["/res/scores/test/Test-1.svg", "/res/scores/test/Test-2.svg"]'
+        data.numPages = "2"
 
     [s.contact]
     meta.template = "none"

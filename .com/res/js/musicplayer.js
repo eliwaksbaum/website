@@ -66,7 +66,6 @@ function mpInit(json, svgsrcs, audiosrc) {
     pageObjs = new Array(numPages);
 
     canvas = document.getElementById("player");
-    canvas.style.background = "white";
     canvas.style.width = "min-content";
     canvas.style.margin = "auto";
 
@@ -94,6 +93,7 @@ function mpInit(json, svgsrcs, audiosrc) {
         sheet.setAttribute("data", svgPaths[i]);
         sheet.setAttribute("type", "image/svg+xml");
         sheet.style.height = "100vh";
+        sheet.style.background = "white";
         sheet.style.border = "3px black solid";
         sheets.push(sheet);
         canvas.appendChild(sheet);
@@ -208,14 +208,14 @@ class Page {
 
     MEPlay(part, pIndex, eIndex) {
         var measureElement = part[eIndex];
-        var svgArray = this.svgArrays[measureElement["class"]];
-        svgArray[measureElement["index"]].style.fill = blue;
-        svgArray[measureElement["index"]].style.stroke = blue;
+        var meStyle = this.svgArrays[measureElement["class"]][measureElement["index"]].style
+        meStyle.fill = blue;
+        meStyle.stroke = blue;
         this.state[pIndex] = eIndex;
     
         var playnext = eIndex + 1 >= part.length ? () => {
-            svgArray[measureElement["index"]].style.fill = "black";
-            svgArray[measureElement["index"]].style.stroke = "black";
+            meStyle.fill = "black";
+            meStyle.stroke = "black";
 
             if (!this.flag) {
                 this.flag = true;
@@ -234,8 +234,8 @@ class Page {
                 }
             }
         } : () => {
-            svgArray[measureElement["index"]].style.fill = "black";
-            svgArray[measureElement["index"]].style.stroke = "black";
+            meStyle.fill = "black";
+            meStyle.stroke = "black";
             this.MEPlay(part, pIndex, eIndex + 1);
         }
         new Timer(playnext, measureElement["duration"]*1000);
