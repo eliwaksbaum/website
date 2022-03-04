@@ -2,13 +2,13 @@ var canvas;
 var sheets = [];
 var music;
 
-var pages;
+var pageDatas;
 var svgPaths;
 var numPages;
 var displayPage = 0;
 
+var pageObjs = [];
 var curPage = 0;
-var state = [];
 var timeouts = [];
 
 var playButton;
@@ -49,10 +49,10 @@ var panelHTML = `
 `
 
 function mpInit(json, svgsrcs, audiosrc) {
-    pages = JSON.parse(json);
+    pageDatas = JSON.parse(json);
     svgPaths = svgsrcs;
-    numPages = pages.length;
-    resetState();
+    numPages = pageDatas.length;
+    pageObjs = new Array(numPages);
 
     canvas = document.getElementById("player");
     canvas.style.background = "white";
@@ -92,10 +92,6 @@ function mpInit(json, svgsrcs, audiosrc) {
     canvas.appendChild(music);
 }
 
-function resetState() {
-    state = new Array(pages[0].length).fill(0);
-}
-
 function play() {
     playButton.style.fill = blue;
     playButton.style.stroke = blue;
@@ -105,13 +101,21 @@ function play() {
     sheets[displayPage].style.display = "block";
 
     pagePlay();
+    
     music.play();
+}
+
+function pagePlay() {
+    if (pageObjs[curPage] == null) {
+        pageObjs[curPage] = new Page(curPage);
+    }
+    pageObjs[curPage].play();
 }
 
 function stop() {
     music.pause();
     music.currentTime = 0;
-    blackout();
+    pageObjs[curPage].stop();
 
     sheets[curPage].style.display = "none";
     curPage = 0;
@@ -138,70 +142,74 @@ function prev() {
     }
 }
 
-function pagePlay() {
-    var pageSVG = sheets[curPage].contentDocument.getElementsByTagName("svg")[0];
-    var svgArrays = {"Note": pageSVG.getElementsByClassName("Note"), "Rest": pageSVG.getElementsByClassName("Rest")};
-
-    var parts = pages[curPage];
-    resetState();
-    var flag = new Flag(false);
-    for (let i = 0; i < parts.length; i++) {
-        MEPlay(parts[i], i, state[i], svgArrays, flag);
+class Page {
+    constructor(num) {
+        this.pageSVG = sheets[num].contentDocument.getElementsByTagName("svg")[0];
+        console.log(sheets[num].contentDocument);
+        this.svgArrays = {"Note": this.pageSVG.getElementsByClassName("Note"), "Rest": this.pageSVG.getElementsByClassName("Rest")};
+        this.parts = pageDatas[num];
+        this.flag = false;
+        this.state = [];
+        this.resetState();
     }
-}
 
-function MEPlay(part, pIndex, eIndex, svgArrays, pageFlag) {
-    var measureElement = part[eIndex];
-    var svgArray = svgArrays[measureElement["class"]];
-    svgArray[measureElement["index"]].style.fill = blue;
-    svgArray[measureElement["index"]].style.stroke = blue;
-    state[pIndex] = eIndex;
+    resetState() {
+        this.state = new Array(this.parts[0].length).fill(0);
+    }
 
-    playnext = eIndex + 1 >= part.length ? () => {
-        svgArray[measureElement["index"]].style.fill = "black";
-        svgArray[measureElement["index"]].style.stroke = "black";
-
-        if (!pageFlag.value) {
-            pageFlag.value = true;
-            if (curPage == displayPage) {
-                next();
-            }
-            if (curPage + 1 < numPages) {
-                curPage++;
-                pagePlay();
-            } else {
-                curPage = 0;
-                playButton.style.fill = gray;
-                playButton.style.stroke = gray;
-            }
+    play() {
+        this.flag = false;
+        for (let i = 0; i < this.parts.length; i++) {
+            this.MEPlay(this.parts[i], i, this.state[i]);
         }
-    } : () => {
-        svgArray[measureElement["index"]].style.fill = "black";
-        svgArray[measureElement["index"]].style.stroke = "black";
-        MEPlay(part, pIndex, eIndex + 1, svgArrays, pageFlag);
-    }
-    timeouts.push(window.setTimeout(playnext, measureElement["duration"]*1000));
-}
-
-function blackout() {
-    var pageSVG = sheets[curPage].contentDocument.getElementsByTagName("svg")[0];
-    var svgArrays = {"Note": pageSVG.getElementsByClassName("Note"), "Rest": pageSVG.getElementsByClassName("Rest")};
-    var parts = pages[curPage]
-
-    for (let i = 0; i < parts.length; i++) {
-        var measureElement = parts[i][state[i]];
-        var svgArray = svgArrays[measureElement["class"]];
-        svgArray[measureElement["index"]].style.fill = "black";
-        svgArray[measureElement["index"]].style.stroke = "black";
     }
 
-    playButton.style.fill = gray;
-    playButton.style.stroke = gray;
-}
+    MEPlay(part, pIndex, eIndex) {
+        var measureElement = part[eIndex];
+        var svgArray = this.svgArrays[measureElement["class"]];
+        svgArray[measureElement["index"]].style.fill = blue;
+        svgArray[measureElement["index"]].style.stroke = blue;
+        this.state[pIndex] = eIndex;
+    
+        var playnext = eIndex + 1 >= part.length ? () => {
+            svgArray[measureElement["index"]].style.fill = "black";
+            svgArray[measureElement["index"]].style.stroke = "black";
 
-class Flag {
-    //Boolean
-    constructor(start) {
-        this.value = start;
+            if (!this.flag) {
+                this.flag = true;
+                this.resetState();
+                if (curPage == displayPage) {
+                    next();
+                }
+                if (curPage + 1 < numPages) {
+                    curPage++;
+                    pagePlay();
+                } else {
+                    curPage = 0;
+                    playButton.style.fill = gray;
+                    playButton.style.stroke = gray;
+                }
+            }
+        } : () => {
+            svgArray[measureElement["index"]].style.fill = "black";
+            svgArray[measureElement["index"]].style.stroke = "black";
+            this.MEPlay(part, pIndex, eIndex + 1);
+        }
+        timeouts.push(window.setTimeout(playnext, measureElement["duration"]*1000));
     }
+
+    stop() {
+        this.resetState();
+        this.blackout();
+    }
+
+    blackout() {
+        for (let i = 0; i < this.parts.length; i++) {
+            var measureElement = this.parts[i][state[i]];
+            var svgArray = this.svgArrays[measureElement["class"]];
+            svgArray[measureElement["index"]].style.fill = "black";
+            svgArray[measureElement["index"]].style.stroke = "black";
+        }
+    }
+
 }
