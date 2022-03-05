@@ -90,6 +90,15 @@ function mpInit(json, svgsrcs, audiosrc) {
     panelsvg.getElementById("next").addEventListener("click", next);
     panelsvg.getElementById("prev").addEventListener("click", prev);
 
+    let head = document.head || document.getElementsByTagName('head')[0];
+    let style = document.createElement('style');
+    style.innerHTML = `
+        #playbox:hover, #pausebox:hover, #stop:hover, #prev:hover, #next:hover {
+            cursor: pointer;
+        }
+    `
+    head.appendChild(style);
+
     for (let i = 0; i < numPages; i++) {
         var sheet = document.createElement("object");
         sheet.setAttribute("data", svgPaths[i]);
@@ -171,7 +180,6 @@ function pause() {
         isPlaying = false;
         isPaused = true;
         metronome.pause();
-        //music.pause();
     }
 }
 
