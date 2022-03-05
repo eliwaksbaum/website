@@ -119,17 +119,17 @@ function play() {
             pauseButton.style.stroke = gray;
 
             isPaused = false;
-            //Timer.resume();
+            metronome.resume();
         } else {
             sheets[displayPage].style.display = "none";
             displayPage = curPage;
             sheets[displayPage].style.display = "block";
 
-            pagePlay()
+            pagePlay();
+            metronome.start();
         }
 
         isPlaying = true;
-        metronome.start();
         music.play();
     }
 }
@@ -159,7 +159,6 @@ function stop() {
     sheets[curPage].style.display = "block";
 
     metronome.stop();
-    //Timer.stop();
 }
 
 function pause() {
@@ -171,9 +170,8 @@ function pause() {
 
         isPlaying = false;
         isPaused = true;
-        metronome.stop();
-        //Timer.pause();
-        music.pause();
+        metronome.pause();
+        //music.pause();
     }
 }
 
@@ -271,6 +269,7 @@ class Metronome {
         this.onTick = null;
         this.t0 = 0;
         this.int = 0;
+        this.tickache = null;
     }
 
     tick() {
@@ -288,5 +287,20 @@ class Metronome {
 
     stop() {
         window.clearInterval(this.int);
+    }
+
+    pause() {
+        this.tickache = this.onTick;
+        this.onTick = (dt) => {
+            this.tickache(dt);
+            music.pause();
+            window.clearInterval(this.int);
+        }
+    }
+
+    resume() {
+        this.t0 = Date.now();
+        this.onTick = this.tickache;
+        this.int = window.setInterval(() => {this.tick();}, 100);
     }
 }
