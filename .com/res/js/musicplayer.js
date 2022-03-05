@@ -18,7 +18,7 @@ var playButton;
 var pauseButton;
 var stopButton;
 
-var blue = "#0084bf";
+var blue = "#0643f9";
 var gray = "#2e2e2e";
 
 var panelHTML = `
@@ -147,6 +147,8 @@ function stop() {
 
     playButton.style.fill = gray;
     playButton.style.stroke = gray;
+    pauseButton.style.fill = gray;
+    pauseButton.style.stroke = gray;
 
     sheets[curPage].style.display = "none";
     curPage = 0;

@@ -234,16 +234,6 @@ data.index_dir = "home.html"
             data.doc_dir = "blog-docs/session21-notes.html"
             data.title = "Session21"
 
-        [s.projects.s.test]
-        meta.template = "music"
-        meta.has_subs = false
-
-        data.title = "test"
-        data.heading = "test"
-        data.intro = "test"
-        data.pagesJSON = "scoreJSON/test.json"
-        data.numPages = "2"
-
     [s.contact]
     meta.template = "none"
     meta.has_subs = false
