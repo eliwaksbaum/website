@@ -13,6 +13,7 @@ var timeouts = [];
 
 var isPlaying = false;
 var isPaused = false;
+var metronome;
 
 var playButton;
 var pauseButton;
@@ -64,6 +65,7 @@ function mpInit(json, svgsrcs, audiosrc) {
     svgPaths = svgsrcs;
     numPages = pageDatas.length;
     pageObjs = new Array(numPages);
+    metronome = new Metronome();
 
     canvas = document.getElementById("player");
     canvas.style.width = "min-content";
@@ -117,7 +119,7 @@ function play() {
             pauseButton.style.stroke = gray;
 
             isPaused = false;
-            Timer.resume();
+            //Timer.resume();
         } else {
             sheets[displayPage].style.display = "none";
             displayPage = curPage;
@@ -127,6 +129,7 @@ function play() {
         }
 
         isPlaying = true;
+        metronome.start();
         music.play();
     }
 }
@@ -155,7 +158,8 @@ function stop() {
     displayPage = 0;
     sheets[curPage].style.display = "block";
 
-    Timer.stop();
+    metronome.stop();
+    //Timer.stop();
 }
 
 function pause() {
@@ -167,7 +171,8 @@ function pause() {
 
         isPlaying = false;
         isPaused = true;
-        Timer.pause();
+        metronome.stop();
+        //Timer.pause();
         music.pause();
     }
 }
@@ -194,112 +199,94 @@ class Page {
         this.parts = pageDatas[num];
         this.flag = false;
         this.state = [];
-        this.resetState();
-    }
-
-    resetState() {
-        this.state = new Array(this.parts[0].length).fill(0);
+        this.onTick = (dt) => {this.tick(dt);};
     }
 
     play() {
         this.flag = false;
+
         for (let i = 0; i < this.parts.length; i++) {
-            this.MEPlay(this.parts[i], i, this.state[i]);
+            this.state[i] = this.buildME(this.parts[i], 0);
+            this.state[i]["style"].fill = blue;
+        }
+        metronome.onTick = this.onTick;
+    }
+
+    tick(dt) {
+        for (let i = 0; i < this.parts.length; i++) {
+            let cur = this.state[i];
+            cur["elapsed"] += dt;
+
+            if (cur["elapsed"] > cur["dur"]) {
+                cur["style"].fill = "black";
+
+                if (cur["next"] >= this.parts[i].length) {
+                    if (!this.flag) {
+                        this.flag = true;
+                        metronome.onTick = null;
+                        if (curPage == displayPage) {
+                            next();
+                        }
+                        if (curPage + 1 < numPages) {
+                            curPage++;
+                            pagePlay();
+                        } else {
+                            curPage = 0;
+                            isPlaying = false;
+                            playButton.style.fill = gray;
+                            playButton.style.stroke = gray;
+                        }
+                    }
+                } else {
+                    let next = this.buildME(this.parts[i], cur["next"]);
+                    next["elapsed"] = cur["elapsed"] - cur["dur"];
+                    next["style"].fill = blue;
+                    this.state[i] = next;
+                }
+            }
         }
     }
 
-    MEPlay(part, pIndex, eIndex) {
-        var measureElement = part[eIndex];
-        var meStyle = this.svgArrays[measureElement["class"]][measureElement["index"]].style
-        meStyle.fill = blue;
-        meStyle.stroke = blue;
-        this.state[pIndex] = eIndex;
-    
-        var playnext = eIndex + 1 >= part.length ? () => {
-            meStyle.fill = "black";
-            meStyle.stroke = "black";
-
-            if (!this.flag) {
-                this.flag = true;
-                this.resetState();
-                if (curPage == displayPage) {
-                    next();
-                }
-                if (curPage + 1 < numPages) {
-                    curPage++;
-                    pagePlay();
-                } else {
-                    curPage = 0;
-                    isPlaying = false;
-                    playButton.style.fill = gray;
-                    playButton.style.stroke = gray;
-                }
-            }
-        } : () => {
-            meStyle.fill = "black";
-            meStyle.stroke = "black";
-            this.MEPlay(part, pIndex, eIndex + 1);
-        }
-        new Timer(playnext, measureElement["duration"]*1000);
+    buildME(data, i) {
+        let measureElement = data[i];
+        let meStyle = this.svgArrays[measureElement.class][measureElement.index].style;
+        let duration = measureElement.duration*1000;
+        let next = i + 1;
+        return {"style": meStyle, "dur": duration, "elapsed": 0, "next": next};
     }
 
     stop() {
         this.blackout();
-        this.resetState();
     }
 
     blackout() {
-        for (let i = 0; i < this.parts.length; i++) {
-            var measureElement = this.parts[i][this.state[i]];
-            var svgArray = this.svgArrays[measureElement["class"]];
-            svgArray[measureElement["index"]].style.fill = "black";
-            svgArray[measureElement["index"]].style.stroke = "black";
+        for (let x of this.state) {
+            x["style"].fill = "black";
         }
     }
-
 }
 
-class Timer {
-    constructor(call, wait) {
-        this.call = () => {Timer.timers.delete(this); call();};
-        this.id = window.setTimeout(this.call, wait);
-        this.start = Date.now();
-        this.elapsed = 0;
-        this.remaining = wait;
-        Timer.timers.add(this);
+class Metronome {
+    constructor() {
+        this.onTick = null;
+        this.t0 = 0;
+        this.int = 0;
     }
 
-    pause() {
-        window.clearTimeout(this.id);
-        this.elapsed = Date.now() - this.start;
-        this.remaining -= this.elapsed;
+    tick() {
+        let dt = Date.now() - this.t0;
+        if (this.onTick != null) {
+            this.onTick(dt);
+        }
+        this.t0 = Date.now();
     }
 
-    resume() {
-        this.id = window.setTimeout(this.call, this.remaining);
-        this.start = Date.now();
+    start() {
+        this.t0 = Date.now();
+        this.int = window.setInterval(() => {this.tick();}, 100);
     }
 
     stop() {
-        window.clearTimeout(this.id);
-        Timer.timers.delete(this);
+        window.clearInterval(this.int);
     }
-
-    static timers = new Set();
-    static pause() {
-        for (let t of this.timers) {
-            t.pause();
-        }
-    }
-    static resume() {
-        for (let t of this.timers) {
-            t.resume();
-        }
-    }
-    static stop() {
-        for (let t of this.timers) {
-            t.stop();
-        }
-    }
-
 }
