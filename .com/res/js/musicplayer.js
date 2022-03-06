@@ -106,6 +106,7 @@ function mpInit(json, svgsrcs, audiosrc) {
         sheet.style.height = "100vh";
         sheet.style.background = "white";
         sheet.style.border = "3px black solid";
+        sheet.addEventListener("load", (e) => {e.preventDefault; console.log("yo");});
         sheets.push(sheet);
         canvas.appendChild(sheet);
     }                                       //let's all the pages pre-render i think, flipping without stutter
@@ -130,9 +131,11 @@ function play() {
             isPaused = false;
             metronome.resume();
         } else {
-            sheets[displayPage].style.display = "none";
-            displayPage = curPage;
-            sheets[displayPage].style.display = "block";
+            if (displayPage != curPage) {
+                sheets[curPage].style.display = "block";
+                sheets[displayPage].style.display = "none";
+                displayPage = curPage;
+            }
 
             pagePlay();
             metronome.start();
@@ -162,10 +165,12 @@ function stop() {
     pauseButton.style.fill = gray;
     pauseButton.style.stroke = gray;
 
-    sheets[curPage].style.display = "none";
+    if (displayPage != 0) {
+        sheets[0].style.display = "block"
+        sheets[displayPage].style.display = "none";
+    }
     curPage = 0;
     displayPage = 0;
-    sheets[curPage].style.display = "block";
 
     metronome.stop();
 }
@@ -185,16 +190,16 @@ function pause() {
 
 function next() {
     if (displayPage + 1 < numPages) {
+        sheets[displayPage+1].style.display = "block";
         sheets[displayPage].style.display = "none";
         displayPage++;
-        sheets[displayPage].style.display = "block";
     }
 }
 function prev() {
     if (displayPage - 1 >= 0) {
+        sheets[displayPage-1].style.display = "block";
         sheets[displayPage].style.display = "none";
         displayPage--;
-        sheets[displayPage].style.display = "block";
     }
 }
 
