@@ -1,5 +1,5 @@
 <p>
-I’ve been working on this one for a while now. Not continuously, but really ever since I wrapped up A Night in Algiers it’s 
+I’ve been working on this one for a while now. Not continuously, but ever since I wrapped up A Night in Algiers it’s 
 been itching at me to explore what I could really do with the namespace. The core of the idea was to make a blackjack mini-game 
 within a larger story. That spiraled into a little swashbuckling space-noir adventure shamelessly inspired by Cowboy Bebop (I discovered 
 the show just as I was diving into the non-blackjack parts) that I think might be worth the five to ten minutes it takes to play. A lot of the 
@@ -46,7 +46,7 @@ yield control, you call Parser.GoStandard() and everything goes back to normal.
 <h3>Afterword</h3>
 <p>
 Generally in the game, you enter a command and receive a response in a one-for-one interaction. Sometimes, though, 
-you want to tell the player more than just one thing. Say a wizard NPC sens the player on a quest to collect three artifacts. Once the 
+you want to tell the player more than just one thing. Say a wizard NPC sends the player on a quest to collect three artifacts. Once the 
 player finds the last one, the wizard reappears to congratulate them. The act of taking any one of the three items will not necessarily 
 trigger that dialogue, so it can’t be included in any of their “take” responses. The solution is to add an afterword, a piece of text that 
 the parser will addend to its usual response, if its been given one during the current cycle.
@@ -90,7 +90,7 @@ functionality. The Game class was functioning more and more like a Main class, a
 Main classes. I decided to make the World and Parser globally accessible as Singletons, and as long as I passed around a reference to the 
 Player, I was suddenly able to pack self-contained code into a single class and lob it onto the project with only minimal knowledge of what 
 was going on anywhere else. I think this modular approach has significant advantages when it comes to game development and I’m glad 
-this Algiers allows for it.
+Algiers allows for it.
 </p>
 
 <h2>Redundancies, Good and Bad</h2>
@@ -129,7 +129,7 @@ way.
 <h2>Having a Plan</h2>
 <p>
 I’ve written about having plans before, I think, but clearly I’ve yet to learn my lesson. It’s hard for me at the beginning of a project 
-to step back, sit down, and plan things out. I want to dive ahead and get my hands dirty right away. I do it every time, and I always regret it. 
+to step back, sit down, and plan things out. I want to dive in and get my hands dirty right away. I do it every time, and I always regret it. 
 The two biggest time sinks for this project were all the backtracking and revising I had to do each time I changed how a fundamental part 
 of Algiers worked and the huge breaks I took when I didn’t know how to proceed. It’s a lot easier to build something when you have a 
 concrete list of features you have to implement, when you can picture the finished project in your mind. Coding blackjack was the first thing 
