@@ -60,7 +60,7 @@ var panelHTML = `
 </svg>
 `
 
-function mpInit(json, svgsrcs, audiosrc) {
+function WebscoreInit(json, svgsrcs, audiosrc) {
     pageDatas = JSON.parse(json);
     svgPaths = svgsrcs;
     numPages = pageDatas.length;
@@ -295,7 +295,7 @@ class Metronome {
 
     start() {
         this.t0 = Date.now();
-        this.int = window.setInterval(() => {this.tick();}, 100);
+        this.int = window.setInterval(() => {this.tick();}, 50);
     }
 
     stop() {
@@ -314,6 +314,6 @@ class Metronome {
     resume() {
         this.t0 = Date.now();
         this.onTick = this.tickache;
-        this.int = window.setInterval(() => {this.tick();}, 100);
+        this.int = window.setInterval(() => {this.tick();}, 50);
     }
 }
