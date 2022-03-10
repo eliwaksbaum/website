@@ -233,6 +233,23 @@ data.index_dir = "home.html"
 
             data.doc_dir = "blog-docs/session21-notes.html"
             data.title = "Session21"
+        
+    [s.projects.s.make-em-laugh]
+    meta.template = "music"
+    meta.listing = "entry"
+    meta.has_subs = false
+
+    data.title = "Make 'Em Laugh"
+    data.heading = "Make 'Em Laugh (From <i>Singin' in the Rain</i>)"
+    data.intro = """This arrangement (and one for Moses, which is on-deck) has been lying around half-finished for some time 
+    and I thought it was about time I finished it up. It's a fun song and I think it ended up fun to play. Special mentions go to measure 
+    25's impossible fingering and the surprisingly smooth riff at measure 55."""
+    data.pagesJSON = "scoreJSON/make-em-laugh.json"
+    data.numPages = "4"
+
+    data.summary = "In the words of that immortal bard, Samuel J. Snodgrass, as he was about to be lead to the guillotine..."
+    data.tags = ["Music", "Duet"]
+    data.date = "03/10/2022"
 
     [s.contact]
     meta.template = "none"
