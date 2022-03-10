@@ -4,73 +4,43 @@
         %@%globalInsert(head.html)
         <title>%@%txt(title)</title>
         <style>
-            .left-music-column{
-                order: 1;
-                flex: 1 2 40%;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                margin: 1vh 1vw
-            }
-
-            .youtube{
-                order: 1;
-                margin: 1vh 1vw;
-                height: 22vw;
-                width: 39.2vw;
-            }
-
-            .musescore-download{
-                order: 2;
-                margin: 1vh 1vw;
-                text-align: center;
-            }
-
-            a.musescore-link{
-                text-align: center;
-            }
-
-            .music-holder{
-                order: 2;
-                flex: 2 1 60%;
-            }
-
-            .sheetmusic{
-                height: 100vh;
-                width: 98%;
-                margin: 1vw
-            }
-
-            p.thank-you{
-                margin-left: 1vw;
+           .thank-you {
                 font-size: 90%;
-            }
+           }
+           .links {
+                font-size: 85%;
+                margin-top: 0;
+                margin-bottom: 3%;
+           }
         </style>
+        <script src="/res/js/WebscorePlayer.js"></script>
+        <script>
+            var json = `
+                %@%keyInsert(pagesJSON)
+            `;
+        </script>
+        <script>
+            var svgPages = [];
+            for (let i = 0; i < %@%txt(numPages); i++) {
+                svgPages[i] = "/res/scores/%@%path()/%@%path()-" + (i+1) + ".svg";
+            }
+        </script>
     </head>
     <body>
         %@%globalInsert(header.html)
         <div class="content">
             <h1>%@%txt(heading)</h1>
             <p class="intro">%@%txt(intro)</p>
-            <div class="flexrow">
-                <div class="left-music-column">
-                    <iframe class="youtube" src=%@%txt(youtube) frameborder="0"></iframe>
-                    <div class="musescore-download">
-                        <a class="musescore-link" href="/res/scores/%@%path()/%@%path().mscz" target=_blank><img class="themed" data-themedSrc="/res/svg/mscz_theme.svg" style="height:179px; width:293px" alt="Edit Sheetmusic"></a>
-                        <br>
-                        <a class="musescore-link" href="/res/scores/%@%path()/%@%path().mscz" target=_blank>Click here to download MuseScore3 file</a>
-                    </div>
-                </div>
-                <div class="music-holder">
-                    <object class="sheetmusic" data="/res/scores/%@%path()/%@%path().pdf">
-                        <iframe class="sheetmusic" src="https://docs.google.com/gview?url=https://eli.waksbaum.com/res/scores/%@%path()/%@%path().pdf&embedded=true" frameborder="0"></iframe>
-                    </object>
-                    <p class="thank-you">Huge shoutout to <a target="_blank" href="https://houndogschiller.com/">Jeff "Houndog" Schiller</a>, my clarinet teacher for many years</p>
-                </div>
-            </div>
+
+            <div id="player"></div>
+
+            <p class="links center-inline"><a href="/res/scores/%@%path()/%@%path().pdf" target="_blank">Download .pdf</a> | <a href="/res/scores/%@%path()/%@%path().mscz" target="_blank">Download .mscz</a></p>
+            <p class="thank-you center-inline">Huge shoutout to <a target="_blank" href="https://houndogschiller.com/">Jeff "Houndog" Schiller</a>, my clarinet teacher for many years</p>
+        
         </div>
         %@%globalInsert(footer.html)
     </body>
+    <script>
+        WebscoreInit(json, svgPages, "/res/scores/%@%path()/%@%path().mp3");
+    </script>
 </html>
