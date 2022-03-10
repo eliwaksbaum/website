@@ -7,6 +7,11 @@
            .thank-you {
                 font-size: 90%;
            }
+           .links {
+                font-size: 85%;
+                margin-top: 0;
+                margin-bottom: 3%;
+           }
         </style>
         <script src="/res/js/WebscorePlayer.js"></script>
         <script>
@@ -28,7 +33,8 @@
             <p class="intro">%@%txt(intro)</p>
 
             <div id="player"></div>
-            
+
+            <p class="links center-inline"><a href="/res/scores/%@%path()/%@%path().pdf" target="_blank">Download .pdf</a> | <a href="/res/scores/%@%path()/%@%path().mscz" target="_blank">Download .mscz</a></p>
             <p class="thank-you center-inline">Huge shoutout to <a target="_blank" href="https://houndogschiller.com/">Jeff "Houndog" Schiller</a>, my clarinet teacher for many years</p>
         
         </div>
