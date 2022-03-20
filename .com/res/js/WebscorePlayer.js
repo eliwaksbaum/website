@@ -9,7 +9,7 @@ var num_pages;
 var pages_built = 0;
 var parts;                  //a list of part objects, keys are the measure elements' starts and values are {style, pagenum}
 var part_starts;            //a list of part lists, all of the measure elements' starts
-var page_inits;            //page_inits[0][1] gives the style of the first measure element in the second part on the first page
+var page_starts;            //a list of the start times of the first elements for each page
 var cur_page = 0;
 
 var is_playing = false;
@@ -21,6 +21,7 @@ var pause_button;
 var stop_button;
 
 var cur_elements;
+var selected;
 var blue = "#0643f9";
 var gray = "#2e2e2e";
 
@@ -69,8 +70,7 @@ function WebscoreInit(json, svgsrcs, audiosrc) {
         for (let i = 0; i < parts.length; parts[i++] = {});
     part_starts = new Array(data[0].length);
         for (let i = 0; i < part_starts.length; part_starts[i++] = []);
-    page_inits = new Array(data.length);
-        for (let i = 0; i < page_inits.length; page_inits[i++] = new Array(data[0].length));
+    page_starts = new Array(data.length);
     cur_elements = new Array(data[0].length);
     svg_paths = svgsrcs;
 
@@ -96,10 +96,14 @@ function WebscoreInit(json, svgsrcs, audiosrc) {
     panelsvg.getElementById("next").addEventListener("click", next);
     panelsvg.getElementById("prev").addEventListener("click", prev);
 
+    canvas.addEventListener("keydown", handleKey);
+
     let sheetHolder = document.createElement("div");
     sheetHolder.className = "holder";
     sheetHolder.style.background = "white";
     sheetHolder.style.border = "3px black solid";
+    sheetHolder.style.userSelect = "none";
+    sheetHolder.addEventListener("click", clearSelect);
     canvas.appendChild(sheetHolder);
 
     for (let i = 0; i < data.length; i++) {
@@ -140,26 +144,70 @@ function WebscoreInit(json, svgsrcs, audiosrc) {
     head.appendChild(style);
 }
 
+function handleKey(e) {
+    switch (e.key) {
+        case " ":
+        case "Spacebar":
+            e.preventDefault();
+            if (is_playing) {
+                pause();
+            } else {
+                play();
+            }
+            break;
+        case "ArrowLeft":
+        case "Left":
+            e.preventDefault();
+            prev();
+            break;
+        case "ArrowRight":
+        case "Right":
+            e.preventDefault();
+            next();
+            break;
+    }
+}
+
 function buildPage(data, page_num) {
     pages_built++;
     let page_data = data[page_num];
     let page_SVG = sheets[page_num].contentDocument.getElementsByTagName("svg")[0];
     let svg_arrays = {"Note": page_SVG.getElementsByClassName("Note"), "Rest": page_SVG.getElementsByClassName("Rest")};
+
     for (let i = 0; i < page_data.length; i++) {
         let part_data = page_data[i];
         let first = true;
         for (let measure_element of part_data) {                
-            let style = svg_arrays[measure_element.class][measure_element.index].style;
-            let element = {"style": style, "page": page_num, "start":measure_element.start}
+            let svg = svg_arrays[measure_element.class][measure_element.index];
+            let element = {"style": svg.style, "page": page_num, "start": measure_element.start}
             parts[i][measure_element.start] = element;
             part_starts[i].push(measure_element.start);
 
+            svg.addEventListener("click", () => {           //For a repeated section, multiple events will be fired, and the playback will be set
+                if (!is_playing) {                          //to the latest start time. Not entirely ideal, but functional.
+                    if (is_paused) {
+                        let curs = getElementsFromTime(music.currentTime);
+                        colorElements(curs, "black");
+                    }
+
+                    if (selected != null) {
+                        selected.style.fill = "black";
+                    }
+                    svg.style.fill = blue;
+
+                    selected = svg;
+                    music.currentTime = element.start;
+                }
+            });
+
             if (first) {
                 first = false;
-                page_inits[page_num][i] = element;
+                page_starts[page_num] = element.start;
             }
         }
     }
+    page_SVG.addEventListener("click", deSelect);
+    page_SVG.addEventListener("keydown", handleKey);
 
     if (pages_built == data.length) {
         for (let starts of part_starts) {
@@ -168,57 +216,50 @@ function buildPage(data, page_num) {
     }
 }
 
-function timeHash(time, starts) {
-    let i_guess = innerHash(time, starts, 0, starts.length);
-    if (i_guess == 0) {
-        return 0;
-    }
-
-    let hi = starts[i_guess + 1];
-    let mid = starts[i_guess];
-    let lo = starts[i_guess - 1];
-
-    if (time > hi) {
-        return hi;
-    }
-    else if (time > mid) {
-        return mid;
-    }
-    else {
-        return lo;
+function deSelect(e) {
+    let c = e.target.className.baseVal;
+    if (c != "Note" && c != "Rest") {
+        clearSelect();
     }
 }
 
-function innerHash(time, starts, lo, hi) {
-    let mid = lo + Math.floor((hi-lo)/2)
-    let guess = starts[mid];
-
-    if (time == guess || hi <= lo) {
-        return mid;
+function clearSelect() {
+    if (selected != null) {
+        selected.style.fill = "black";
+        selected = null;
     }
-    else if (time < guess) {
-        return innerHash(time, starts, lo, mid - 1);
+}
+
+function timeHash(time, starts, lo, hi) {
+    let mid = lo + Math.floor((hi-lo)/2);
+
+    if (hi - lo <= 1) {
+        if (time > starts[hi]) {
+            return starts[hi];
+        } else {
+            return starts[lo];
+        }
+    }
+    else if (time < starts[mid]) {
+        return timeHash(time, starts, lo, mid - 1);
     }
     else {
-        return innerHash(time, starts, mid + 1, hi);
+        return timeHash(time, starts, mid, hi);
     }
 }
 
 function getElementsFromTime(time) {
     let elements = new Array(parts.length);
     for (let i = 0; i < parts.length; i++) {
-        let key = timeHash(time, part_starts[i]);
+        let key = timeHash(time, part_starts[i], 0, part_starts[i].length - 1);
         elements[i] = parts[i][key];
     }
     return elements;
 }
 
-function colorElements(olds, news) {
-    for (let old of olds) {
-        old.style.fill = "black";
-    }
-    for (let nu of news) {
-        nu.style.fill = blue;
+function colorElements(list, color) {
+    for (let e of list) {
+        e.style.fill = color;
     }
 }
 
@@ -229,12 +270,13 @@ function tick() {
         return;
     }
 
-    colorElements(cur_elements, news);
-    //console.log("cur", cur_elements, "new", news, music.currentTime);
+    if (cur_elements[0] != null) {
+        colorElements(cur_elements, "black")
+    }
+    colorElements(news, blue);
     cur_elements = news;
 
     if (news[0].page != cur_page && cur_page == display_page) {
-        //console.log("ticknext");
         cur_page++;
         next();
     }
@@ -245,9 +287,7 @@ function over() {
     play_button.style.fill = gray;
     play_button.style.stroke = gray;
     window.clearInterval(interval);
-    for (let e of cur_elements) {
-        e.style.fill = "black";
-    }
+    colorElements(cur_elements, "black");
 }
 
 function play() {
@@ -260,13 +300,10 @@ function play() {
             pause_button.style.stroke = gray;
 
             is_paused = false;
-        } else {
+        }
+        else if (selected == null) {
             cur_page = display_page;
-            for (let i = 0; i < cur_elements.length; i++) {
-                cur_elements[i] = page_inits[cur_page][i];
-            }
-            let page_start = cur_elements[0].start;
-            music.currentTime = page_start == 0? 0 : page_start + .000001;  //rounding can put currentTime before the start, which mucks things up
+            music.currentTime = page_starts[cur_page] == 0? 0 : page_starts[cur_page] + .000001;  //rounding can put currentTime before the start, which mucks things up
         }
 
         is_playing = true;
@@ -308,6 +345,7 @@ function next() {
         if (!is_playing && !is_paused) {
             cur_page++;
         }
+        clearSelect();
     }
 }
 function prev() {
@@ -318,5 +356,6 @@ function prev() {
         if (!is_playing && !is_paused) {
             cur_page--;
         }
+        clearSelect();
     }
 }
