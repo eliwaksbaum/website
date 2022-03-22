@@ -251,6 +251,17 @@ data.index_dir = "home.html"
         data.tags = ["Music", "Duet"]
         data.date = "03/10/2022"
 
+        [s.projects.s.webscore-player]
+        meta.template = "blog"
+        meta.listing = "hub"
+        meta.has_subs = false
+
+        data.doc_dir = "blog-docs/webscore-player.html"
+        data.title = "Webscore Player"
+        data.summary = "Play MuseScore projects in your web browser."
+        data.tags = ["Programming", "Music"]
+        data.date = "03/21/2022"
+
     [s.contact]
     meta.template = "none"
     meta.has_subs = false

@@ -18,3 +18,7 @@ https://eli.waksbaum.com/projects/breakout-redux/notes/
 https://eli.waksbaum.com/projects/a-night-in-algiers/
 https://eli.waksbaum.com/projects/a-night-in-algiers/notes/
 https://eli.waksbaum.com/projects/aoc21/
+https://eli.waksbaum.com/projects/session21/
+https://eli.waksbaum.com/projects/session21/notes/
+https://eli.waksbaum.com/projects/make-em-laugh/
+https://eli.waksbaum.com/projects/webscore-player/
