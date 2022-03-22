@@ -76,7 +76,7 @@ function WebscoreInit(json, svgsrcs, audiosrc) {
 
     canvas = document.getElementById("player");
     canvas.style.margin = "auto";
-    canvas.addEventListener("click", () => {sheets[cur_page].contentWindow.focus();});
+    canvas.addEventListener("click", () => {sheets[display_page].contentWindow.focus();});
 
     let panel = document.createElement("div");
     panel.innerHTML = panel_HTML;
@@ -187,6 +187,7 @@ function buildPage(data, page_num) {
                     if (is_paused) {
                         let curs = getElementsFromTime(music.currentTime);
                         colorElements(curs, "black");
+                        cur_page = element.page;
                     }
 
                     if (selected != null) {
