@@ -8,6 +8,7 @@ from validate import validate
 read_path = Path("src")
 write_path = Path(".com")
 projects = []
+links = []
 
 
 # CREATING HTML FROM TEMPLATE
@@ -183,6 +184,12 @@ def buildDirectory(_table:tuple, last_write:Path, parent:str) -> None:
         if "listing" in meta:
             addListing(meta["listing"], data["tags"], data["date"], table)
 
+        addToMap(str(write).replace('\\', '/'))
+    
+def addToMap(link:str) -> None:
+    global links
+    links.append("https://eli.waksbaum" + link + "/\n")
+
 def writePage(address:Path, doc:list) -> None:
     with open(address, "w", encoding="utf-8") as file:
         for line in doc:
@@ -217,5 +224,8 @@ writePage(Path(".com/html/403.html"), page)
 
 projects = sorted(projects, key = lambda x: datetime.strptime(x["date"], "%m/%d/%Y"), reverse=True)
 
-with open (write_path/"app/projects.json", "w", encoding="utf-8") as projects_file:
+with open(write_path/"app/projects.json", "w", encoding="utf-8") as projects_file:
     json.dump(projects, projects_file)
+
+with open(".com/sitemap.txt", "w", encoding="utf-8") as map:
+    map.writelines(links)

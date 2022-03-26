@@ -3,6 +3,5 @@ __pycache__/
 .com/*
 !.com/res/
 !.com/app/
-!.com/sitemap.txt
 
 copy.bat
