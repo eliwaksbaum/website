@@ -49,7 +49,7 @@ Generally in the game, you enter a command and receive a response in a one-for-o
 you want to tell the player more than just one thing. Say a wizard NPC sends the player on a quest to collect three artifacts. Once the 
 player finds the last one, the wizard reappears to congratulate them. The act of taking any one of the three items will not necessarily 
 trigger that dialogue, so it can’t be included in any of their “take” responses. The solution is to add an afterword, a piece of text that 
-the parser will addend to its usual response, if its been given one during the current cycle.
+the parser will append to its usual response, if its been given one during the current cycle.
 </p>
 
 <h3>Hoards, NumHoards, and InventoryStacks</h3>
@@ -64,7 +64,7 @@ from the bowl on the bar.
 
 <h3>StartKit</h3>
 <p>
-I decided to neatly bundle up a good amount of the commands I created for A Night in Algiers in the namespace Algiers.Starkit. 
+I decided to neatly bundle up a good amount of the commands I created for A Night in Algiers in the namespace Algiers.Startkit. 
 I figure that commands like talk, look, go, and take are going to be needed for most Algiers projects. Keeping with the spirit 
 of total customization and ground-up-edness, though, I didn’t think they deserved a place in the main namespace. I also put model 
 game loops for both Console and Web versions in here, though Blazor specific stuff like @bind statements couldn’t be included.

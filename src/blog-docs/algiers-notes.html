@@ -11,7 +11,7 @@
 
 <h2>The Thesis</h2>
 <p>My goal for the game was for it to be an exercise in absurdism similar to the novel. The way I achieve that spoils the game, so read on 
-    at your own risk: <span class="spoiler">The basic assumption of a game is that has some sort of objective, but this one has 
+    at your own risk: <span class="spoiler">The basic assumption of a game is that it has some sort of objective, but this one has 
     none. The player is presented with items to inspect and rooms to explore, but no set of actions will lead to a satisfying conclusion. Many 
     actions will lead to discoveries and to opportunities for more actions, but in the end none of the paths they can take will stop the prompts 
     for another typed input. The only way to “beat” the game is to quit. It is meaningless, and can 
@@ -21,7 +21,7 @@
 <h2>The Goal</h2>
 <p>So that’s what I was going for. I wanted to do it with a black screen and some green text. I was pretty happy with the general 
     structure of the original game and the way it used exact quotes from the book. The main thing I wanted to fix was that the old version 
-    wasn’t very responsive to the player’s actions. For example, there’s a key lying in on the street. Once the player takes the key, if the player 
+    wasn’t very responsive to the player’s actions. For example, say there’s a key lying in on the street. Once the player takes the key, if the player 
     looks at the street again, the part about the key being there would still appear. The responses were all “dumb” strings in a dictionary; they 
     couldn’t change based on the context. I figured the best way to fix that would be to use a platform designed for interactive fiction. So I 
     started looking for one that would fit the project.</p>
@@ -46,13 +46,12 @@
     and what each of them do. I also took my classifications of commands from TAME. Commands are either intransitive, transitive, or 
     ditransitive. Intransitive commands (look, help, inv) are run just at the World level. Transitive commands (take, talk, examine) have targets, 
     so the World method will find the target object and call the corresponding method stored on that object. Ditransitive commands 
-    (give, use) involve two items. The World method will find the first, call the corresponding method, and passing the second as a parameter 
-    to that method.</p>
+    (give, use) involve two items. The World method will find the first and call its corresponding method, passing the second as a parameter.</p>
 <p>Classifying commands like this does limit the understanding of the game’s parser, but that was just fine for the game I envisioned. It 
     also made writing the parser way easier. All it really does is check that the first word is a valid command, and then based on the command 
     type check the following words for valid, accessible, items or correct prepositions. They have to be exact and precise, but I think that just 
     adds to the retro experience I’m trying to create.</p>
-<p>My favorite thing about the system, though, is that it works. When the player takes the key, they key disappears from the description 
+<p>My favorite thing about the system, though, is that it works. When the player takes the key, the key disappears from the description 
     of the street. What the player does in one room affects what happens in another. I created the tools I needed to make what I wanted to make, 
     and it actually works exactly as intended. That in itself makes me very happy.</p>
 

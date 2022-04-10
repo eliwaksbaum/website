@@ -3,6 +3,64 @@
     <head>
         %@%globalInsert(head.html)
         <title>Contact</title>
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: 8% 1% 40% 20%;
+                grid-template-rows: 50px 50px 200px;
+            }
+            label{
+                grid-column: 1;
+                padding: 13px 0
+            }
+            input, textarea {
+                padding: 5px 10px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border: black solid 2px;
+                border-radius: 4px;
+            }
+            #message {
+                grid-column-start: 3;
+                grid-column-end: 5;
+            }
+            #subject, #email {
+                grid-column-start: 3;
+                grid-column-end: 4;
+            }
+            #submit {
+                width: 8%;
+                display: block;
+            }
+
+            @media(max-width: 1300px){
+                .grid {
+                    grid-template-columns: 10% 1% 50% 25%;
+                    grid-template-rows: 50px 50px 300px;
+                }
+                #submit {
+                    width: 10%;
+                }
+            }
+            @media(max-width: 800px){
+                .grid {
+                    grid-template-columns: 15% 1% 50% 25%;
+                    grid-template-rows: 50px 50px 300px;
+                }
+                #submit {
+                    width: 15%;
+                }
+            }
+            @media(max-width: 800px){
+                .grid {
+                    grid-template-columns: 20% 1% 50% 25%;
+                    grid-template-rows: 50px 50px 300px;
+                }
+                #submit {
+                    width: 20%;
+                }
+            }
+        </style>
     </head>
     <body>
         %@%globalInsert(header.html)
@@ -14,10 +72,42 @@
                 <p>
                     Did you find a <span style="font-size: 13pt">b</span><span style="font-size: 15pt">u</span><span style="font-size: 11pt">g</span> 
                     or a tpyo? Have I so thoroughly mangled a convention that you need to let me know? Did you read this website and think "woah, this 
-                    guy should check out [blank]"? Or did you just want to chat? Then click below to get in touch and I'll get back to you soon!
+                    guy should check out [blank]"? Or did you just want to chat? Then write me and I'll get back to you soon!
                 </p>
-                <a style="font-size: 22pt" href="mailto:eli@waksbaum.com">Say Hi!</a>
             </div>
+
+            <form action="javascript:void(0);" onsubmit="mailSubmit()" method="post">
+                <div class="grid">
+                    <label for="email">Email address:</label>
+                    <input type="email" name="email" id="email" placeholder="your@email.address">
+                    <label for="subject">Subject:</label>
+                    <input type="text" name="subject" id="subject" placeholder="Hello!">
+                    <label for="message">Your message:</label>
+                    <textarea name="message" id="message" placeholder="Hi Eli! Here's what I have to say"></textarea>
+                </div>
+                <input type="submit" value="Say Hi!" id="submit">
+                <a href="mailto:eli@waksbaum.com" style="padding: 13px 0;">A mailto for those so inclined</a>
+            </form>
+
+            <script>
+                function mailSubmit() {
+                    let email = document.getElementById("email").value;
+                    let subject = document.getElementById("subject").value;
+                    let message = document.getElementById("message").value;
+                    let params = {"email": email, "subject": subject, "message": message};
+
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("foo").innerHTML = this.responseText;
+                        }
+                    };
+
+                    xhttp.open("POST", "/dynamic/mail", true);
+                    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhttp.send(JSON.stringify(params));
+                }
+            </script>
         </div>
         %@%globalInsert(footer.html)
     </body>
