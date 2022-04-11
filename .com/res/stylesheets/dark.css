@@ -30,3 +30,13 @@ span.spoiler{
 input, textarea{
     border-color: rgb(235, 235, 235);
 }
+
+a.listing{
+    color: inherit;
+    text-decoration: none;
+}
+
+a.menu{
+    color: inherit;
+    text-decoration: none;
+}
