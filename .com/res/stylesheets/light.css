@@ -26,3 +26,7 @@ img.homelink{
 span.spoiler{
     background-color: rgb(32, 32, 32);
 }
+
+input, textarea{
+    border-color: rgb(32, 32, 32);
+}

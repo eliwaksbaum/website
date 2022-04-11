@@ -14,11 +14,17 @@
                 padding: 13px 0
             }
             input, textarea {
+                background: inherit;
+                color: inherit; 
                 padding: 5px 10px;
                 margin: 8px 0;
                 box-sizing: border-box;
-                border: black solid 2px;
+                border-width: 2px;
+                border-style: solid;
                 border-radius: 4px;
+            }
+            input:focus, textarea:focus {
+                border-width: 3px;
             }
             #message {
                 grid-column-start: 3;
@@ -30,7 +36,6 @@
             }
             #submit {
                 width: 8%;
-                display: block;
             }
 
             @media(max-width: 1300px){
@@ -85,21 +90,29 @@
                     <label for="message">Your message:</label>
                     <textarea name="message" id="message" placeholder="Hi Eli! Here's what I have to say"></textarea>
                 </div>
-                <input type="submit" value="Say Hi!" id="submit">
+                <div>
+                    <input type="submit" value="Say Hi!" id="submit">
+                    <!-- <span id="response"></span> -->
+                </div>
                 <a href="mailto:eli@waksbaum.com" style="padding: 13px 0;">A mailto for those so inclined</a>
             </form>
 
             <script>
                 function mailSubmit() {
-                    let email = document.getElementById("email").value;
-                    let subject = document.getElementById("subject").value;
-                    let message = document.getElementById("message").value;
-                    let params = {"email": email, "subject": subject, "message": message};
+                    let email = document.getElementById("email");
+                    let subject = document.getElementById("subject");
+                    let message = document.getElementById("message");
+                    let params = {"email": email.value, "subject": subject.value, "message": message.value};
+                    message.value = "Sending..."
+                    // let response = document.getElementById("response");
+                    // response.innerHTML = "Sending..."
 
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("foo").innerHTML = this.responseText;
+                            email.value = "";
+                            subject.value = "";
+                            message.value = "Message sent!";
                         }
                     };
 
