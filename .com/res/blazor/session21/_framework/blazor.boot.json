@@ -2,7 +2,7 @@
   "cacheBootResources": true,
   "config": [ ],
   "debugBuild": false,
-  "entryAssembly": "Session21",
+  "entryAssembly": "s21web",
   "icuDataMode": 0,
   "linkerEnabled": true,
   "resources": {
@@ -22,7 +22,7 @@
       "Microsoft.JSInterop.dll": "sha256-zUWQN3o4+SD4D3IrJA37DwEjqztNaqUAgCT8zBENjIE=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-hNl8iqfAyBbbi5beUQrD8YE0aIHK9OlEgG8nQ2sJXcQ=",
       "System.IO.Pipelines.dll": "sha256-qZYTUS+ga7CydtH54fYPbehFCvx3B49I74G8dxreTog=",
-      "Session21.dll": "sha256-GJxN7VKl5cLmPZODR+\/ACXRewyRSQ0Qg4RZRIuAkjIE=",
+      "s21web.dll": "sha256-fWGQmhLdfnkUE3W6JvSKUtM3o8l\/Lcepxkv7LiBzQKU=",
       "System.Collections.Concurrent.dll": "sha256-WuPEDX2OaRH7G9qP0DQEo3AGfl3vFvB+LkxXKAaBF4M=",
       "System.Collections.Immutable.dll": "sha256-ctgd+JTMvmXN\/74vy5S2HGtLp7og\/u2\/7wLCDP8rwAw=",
       "System.Collections.NonGeneric.dll": "sha256-Pp6om78a11Agrhaf9gyYnoSqKPXqzIDmQqr5Mg67NXM=",
