@@ -241,8 +241,8 @@ data.index_dir = "home.html"
 
         data.title = "Make 'Em Laugh"
         data.heading = "Make 'Em Laugh (From <i>Singin' in the Rain</i>)"
-        data.intro = """This arrangement (and one for Moses, which is on-deck) has been lying around half-finished for some time 
-        and I thought it was about time I finished it up. It's a fun song and I think it ended up fun to play. Special mentions go to measure 
+        data.intro = """The arrangements for this and <a href="/projects/moses">Moses</a> have been lying around half-finished for some time 
+        and I thought it was about time I finished them up. It's a fun song and I think it ended up fun to play. Special mentions go to measure 
         25's impossible fingering and the surprisingly smooth riff at measure 55."""
         data.pagesJSON = "scoreJSON/make-em-laugh.json"
         data.numPages = "4"
@@ -261,6 +261,23 @@ data.index_dir = "home.html"
         data.summary = "Play MuseScore projects in your web browser."
         data.tags = ["Programming", "Music"]
         data.date = "03/21/2022"
+
+        [s.projects.s.moses]
+        meta.template = "music"
+        meta.listing = "entry"
+        meta.has_subs = false
+
+        data.title = "Moses"
+        data.heading = "Moses (From <i>Singin' in the Rain</i>)"
+        data.intro = """The arrangements for this and <a href="/projects/make-em-laugh">Make 'Em Laugh</a> have been lying around half-finished for some time 
+        and I thought it was about time I finished them up. This one was a little tough. I had a hard time picking out seperate lines and dissecting harmonies
+        in some spots, so there's a bit more arranging and a bit less transcription here. I think it turned out nicely all the same."""
+        data.pagesJSON = "scoreJSON/moses.json"
+        data.numPages = "5"
+
+        data.summary = "It's got to be a rose because it rhymes with mose."
+        data.tags = ["Music", "Duet"]
+        data.date = "05/07/2022"
 
     [s.contact]
     meta.template = "none"
