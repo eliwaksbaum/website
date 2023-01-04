@@ -20,6 +20,7 @@ https://eli.waksbaum.com/projects/session21/
 https://eli.waksbaum.com/projects/make-em-laugh/
 https://eli.waksbaum.com/projects/webscore-player/
 https://eli.waksbaum.com/projects/moses/
+https://eli.waksbaum.com/projects/aoc22/
 https://eli.waksbaum.com/projects/
 https://eli.waksbaum.com/contact/
 https://eli.waksbaum.com/

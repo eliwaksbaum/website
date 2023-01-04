@@ -279,6 +279,17 @@ data.index_dir = "home.html"
         data.tags = ["Music", "Duet"]
         data.date = "05/07/2022"
 
+        [s.projects.s.aoc22]
+        meta.template = "blog"
+        meta.listing = "hub"
+        meta.has_subs = false
+
+        data.doc_dir = "blog-docs/aoc22.html"
+        data.title = "Advent of Code 2022"
+        data.summary = "AoC 22: Electric Boogaloo"
+        data.tags = ["Programming"]
+        data.date = "01/04/2023"
+
     [s.contact]
     meta.template = "none"
     meta.has_subs = false
