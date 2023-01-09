@@ -1,0 +1,7 @@
+[test]
+path = "test.txt"
+params = ["p1", "p2"]
+
+[full]
+path = "pages/full.html"
+params = []
