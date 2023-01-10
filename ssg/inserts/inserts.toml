@@ -26,3 +26,7 @@ text_params = ["proj"]
 [godot]
 path = "godot.html"
 text_params = ["proj", "width", "height"]
+
+[wsp]
+path = "wsp.html"
+text_params = ["proj", "num-pages"]
