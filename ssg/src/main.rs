@@ -85,10 +85,7 @@ fn replace_in_page(page: &str, start: usize, end: usize, inserts_table: &HashMap
 
     let mut page_text = page.to_string();
 
-    let insert_path = String::from("inserts/") + &insert.path;
-    let insert_text = fs::read_to_string(&insert_path).expect(&format!("Could not open {}.", insert.path));
-    let tag_space = &page_text[start..end+8];
-    page_text = page_text.replace(tag_space, &insert_text);
+    let tag_space = &page_text[start..end+9];
 
     for (param, input) in replacements
     {
