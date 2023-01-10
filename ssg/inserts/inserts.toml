@@ -18,3 +18,7 @@ text_params = ["title", "css", "meta-desc"]
 [unity]
 path = "unity.html"
 text_params = ["proj", "width", "height"]
+
+[algiers]
+path = "algiers.html"
+text_params = ["proj"]
