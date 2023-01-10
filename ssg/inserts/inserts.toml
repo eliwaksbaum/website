@@ -1,5 +1,9 @@
-[nullary]
+[file-plop]
+path = "plop.txt"
 file_params = ["file"]
+
+[blog]
+
 
 [test]
 path = "test.txt"
