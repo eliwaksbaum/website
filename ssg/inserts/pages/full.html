@@ -5,14 +5,18 @@
     </head>
     <body>
         <h1>This is its own insert</h1>
-        <h2>plus it has an insert inside it</h2>
+        <h2>plus it has an insert inside it, which we're passing parameters to</h2>
         <div>
             check it out:
             <insert>
                 name = "test"
-                p1 = "pee"
-                p2 = "poop"
+                p1 = "%@%p1%@%"
+                p2 = "%@%p2%@%"
             </insert>
+        </div>
+        <div>
+            and it has a whole other file pasted into it:
+            %@%game%@%
         </div>
     </body>
 </html>

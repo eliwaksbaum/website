@@ -1,6 +1,11 @@
+[nullary]
+file_params = ["file"]
+
 [test]
 path = "test.txt"
-params = ["p1", "p2"]
+text_params = ["p1", "p2"]
 
 [full]
 path = "pages/full.html"
+text_params = ["p1", "p2"]
+file_params = ["game"]
