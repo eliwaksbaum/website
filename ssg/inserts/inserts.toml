@@ -22,3 +22,7 @@ text_params = ["proj", "width", "height"]
 [algiers]
 path = "algiers.html"
 text_params = ["proj"]
+
+[godot]
+path = "godot.html"
+text_params = ["proj", "width", "height"]
