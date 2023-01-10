@@ -7,7 +7,7 @@ use std::path::{Path, PathBuf, Display};
 struct InsertDef
 {
     path: String,
-    params: Vec<String>
+    params: Option<Vec<String>>
 }
 type InsertCall = HashMap<String, String>;
 
@@ -86,22 +86,35 @@ fn replace_in_page(page: &str, start: usize, end: usize, tables: &mut InsertTabl
     }
     let insert = tables.defs.get(insert_name).expect(&format!("No insert with the name \"{}\" exists.", insert_name));
 
-    let replacements = insert.params.iter()
-        .map(|p| (paramify(p), call.get(p).expect(&format!("An insert tag with the name set to \"{}\" is missing the required \"{}\" parameter in {}.", insert_name, p, file))))
-        .collect::<HashMap<String, &String>>();
-
     let mut page_text = page.to_string();
     
     let insert_text = tables.texts.entry(insert.path.clone()).or_insert_with(|| read_insert(&insert.path));
     let tag_space = &page_text[start..end+9];
     page_text = page_text.replace(tag_space, insert_text);
 
-    for (param, input) in replacements
+    match &insert.params
     {
-        page_text = page_text.replace(&param, input);
+        Some(params) => { page_text = replace_in_insert(&page_text, &params, &call, &insert_name, file); },
+        None => {}    
     }
     
     return extract_page(page_text, tables, file, Some(&insert_name));
+}
+
+fn replace_in_insert(page: &str, params: &Vec<String>, call: &InsertCall, name: &str, file: &Display) -> String
+{
+
+    let mut parsed = page.to_string();
+    
+    let replacements = params.iter()
+        .map(|p| (paramify(p), call.get(p).expect(&format!("An insert tag with the name set to \"{}\" is missing the required \"{}\" parameter in {}.", name, p, file))))
+        .collect::<HashMap<String, &String>>();    
+
+    for (param, input) in replacements
+    {
+        parsed = parsed.replace(&param, input);
+    }
+    return parsed;
 }
 
 fn read_insert(path: &str) -> String
