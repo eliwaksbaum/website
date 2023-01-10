@@ -6,3 +6,9 @@
       </div>
     </div>
 </div>
+<script src="/res/unity/%@%proj%@%/UnityLoader.js"></script>
+<script>
+    if (!UnityLoader.SystemInfo.mobile) {
+      UnityLoader.instantiate("unityContainer", "/res/unity/%@%proj%@%/%@%proj%@%.json");
+    }
+</script>

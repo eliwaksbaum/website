@@ -3,12 +3,6 @@
   <head>
     %@%globalInsert(head.html)
     <title>%@%txt(title)</title>
-    <script src="/res/unity/%@%path()/UnityLoader.js"></script>
-    <script>
-      if (!UnityLoader.SystemInfo.mobile) {
-        UnityLoader.instantiate("unityContainer", "/res/unity/%@%path()/%@%path().json");
-      }
-    </script>
     <style>
       .unity{
           display: inline-block;
@@ -62,6 +56,12 @@
             <p class="mobile-unity-bottom">Please view this page on a desktop to play the game.</p>
           </div>
         </div>
+        <script src="/res/unity/%@%path()/UnityLoader.js"></script>
+        <script>
+          if (!UnityLoader.SystemInfo.mobile) {
+            UnityLoader.instantiate("unityContainer", "/res/unity/%@%path()/%@%path().json");
+          }
+      </script>
       </div>
     </div>
     %@%globalInsert(footer.html)

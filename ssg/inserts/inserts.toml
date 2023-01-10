@@ -17,4 +17,4 @@ text_params = ["title", "css", "meta-desc"]
 
 [unity]
 path = "unity.html"
-text_params = ["width", "height"]
+text_params = ["proj", "width", "height"]
