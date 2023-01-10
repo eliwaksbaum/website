@@ -1,0 +1,46 @@
+<insert>
+    name = "base-top"
+    title = "Eli Waksbaum"
+    meta-desc = "My name is Eli and I learn best by doing. Here are some things that I've done."
+    css = "css/home.css"
+</insert>
+
+<div class="center-inline">
+    <picture>
+        <source media="(max-width:800px)" srcset="/res/svg/homepopsquare.svg">
+        <img id="homepop" src="/res/svg/homepop.svg" alt="It's Me!">
+    </picture>
+
+    <div style="margin: 5vh 0">
+        <h1>Hello, World!</h1>
+        <p>My name is Eli and I learn best by doing.</p>
+        <p>Here are some things that I've done.</p>
+    </div>
+    
+    <div class="homeflex">
+        <div class="homediv">
+            <a href="/projects?tag=Game Development" class="homelink">
+                <img src="res/png/home_gd.png" class="homelink">
+                <span class="homelink">Game Development</span>
+            </a>
+        </div>
+        <div class="homediv">
+            <a href="/projects?tag=Programming" class="homelink">
+                <img src="res/png/home_programming.png" class="homelink">
+                <span class="homelink">Programming</span>
+            </a>
+        </div>
+        <div class="homediv">
+            <a href="/projects?tag=Music" class="homelink">
+                <img src="res/png/home_music.png" class="homelink">
+                <span class="homelink">Music</span>
+            </a>
+        </div>
+        <script>colorize();</script>
+    </div>
+</div>
+
+<insert>
+    name = "dump"
+    file = "base-bottom.html"
+</insert>

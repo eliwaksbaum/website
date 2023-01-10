@@ -1,12 +1,20 @@
-[file-plop]
+[dump]
 path = "plop.txt"
 file_params = ["file"]
 
 [head]
 path = "head.html"
-text_params = ["title"]
+text_params = ["title", "meta-desc"]
 file_params = ["css"]
 
-[base]
+[base-fold]
 path = "base.html"
-text_params = ["title", "css", "inner", "inner-params"]
+text_params = ["title", "css", "meta-desc", "inner", "inner-params"]
+
+[base-top]
+path = "base-top.html"
+text_params = ["title", "css", "meta-desc"]
+
+[unity]
+path = "unity.html"
+text_params = ["width", "height"]

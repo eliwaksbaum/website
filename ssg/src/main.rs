@@ -76,16 +76,16 @@ fn replace_insert(page: &str, start: usize, end: usize, tables: &mut InsertTable
     let call: InsertCall = toml::from_str(&page[start+8..end]).expect(&format!("Invalid toml while parsing {}: {}", file, &page[start+8..end]));
 
     let insert_name = call.get("name").expect(&format!("No \"name\" key in an insert tag in {}.", file));
-    match prev
-    {
-        Some(prev_name) => {
-            if insert_name == prev_name
-            {
-                panic!("Illegal self-referential insert detected in the insert \"{}\".", insert_name);
-            }
-        }
-        None => {}
-    }
+    // match prev
+    // {
+    //     Some(prev_name) => {
+    //         if insert_name == prev_name
+    //         {
+    //             panic!("Illegal self-referential insert detected in the insert \"{}\".", insert_name);
+    //         }
+    //     }
+    //     None => {}
+    // }
 
     let defs = &tables.defs;
     let insert = defs.get(insert_name).expect(&format!("No insert with the name \"{}\" exists.", insert_name));
