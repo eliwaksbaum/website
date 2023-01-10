@@ -63,7 +63,8 @@ fn extract_page(raw_page: String, tables: &mut InsertTables, file: &Display, pre
     {
         (Some(start), Some(end)) => return replace_insert(&raw_page, start, end, tables, file, prev),
         (None, None) => return raw_page,
-        _ => {
+        _ =>
+        {
             println!("Mismatched <insert> tags in {}. Continuing with parse.", file);
             return raw_page;
         }
@@ -72,7 +73,7 @@ fn extract_page(raw_page: String, tables: &mut InsertTables, file: &Display, pre
 
 fn replace_insert(page: &str, start: usize, end: usize, tables: &mut InsertTables, file: &Display, prev: Option<&str>) -> String
 {
-    let call: InsertCall = toml::from_str(&page[start+8..end]).expect(&format!("Invalid toml while parsing {}.", file));
+    let call: InsertCall = toml::from_str(&page[start+8..end]).expect(&format!("Invalid toml while parsing {}: {}", file, &page[start+8..end]));
 
     let insert_name = call.get("name").expect(&format!("No \"name\" key in an insert tag in {}.", file));
     match prev

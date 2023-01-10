@@ -2,14 +2,11 @@
 path = "plop.txt"
 file_params = ["file"]
 
-[blog]
+[head]
+path = "head.html"
+text_params = ["title"]
+file_params = ["css"]
 
-
-[test]
-path = "test.txt"
-text_params = ["p1", "p2"]
-
-[full]
-path = "pages/full.html"
-text_params = ["p1", "p2"]
-file_params = ["game"]
+[base]
+path = "base.html"
+text_params = ["title", "css", "inner", "inner-params"]

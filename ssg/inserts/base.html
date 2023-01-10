@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <insert>
+        name = "head"
+        title = "%@%title%@%"
+        css = "%@%css%@%"
+    </insert>
+
+    <insert>
+        name = "file-plop"
+        file = "header.html"
+    </insert>
+
+    <div class="content">
+        <insert>
+            name = "%@%inner%@%"
+            %@%inner-params%@%
+        </insert>
+    </div>
+
+    <insert>
+        name = "file-plop"
+        file = "footer.html"
+    </insert>
+</html>
