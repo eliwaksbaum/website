@@ -1,0 +1,10 @@
+<<base>>
+    title = "FOO"
+    meta-desc = "it's foo, baby"
+    css = "none"
+
+    <div>
+        here's some content
+    </div>
+
+<</base>>

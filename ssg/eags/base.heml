@@ -4,13 +4,13 @@
         title = "%@%title%@%"
         meta-desc = "%@%meta-desc%@%"
         css = "%@%css%@%"
-    <<head>>
+    <</head>>
 
-    <header></header>
+    <<dump>> file = "header.html" <</dump>>
 
     <div class="content">
         %@%inside%@%
     </div>
 
-    <<footer>><</footer>>
+    <<dump>> file = "footer.html" <</dump>>
 </html>

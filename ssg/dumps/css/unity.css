@@ -1,0 +1,37 @@
+.unity{
+    display: inline-block;
+    position: relative;
+    margin-bottom: 2vh;
+    background-image: url("/res/svg/unity.svg");
+    background-size: 100% 100%;
+}
+
+.mobile-unity-top{
+    color: rgb(235, 235, 235);
+    position: absolute;
+    top: 5%;
+    text-align: center;
+    width: 100%;
+    font-size: 100%;
+}
+
+.mobile-unity-bottom{
+    color: rgb(235, 235, 235);
+    position: absolute;
+    bottom: 5%;
+    text-align: center;
+    width: 100%;
+    font-size: 100%;
+}
+
+@media(max-width: 600px)
+{
+  .mobile-unity-bottom{
+      bottom: 1%;
+      font-size: 70%;
+  }
+  .mobile-unity-top{
+      top: 1%;
+      font-size: 70%;
+  }
+}
