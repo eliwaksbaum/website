@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <<head>>
+        title = "%@%title%@%"
+        meta-desc = "%@%meta-desc%@%"
+        css = "%@%css%@%"
+    <<head>>
+
+    <header></header>
+
+    <div class="content">
+        %@%inside%@%
+    </div>
+
+    <<footer>><</footer>>
+</html>
