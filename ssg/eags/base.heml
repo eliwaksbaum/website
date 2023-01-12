@@ -9,7 +9,7 @@
     <<dump>> file = "header.html" <</dump>>
 
     <div class="content">
-        %@%inside%@%
+    %@%inside%@%
     </div>
 
     <<dump>> file = "footer.html" <</dump>>

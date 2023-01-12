@@ -9,7 +9,7 @@
     <title>%@%title%@%</title>
     <meta name="description" content="%@%meta-desc%@%">
     <style>
-        %@%css%@%
+        @%@css@%@
     </style>
     <inside></inside>
 </head>

@@ -1,0 +1,10 @@
+<<base>>
+    title = "Flappy Bird"
+    meta-desc = "Flappy Bird built in Unity."
+    css = "css/unity.css"
+    <<unity>>
+        proj = "flappy-bird"
+        width = "69.12"
+        height = "43.2"
+    <</unity>>
+<</base>>

@@ -15,17 +15,17 @@ path = "base.heml"
 text_params = ["title", "css", "meta-desc"]
 
 [unity]
-path = "unity.html"
+path = "unity.heml"
 text_params = ["proj", "width", "height"]
 
 [algiers]
-path = "algiers.html"
+path = "algiers.heml"
 text_params = ["proj"]
 
 [godot]
-path = "godot.html"
+path = "godot.heml"
 text_params = ["proj", "width", "height"]
 
 [wsp]
-path = "wsp.html"
+path = "wsp.heml"
 text_params = ["proj", "num-pages"]

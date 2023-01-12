@@ -1,0 +1,9 @@
+<<base>>
+    title = "A Night in Algiers"
+    meta-desc = "A text adventure set in the world of Camus's The Stranger"
+    css = "none"
+
+    <<algiers>>
+        proj = "a-night-in-algiers"
+    <</algiers>>
+<</base>>

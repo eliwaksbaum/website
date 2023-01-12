@@ -2,13 +2,6 @@
     title = "%@%title%@%"
     meta-desc = "%@%meta-desc%@%"
     css = "css/blog.css"
-    <<insert>>
-        <div>
-            blog shit
-        </div>
-        %@%inside%@%
-        <div>
-            more blog shit
-        </div>
-    <</insert>>
+
+    %@%inside%@%
 <</base>>

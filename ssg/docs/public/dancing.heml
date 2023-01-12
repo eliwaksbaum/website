@@ -1,0 +1,9 @@
+<<base>>
+    title = "Dancing"
+    meta-desc = "Transcription of Dancing from Hello, Dolly!"
+    css = "css/music.css"
+    <<wsp>>
+        proj = "dancing"
+        num-pages = "4"
+    <</wsp>>
+<</base>>

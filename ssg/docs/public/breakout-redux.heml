@@ -1,0 +1,10 @@
+<<base>>
+    title = "Breakout Redux"
+    meta-desc = "Breakout built in Godot."
+    css = "css/unity.css"
+    <<godot>>
+        proj = "breakout-redux"
+        width = "71.68"
+        height = "40.32"
+    <</godot>>
+<</base>>

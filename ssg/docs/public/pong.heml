@@ -1,0 +1,10 @@
+<<base>>
+    title = "Pong"
+    meta-desc = "Pong built in Unity."
+    css = "css/unity.css"
+    <<unity>>
+        proj = "pong"
+        width = "71.68"
+        height = "41.32"
+    <</unity>>
+<</base>>

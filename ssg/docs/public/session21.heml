@@ -1,0 +1,8 @@
+<<base>>
+    title = "Session21"
+    meta-desc = "A space-noir text adventure."
+    css = "none"
+    <<algiers>>
+        proj = "session21"
+    <</algiers>>
+<</base>>

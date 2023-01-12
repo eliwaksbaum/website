@@ -1,0 +1,9 @@
+<<base>>
+    title = "Moses"
+    meta-desc = "Transcription of Moses from Singin' in the Rain"
+    css = "css/music.css"
+    <<wsp>>
+        proj = "moses"
+        num-pages = "5"
+    <</wsp>>
+<</base>>
