@@ -1,0 +1,10 @@
+<<base>> 
+    title = "Page Not Found"
+    meta-desc = ""
+    css = "none"
+
+    <div class="center-inline">
+        <h1>404</h1>
+        <h3>There's nothing here right now. But maybe one day.</h3>
+    </div>
+<</base>>

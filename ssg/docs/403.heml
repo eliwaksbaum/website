@@ -1,0 +1,10 @@
+<<base>> 
+    title = "Permission Denied"
+    meta-desc = ""
+    css = "none"
+
+    <div class="center-inline">
+        <h1>403</h1>
+        <h3>No peeking!</h3>
+    </div>
+<</base>>
