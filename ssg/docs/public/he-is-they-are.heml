@@ -1,0 +1,9 @@
+<<base>>
+    title = "He Is, They Are"
+    meta-desc = "Transcription of He Is, They Are by Harry Connick Jr."
+    css = "css/music.css"
+    <<wsp>>
+        proj = "he-is-they-are"
+        num-pages = "2"
+    <</wsp>>
+<</base>>

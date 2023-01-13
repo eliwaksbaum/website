@@ -1,0 +1,10 @@
+<<base>>
+    title = "%@%title%@%"
+    meta-desc = "%@%title%@%"
+    css = "css/blog.css"
+
+    <h1>%@%title%@%</h1>
+    <div class="date">%@%date%@%</div>
+    
+    %@%inside%@%
+<</base>>

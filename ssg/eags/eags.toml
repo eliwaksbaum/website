@@ -1,0 +1,35 @@
+[insert]
+path = "insert.txt"
+
+[dump]
+path = "dump.txt"
+file_params = ["file"]
+
+[head]
+path = "head.heml"
+text_params = ["title", "meta-desc"]
+file_params = ["css"]
+
+[base]
+path = "base.heml"
+text_params = ["title", "css", "meta-desc"]
+
+[unity]
+path = "unity.heml"
+text_params = ["proj", "width", "height"]
+
+[algiers]
+path = "algiers.heml"
+text_params = ["proj"]
+
+[godot]
+path = "godot.heml"
+text_params = ["proj", "width", "height"]
+
+[wsp]
+path = "wsp.heml"
+text_params = ["proj", "num-pages"]
+
+[blog]
+path = "blog.heml"
+text_params = ["title", "date"] #tags

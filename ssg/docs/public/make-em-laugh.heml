@@ -1,0 +1,9 @@
+<<base>>
+    title = "Make E'm Laugh"
+    meta-desc = "Transcription of Make 'Em Laugh' from Singin' in the Rain"
+    css = "css/music.css"
+    <<wsp>>
+        proj = "make-em-laugh"
+        num-pages = "4"
+    <</wsp>>
+<</base>>
