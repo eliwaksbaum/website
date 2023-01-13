@@ -1,3 +1,7 @@
 rocket/target/
-rocket/.com/
-!rocket/.com/public/res/
+
+rocket/.com/*
+!rocket/.com/public
+
+rocket/.com/public/*
+!rocket/.com/public/res

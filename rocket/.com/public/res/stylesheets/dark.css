@@ -1,0 +1,42 @@
+body {
+    color: rgb(235, 235, 235);
+    background-color: rgb(32, 32, 32);;
+}
+
+header{
+    color: rgb(32, 32, 32);;
+}
+
+table, th, td{
+    border: 1px solid rgb(235, 235, 235);
+}
+
+.shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+a.menu:hover, a.menu:focus{
+    color: rgb(235, 235, 235);
+}
+
+img.homelink{
+    box-shadow: 8px 8px 6px 0px rgba(0, 0, 0, 0.8)
+}
+
+span.spoiler{
+    background-color: rgb(235, 235, 235);
+}
+
+input, textarea{
+    border-color: rgb(235, 235, 235);
+}
+
+a.listing{
+    color: inherit;
+    text-decoration: none;
+}
+
+a.menu{
+    color: inherit;
+    text-decoration: none;
+}

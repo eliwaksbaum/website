@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="hamburger_dark.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 64.179771 40.719837"
+   height="40.719837mm"
+   width="64.179771mm">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="3"
+     inkscape:window-x="52"
+     inkscape:window-height="1020"
+     inkscape:window-width="1741"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="49.463073"
+     inkscape:cx="22.630202"
+     inkscape:zoom="1.979899"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-22.210437,-51.114293)"
+     style="opacity:0.997"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <rect
+       ry="1.5100293"
+       y="52.238194"
+       x="23.334341"
+       height="3.0200586"
+       width="61.931965"
+       id="rect833"
+       style="fill:#202020;fill-opacity:1;stroke:#202020;stroke-width:2.2478;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000" />
+    <rect
+       style="opacity:0.997;fill:#202020;fill-opacity:1;stroke:#202020;stroke-width:2.2478;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect833-1"
+       width="61.931969"
+       height="3.0200589"
+       x="23.334337"
+       y="69.96418"
+       ry="1.5100294" />
+    <rect
+       style="opacity:0.997;fill:#202020;fill-opacity:1;stroke:#202020;stroke-width:2.2478;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect833-5"
+       width="61.931969"
+       height="3.0200589"
+       x="23.334337"
+       y="87.69017"
+       ry="1.5100294" />
+  </g>
+</svg>
