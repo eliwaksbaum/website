@@ -20,6 +20,10 @@ ul{
     list-style: disc inside;
     /*hello*/
 }
+.date{
+    margin-top: 10px;
+    font-size: 150%;
+}
 .flexed{
     margin: 0 3vw;
 }
