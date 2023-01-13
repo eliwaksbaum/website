@@ -1,7 +1,9 @@
-rocket/target/
+ssg/target
 
-rocket/.com/*
-!rocket/.com/public
+.com/*
+!.com/src
+!.com/Cargo.*
+!.com/public
 
-rocket/.com/public/*
-!rocket/.com/public/res
+.com/public/*
+!.com/public/res
