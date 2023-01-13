@@ -4,6 +4,6 @@ pub mod heml;
 
 fn main()
 {
-    build("docs/", "../.com/public/");
+    build("docs/", "../.com/");
     println!("Build Succesful.")
 }

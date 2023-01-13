@@ -1,0 +1,25 @@
+<<blog>>
+    title = "LaTeX 2 SVG"
+    date = "04/01/2021"
+    #tags = "Programming"
+
+    <p>
+        This a simple little tool I made while converting my <a href="/projects/measuring-spoons/">Measuring Spoons</a> project to
+        html. I started out by using PanDoc in the hopes that it could take my pdf or odt file and produce a perfect html replication. 
+        That, of course, did not work, and I started fixing up most of it by hand. I didn't know how to go about the LaTeX, though, 
+        so I took a look at how PanDoc had tried it. They used img tags where the src was https://latex.codecogs.com/png.latex?
+        followed by some random looking string. So I googled it, and found Code Cog's <a target="_blank" href="https://www.codecogs.com/latex/eqneditor.php">LaTex equation editor</a>.
+        I didn't really want to have to ask another website to load my images for me, so I started messing around with it to see if I could just download the files myself. 
+        It didn't take long to figure out what string you needed to tack on to the end of that first address to get the desired 
+        equation. So I wrote a python script that would take a list of LaTeX equations, convert them into the right format, tack 
+        on a bit for the color and to say if it's display or inline, and then download the generated image from the url. Also, I switched from png
+        to svg because vector graphics rule.
+    </p>
+    <p>
+        I think it's pretty neat, because unlike some other projects I've done, this is a tool that I actually couldn't find anywhere else. 
+        I've built things myself for the practice, or because I thought it would be fun, but this is the first time I followed the pipeline of 
+        "Oh, I need this tool for this project" to "Can't find it anywhere, let me make it myself." And I think it's got the best chance of being useful to  
+        someone else out of anything I've made so far. So if you find yourself in need of displaying lots 
+        of LaTeX equations on your website and want to host the svg files locally, <a target="_blank" href="https://github.com/eliwaksbaum/latex2svg">this</a> might be just the tool you need.
+    </p>
+<</blog>>

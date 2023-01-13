@@ -1,0 +1,57 @@
+<<blog>>
+    title = "The Making of Pong"
+    date = "03/24/2021"
+    #tags = "Game Development, Unity"
+
+    <p>As I write this in March 2021, it's been almost a year since I started working with Unity. Nobody quite knew what
+        we were getting into at the time, and online companies were making a big show of offering their services for free
+        to give people something to do for the few weeks or months (surely it wouldn't be longer than that, right??) we were
+        all stuck at home. So when Adam Bohn (aka <a target="_blank"href="https://www.artix.com">Artix Krieger</a>, aka the creator of my <a target="_blank"href="https://www.dragonfable.com">favorite game of all time</a>, aka the
+        reason I'm interested in game development at all) tweeted that Harvard was offering courses on the edX platform, I thought
+        I'd take a look. There I found Colton Ogden's "CS50's Introduction to Game Development" course. It seemed absolutely perfect,
+        and I dove into the lectures. I quickly realized, though, that I wasn't so interested in making games in LOVE2D (no offense).
+        I really liked the idea of recreating iconic games as a way to learn, though, so I decided I would follow along in Unity.
+        I gave myself a quick Unity crashcourse (I highly recommend <a target="_blank"href="https://learn.unity.com/project/ruby-s-2d-rpg">this</a> tutorial for getting to know Unity's 2D features and <a target="_blank"href="https://learn.unity.com/project/beginner-gameplay-scripting">these</a> 
+        <a target="_blank"href="https://learn.unity.com/project/intermediate-gameplay-scripting">two</a> for a good C# primer) and then returned to lesson 1: Pong.</p>
+
+    <p>Sure, using Unity to make Pong is a little like using a cast iron skillet to make cereal, but making even a simple game is very complicated for a beginner
+        and I didn't want to bite off more than I could chew. Yes, this way you lose the chance to dig your hands into the guts of update loops, AABB collisions,
+        and calculating all your velocities, but I had a look at that stuff back in my Flash (I mean, Animate) days and I feel like I had a good enough understanding
+        to start using a higher level tool. I think I did ok for a first stab, though a year later I definitely have changes I would make.
+        Since I didn't take notes at the time, I thought I'd just open up the project, scroll through the code,
+        and write what I think.</p>
+        
+    <p>There are only five scripts here, and two do most of the heavy lifting, so let's just run through each of them. SoundEffect is my favorite. It does one
+        thing (play a sound on a collision) and it does it well, executing a unique behaviour on multiple GameObjects: A+. Next come Ball and ScoreBox, and both are also pretty simple: Satisfactory.
+        MessageBoard and Paddle, though, are a little more bloated. Here are the things that most itch at me to be changed, looking at them now.</p>
+
+    <h3>MessageBoard:</h3>
+    <ul>
+        <li>There's a string called currentstate, but it's only ever set as "serve" or "play", so it should really be a boolean called isServing.</li>
+        <li>I've got an else if block that should probably be a switch statement. Maybe I didn't know about switch yet, but I did it fine in the Ball scipt.</li>
+        <li>Most distressing, is the fact that this script is
+            responsible for removing the instructions text boxes that appear when you start the game. The Message Board and those instructions relate only in that they both
+            display text. There's no reason not to have a seperate component that hides the text when the player presses Enter for the first time.</li>
+    </ul>
+
+    <h3>Paddle:</h3>
+    <ul>
+        <li>It looks like I was too lazy to get the camera bounds in the part that prevents the paddles from exiting the screen, which would break if I ever decided
+            to resize the view. Unity really should make it easier to get the extents of the screen, though. I think AS3's stage object is what I miss most from Flash.</li>
+        <li>There was some game-breaking stuff happening in the ball-paddle collision that I had to fix, but I left the old version as comments. What's there now still isn't perfect
+            and it illustrates the drawback of using Unity for 2D games like this. There's a very powerful
+            and realistic physics engine at my disposal, but I hardly ever want purely realistic physics. Making things move how I want is definitely what I get most 
+            stuck on and frustrated over in Unity. Here the issue is that with purely realistic bounces, it's possible to get stuck with the ball moving in a straight line between
+            the paddles, which is boring. The old solution was to add a random vertical force, multiplied by a bounce scaler (even though the ball's material is already bouncy), but that really
+            messed with how the ball moved. Without spending too much time on it, I instead made it so the vertical velocity is adjusted directly a little on each bounce, 
+            so any flat bounce loops shouldn't last more than a few hits.</li>
+        <li>If you stomach it out to 10 points, you'll see the little dance they do! Not something I'd change, I just wanted to include a coroutine since it was one of the topics
+            in the intermediate C# tutorial I was using.</li>
+        <li>Displaying the score should probably be another component's job. The GameObject with the text could do it itself, getting the score either from the paddles
+            or a ScriptableObject they both are looking at.</li>
+    </ul>
+
+    <p>That's it I think. Very weird emotions knowing it's been a year. I feel like I do know much more about working in Unity and C# than I did a year ago,
+        but also wish I'd spent more of my ample free time in 2020 on it, learning even more. Well, onwards and upwards I guess.
+        Next up on CS50's syllabus is <a href="/projects/flappy-bird/notes/">Flappy Bird</a>!</p>
+<</blog>>

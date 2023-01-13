@@ -1,0 +1,67 @@
+<<blog>>
+    title = "The Making of Flappy Bird"
+    date = "04/02/2021"
+    #tags = "Game Development, Unity"
+
+    <p>After <a href="/projects/pong/">Pong</a>, the next game in the CS50G curriculum was Flappy Bird. It represents a huge jump in time (I was actually
+        alive when Flappy Bird came out), but I think it's a nice-sized step in terms of development. The project introduced me to
+        the idea of state and state machines, and it's a simple implementation of the recognizable
+        infinite-scroller-with-randomly-generated-obstacles genre. Since it's a step up from plain white rectangles, I took all the art and audio 
+        straight from the <a target="_blank" href="https://github.com/games50/fifty-bird">CS50G GitHub page</a> and stayed focused on the code. Again, I did the brunt of the work about a year ago, so this is 
+        all in retrospect. It's got quite a few more scripts than Pong, so I'll try to focus on the broader principles and ideas of 
+        the development, rather than examining every line of code. 
+        </p>
+    <h2>The State Machine</h2>
+    <p>The biggest lesson for this project is the idea of state, and the pattern of a state machine to keep track of it. 
+        Anyone who has tried to code their player character to jump has run into the issue of state. They tell the player to jump 
+        whenever the up key is pressed, and when they go to test it they see that they can make the player jump in mid-air, ascending 
+        off the screen into infinity. The issue is that they didn't really mean for the player to jump <i>whenever</i> the up key is 
+        pressed, only when the player is on the ground. So the behaviour of the character depends on its <i>state</i>, in this case 
+        whether or not it's on the ground. In this simple example, the game developer could just include an onGround boolean and call 
+        it a day, but as the number of and interaction between states gets greater and more complicated, they might want to use a state 
+        machine to keep track of it all.</p>
+    <p>In Flappy Bird, the states represent the stages of the game: the start screen, the countdown, playing, paused, and 
+        losing. The GameObjects need to behave and respond to player input very differently depending on the state. However, it's 
+        a simple enough set up that I'm not sure I was justified in implementing the state machine in the way that I did. I used a GameState class 
+        (which I assume I took from some tutorial) that has just three functions: Enter, Update, and Exit. An instance of this GameState 
+        class exists for every state, where all the logic for responding to input and switching between states lives. The GameController 
+        class then has a GameState variable called currentState, and each frame calls currentState's Update function. It's all very 
+        elegant and I really like how technically, the entire game loop consists of just a single update function and the ability to switch 
+        what that update function refers to.</p>
+    <p>However, when you look inside those GameState instances, things aren't quite so pretty. Since the GameController is 
+        the only one who knows the current state, it picks up a lot of extra responsibility. For example, the PlayState has code for 
+        setting the jumpPressed boolean for the Bird class (the player), since the space bar being pressed should only cause the bird 
+        to jump in the play state. I think ideally, the Bird class would handle that itself. I could imagine the bird, the pipes, 
+        the background, and the text displayer all having their own implementation of the state machine, all looking at some globally 
+        acessible variable representing the current state. But I also think that would be overkill for a game as simple as Flappy Bird. 
+        If I were making the game over today, I might just throw out the state machine all together and let each class fend for itself 
+        with a boolean or two. I appreciate the exposure to the idea, though. It's better to practice something like a state machine 
+        on a small, simple project that doesn't really need it rather than something huge that really does.
+        </p>
+    <h2>Coroutine and Yield</h2>
+    <p>In Pong, I used a coroutine to make the winning paddle do a little victory dance, just for fun. Here, I use one for 
+        one of the most important aspects of the game: spawning the pairs of pipes at random intervals and at random heights. The height 
+        can't be totally random, though, because then you'd end up with arrangements of pipes impossible for the player to navigate. 
+        The height of one pair is based on the height of that which preceded it, with a term of wiggle room called heightDifPerSecond, 
+        which I quite like. Since the time between spawning determines the horizontal distance between two pairs, the longer the 
+        wait, the larger the difference in heights can be without making it impossible to pass through both. So for every additional 
+        second, the possible range of heights gets bigger, which hopefully makes the game more dynamic and difficult.</p>
+    <p>The pipe-spawning coroutine also uses a CustomYieldInstruction. Instead of WaitForSeconds, which just yields the coroutine 
+        for x seconds, a CustomYieldInstruction allows you to set more complex instructions for when the coroutine should resume. Mine functions 
+        the same as WaitForSeconds, except for when the game is paused. Then it will basically stop the timer, and only start counting 
+        down again once the game resumes. I remember pausing the pipe spawner being one of the hardest parts of makng Flappy Bird, and I 
+        wonder if I initially had the PauseState handling the behaviour. The solution I landed on, which I'm pretty happy with, doesn't rely 
+        on the GameController and listens itself for the pause button to be pressed.</p>
+    <h2>Muting</h2>
+    <p>When I originally made this game I did not include the ability to mute the game or stop the music. As soon I tested 
+        putting it on the website I realized it was absolutely a necessity. Adding the feature reminded me yet again how much I like 
+        Unity's component-based workflow. All the audio components handle the audio and nothing else, so it was incredibly easy to 
+        do all this muting and un-muting work without touching any of the other functionality of the game. I bet if I were making a change 
+        to some other part of the game that I wrote myself, it would have been a lot more complicated. Also, if you really pore over 
+        the scripts you'll notice I use a ScriptableObject class called BoolValue to keep track of whether the game is muted or not. 
+        I have lots to say on ScriptableObjects and using them this way, but I'll delve into that next time.</p>
+    <p>
+        Speaking of next time, I think that's it for Flappy Bird. Coming up is another return to the 1970's, this time with multiple 
+    levels, high scores, and original artwork: <a href="/projects/breakout/notes/">Breakout</a>.
+    </p>
+<</blog>>

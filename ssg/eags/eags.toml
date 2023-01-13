@@ -29,3 +29,7 @@ text_params = ["proj", "width", "height"]
 [wsp]
 path = "wsp.heml"
 text_params = ["proj", "num-pages"]
+
+[blog]
+path = "blog.heml"
+text_params = ["title", "date"] #tags

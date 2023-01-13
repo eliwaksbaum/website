@@ -1,7 +1,10 @@
 <<base>>
     title = "%@%title%@%"
-    meta-desc = "%@%meta-desc%@%"
+    meta-desc = "%@%title%@%"
     css = "css/blog.css"
 
+    <h1>%@%title%@%</h1>
+    <h2>%@%date%@%</h2>
+    
     %@%inside%@%
 <</base>>
