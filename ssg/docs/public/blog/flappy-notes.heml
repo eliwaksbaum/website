@@ -3,7 +3,7 @@
     date = "04/02/2021"
     #tags = "Game Development, Unity"
 
-    <p>After <a href="/projects/pong/">Pong</a>, the next game in the CS50G curriculum was Flappy Bird. It represents a huge jump in time (I was actually
+    <p>After <a href="/pong.html">Pong</a>, the next game in the CS50G curriculum was Flappy Bird. It represents a huge jump in time (I was actually
         alive when Flappy Bird came out), but I think it's a nice-sized step in terms of development. The project introduced me to
         the idea of state and state machines, and it's a simple implementation of the recognizable
         infinite-scroller-with-randomly-generated-obstacles genre. Since it's a step up from plain white rectangles, I took all the art and audio 
@@ -62,6 +62,6 @@
         I have lots to say on ScriptableObjects and using them this way, but I'll delve into that next time.</p>
     <p>
         Speaking of next time, I think that's it for Flappy Bird. Coming up is another return to the 1970's, this time with multiple 
-    levels, high scores, and original artwork: <a href="/projects/breakout/notes/">Breakout</a>.
+    levels, high scores, and original artwork: <a href="/blog/breakout-notes.html">Breakout</a>.
     </p>
 <</blog>>

@@ -3,7 +3,7 @@
     date = "03/21/2022"
     #tags = "Website, Programming, Music"
 
-    <p>While I was finishing up my arrangement of <a href="/projects/make-em-laugh/">Make 'Em Laugh</a>, it occured to me that the pages on this website where 
+    <p>While I was finishing up my arrangement of <a href="/make-em-laugh.html">Make 'Em Laugh</a>, it occured to me that the pages on this website where 
     I show my music were, for a lack of a better word, bad. The score was shoved off to one side, the button to download the .mscz 
     file was enormous, and the pdf was displayed using an iframe to a google docs viewer. Looks aside, it also wasn't very functional. 
     The point of this website is to <s>show off</s> share projects that I've put time into and think 

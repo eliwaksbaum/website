@@ -4,7 +4,7 @@
     #tags = "Programming"
 
     <p>
-        This a simple little tool I made while converting my <a href="/projects/measuring-spoons/">Measuring Spoons</a> project to
+        This a simple little tool I made while converting my <a href="/measuring-spoons.html">Measuring Spoons</a> project to
         html. I started out by using PanDoc in the hopes that it could take my pdf or odt file and produce a perfect html replication. 
         That, of course, did not work, and I started fixing up most of it by hand. I didn't know how to go about the LaTeX, though, 
         so I took a look at how PanDoc had tried it. They used img tags where the src was https://latex.codecogs.com/png.latex?
