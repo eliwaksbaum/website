@@ -1,3 +1,10 @@
+<script src="/res/unity/%@%proj%@%/UnityLoader.js"></script>
+<script>
+    if (!UnityLoader.SystemInfo.mobile) {
+      UnityLoader.instantiate("unityContainer", "/res/unity/%@%proj%@%/%@%proj%@%.json");
+    }
+</script>
+
 <div class="center-inline">
     <div class="unity">
       <div id="unityContainer" style="width:%@%width%@%vw; height:%@%height%@%vw">
@@ -6,9 +13,3 @@
       </div>
     </div>
 </div>
-<script src="/res/unity/%@%proj%@%/UnityLoader.js"></script>
-<script>
-    if (!UnityLoader.SystemInfo.mobile) {
-      UnityLoader.instantiate("unityContainer", "/res/unity/%@%proj%@%/%@%proj%@%.json");
-    }
-</script>
