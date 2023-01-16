@@ -4,7 +4,7 @@
     justify-content: center;
     margin: 2%;
 }
-div.card{
+.listing{
     position: relative;
     flex: 1 1 400px;
     margin-bottom: 2%;
@@ -35,6 +35,8 @@ div.card:focus > span.card, div.card:hover > span.card{
 
 .drawer{
     display: none;
-    width: 200%;
-    outline: solid 5px red; 
+    position: relative;
+    top: 10px;
+    padding-top: 3%;
+    outline: solid 5px red;
 }
