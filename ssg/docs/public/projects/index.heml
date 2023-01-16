@@ -1,0 +1,35 @@
+<<base>>
+    title = "Projects"
+    meta-desc = "Projects"
+    css = "css/projects.css"
+    
+    <div class="center-inline">
+        <div class="card-holder">
+            <<card>>
+                proj-name = "session21"
+                display-name = "Session21"
+            <</card>>
+            <<card>>
+                proj-name = "aoc"
+                display-name = "Advent of Code"
+            <</card>>
+            <<card>>
+                proj-name = "breakout"
+                display-name = "Breakout"
+            <</card>>
+            <<card>>
+                proj-name = "ania"
+                display-name = "A Night in Algiers"
+            <</card>>
+            <<card>>
+                proj-name = "breakout-redux"
+                display-name = "Breakout Redux"
+            <</card>>
+            <<card>>
+                proj-name = "website"
+                display-name = "Website"
+            <</card>>
+        </div>
+    </div>
+    <script src="/res/js/projects.js"></script>
+<</base>>

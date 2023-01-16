@@ -33,3 +33,7 @@ text_params = ["proj", "num-pages"]
 [blog]
 path = "blog.heml"
 text_params = ["title", "date"] #tags
+
+[card]
+path = "project-card.heml"
+text_params = ["proj-name", "display-name"]

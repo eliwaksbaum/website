@@ -1,0 +1,38 @@
+.card-holder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2%;
+}
+div.card{
+    position: relative;
+    flex: 1 1 400px;
+    margin-bottom: 2%;
+    padding: 0 1%;
+    user-select: none;
+}
+span.card{
+    display: none;
+    color: rgb(255, 255, 255);
+    font-size: 200%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+img.card{
+    width: 100%;
+    height: auto;
+}
+div.card:focus > img.card, div.card:hover > img.card{
+    filter: blur(1px) contrast(0.8) grayscale(0.1) brightness(0.8)
+}
+div.card:focus > span.card, div.card:hover > span.card{
+    display: inline;
+}
+
+.drawer{
+    display: none
+}
