@@ -1,9 +1,14 @@
-<div class="card">
-    <div class="card" onclick="openDrawer('%@%proj-name%@%-drawer')">
+<div class="card" style="order:0">
+    <div onclick="openDrawer('%@%proj-name%@%-drawer')">
         <img src="/res/svg/cards/%@%proj-name%@%.svg" class="card">
         <span class="card">%@%display-name%@%</span>
     </div>
-</div>
-<div id="%@%proj-name%@%-drawer" class="drawer">
-    BLAHHHH
+    <div id="%@%proj-name%@%-drawer" class="drawer">
+        <div>BLAHHHH</div>
+        <div>BLAHHHH</div>
+        <div>BLAHHHH</div>
+        <div>BLAHHHH</div>
+        <div>BLAHHHH</div>
+        <div>BLAHHHH</div>
+    </div>
 </div>

@@ -34,5 +34,7 @@ div.card:focus > span.card, div.card:hover > span.card{
 }
 
 .drawer{
-    display: none
+    display: none;
+    width: 200%;
+    outline: solid 5px red; 
 }
