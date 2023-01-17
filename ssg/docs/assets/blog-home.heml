@@ -1,0 +1,9 @@
+<<base>>
+    title = "Blog"
+    meta-desc = "Eli Waksbaum's blog."
+    css = "none"
+
+    <div>
+        PREVIEWS_HERE
+    </div>
+<</base>>

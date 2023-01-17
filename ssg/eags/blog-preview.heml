@@ -1,0 +1,7 @@
+<div>
+    <a href="%@%link%@%">%@%header%@%</a>
+    <p>
+        %@%preview%@%
+    </p>
+    <a href="%@%link%@%">Read More</a>
+</div>
