@@ -3,7 +3,7 @@ let holder = document.getElementById("holder");
 
 window.addEventListener("resize", (e) => { sizeDrawer(); })
 
-function toggleDrawer(card, drawer_id)
+function toggleDrawer(drawer_id)
 {
     let drawer = document.getElementById(drawer_id);
     if (drawer.style.display == "block")
@@ -27,16 +27,16 @@ function sizeDrawer()
 {
     if (cur_open != null)
     {   
-        let cur_listing = cur_open.parentElement;
+        let cur_card = cur_open.previousElementSibling;
 
         let holder_rect = holder.getBoundingClientRect();
-        let listing_rect = cur_listing.getBoundingClientRect();
-        let card_rect = cur_open.previousElementSibling.getBoundingClientRect();
+        let card_rect = cur_card.getBoundingClientRect();
 
-        let scale = (holder_rect.width / (listing_rect.width));
+        let scale = .98 * (holder_rect.width / (card_rect.width));
+        let left_hand_error = card_rect.left - holder_rect.left;
+        let right_hand_error = (holder_rect.width - (card_rect.width * scale)) / 2;
+
         cur_open.style.width = `${scale * 100}%`;
-        cur_open.style.right = `${.98 * (listing_rect.left - holder_rect.left)}px`;
-        //cur_open.style.left = `${.98 * (holder_rect.right - (listing_rect.left + (card_rect.width * scale)))}px`;
-        console.log(holder_rect.right,  listing_rect.left + (card_rect.width * scale));
+        cur_open.style.right = `${left_hand_error - right_hand_error}px`;
     }
 }

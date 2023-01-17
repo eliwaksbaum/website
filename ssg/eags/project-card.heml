@@ -1,5 +1,5 @@
 <div class="listing" style="order:0">
-    <div onclick="toggleDrawer(this, '%@%proj-name%@%-drawer')" class="card">
+    <div onclick="toggleDrawer('%@%proj-name%@%-drawer')" class="card">
         <img src="/res/svg/cards/%@%proj-name%@%.svg" class="card">
         <span class="card">%@%display-name%@%</span>
     </div>

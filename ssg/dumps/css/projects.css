@@ -5,11 +5,14 @@
     margin: 2%;
 }
 .listing{
-    position: relative;
+    /*position: relative;*/
     flex: 1 1 400px;
     margin-bottom: 2%;
     padding: 0 1%;
     user-select: none;
+}
+div.card{
+    position:relative
 }
 span.card{
     display: none;
@@ -37,6 +40,6 @@ div.card:focus > span.card, div.card:hover > span.card{
     display: none;
     position: relative;
     top: 10px;
-    padding-top: 3%;
+    padding: 3% 0;
     outline: solid 5px red;
 }
