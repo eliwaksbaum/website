@@ -115,17 +115,11 @@ fn generate_eag_realization<'a>(eag: &'a Eag, args: &EagArgs, inside_text: &str,
 {
     let mut rlz = EagRealization::new();
 
-    let text_result = match &eag.text_params
-    {
-        Some(params) => place_text_params_into_realization(&params, args, &mut rlz),
-        None => Ok(())
-    };
+    let text_result = eag.text_params.as_ref()
+        .map_or_else(|| Ok(()), |params| place_text_params_into_realization(&params, args, &mut rlz));
 
-    let file_result = match &eag.file_params
-    {
-        Some(params) => place_file_params_into_realization(&params, args, &mut rlz, cache),
-        None => Ok(())
-    };
+    let file_result = eag.file_params.as_ref()
+        .map_or_else(|| Ok(()), |params| place_file_params_into_realization(&params, args, &mut rlz, cache));
 
     rlz.insert(String::from("%@%inside%@%"), inside_text.to_string());
 
