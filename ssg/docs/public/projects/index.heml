@@ -6,8 +6,8 @@
     <div class="center-inline">
         <div class="card-holder" id="holder">
             <<card>>
-                proj-name = "session21"
-                display-name = "Session21"
+                proj-name = "ania"
+                display-name = "A Night in Algiers"
             <</card>>
             <<card>>
                 proj-name = "aoc"
@@ -18,12 +18,32 @@
                 display-name = "Breakout"
             <</card>>
             <<card>>
-                proj-name = "ania"
-                display-name = "A Night in Algiers"
-            <</card>>
-            <<card>>
                 proj-name = "breakout-redux"
                 display-name = "Breakout Redux"
+            <</card>>
+            <<card>>
+                proj-name = "clarinet"
+                display-name = "Clarinet Arrangements"
+            <</card>>
+            <<card>>
+                proj-name = "flappy-bird"
+                display-name = "Flappy Bird"
+            <</card>>
+            <<card>>
+                proj-name = "measuring-spoons"
+                display-name = "Measuring Spoons"
+            <</card>>
+            <<card>>
+                proj-name = "pong"
+                display-name = "Pong"
+            <</card>>
+            <<card>>
+                proj-name = "session21"
+                display-name = "Session21"
+            <</card>>
+            <<card>>
+                proj-name = "webscore"
+                display-name = "WebScore Player"
             <</card>>
             <<card>>
                 proj-name = "website"
