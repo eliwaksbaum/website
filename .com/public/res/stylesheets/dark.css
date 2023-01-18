@@ -1,6 +1,6 @@
 body {
     color: rgb(235, 235, 235);
-    background-color: rgb(32, 32, 32);;
+    background-color: rgb(32, 32, 32);
 }
 
 header{
@@ -39,4 +39,13 @@ a.listing{
 a.menu{
     color: inherit;
     text-decoration: none;
+}
+
+/*Blog Home*/
+.post{
+    background-color: rgb(50, 50, 50);
+}
+.read{
+    background-color: rgb(32, 32, 32);
+    color: rgb(235, 235, 235);
 }

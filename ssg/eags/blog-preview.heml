@@ -1,7 +1,8 @@
-<div>
-    <a href="%@%link%@%">%@%header%@%</a>
-    <p>
+<div class="post">
+    <a href="%@%link%@%" class="header">%@%header%@%</a>
+    <div class="preview">
         %@%preview%@%
-    </p>
-    <a href="%@%link%@%">Read More</a>
+    </div>
+    <a href="%@%link%@%" class="read">Read More</a>
+    <div>TAGS_HERE</div>
 </div>

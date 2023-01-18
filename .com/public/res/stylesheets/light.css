@@ -40,3 +40,12 @@ a.menu{
     color: inherit;
     text-decoration: none;
 }
+
+/*Blog Home*/
+.post{
+    background-color: rgb(215, 215, 215);
+}
+.read{
+    background-color: rgb(250, 250, 250);
+    color: rgb(32, 32, 32);;
+}

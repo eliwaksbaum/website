@@ -1,5 +1,6 @@
 use serde::Serialize;
 use std::fs;
+use std::iter::once;
 use std::path::{Path, PathBuf};
 use std::collections::HashMap;
 use chrono::NaiveDate;
@@ -54,8 +55,13 @@ fn gen_preview_html(path: &Path, template: &str, dir: &Path) -> (String, NaiveDa
         .unwrap_or_else(|search| panic!("Reconaissance failed while looking for \"{}\" in \"{:?}\".", search, path));
 
     let header = &html[info.header_open..=info.header_close];
-    let prev = &html[info.header_close+1..info.header_close+100];
     let link = path.strip_prefix(dir).expect("The blog dir prefix won't strip from a blog file.").as_os_str();
+    //let prev = &html[info.header_close+1..info.header_close+100];
+    let prev = &html[(info.header_close + 1)..]
+        .split_ascii_whitespace()
+        .take(50)
+        .chain(once("..."))
+        .fold(String::new(), |a ,b| a + b + " ");
 
     let rlz = HashMap::from([
         ("%@%header%@%", header),

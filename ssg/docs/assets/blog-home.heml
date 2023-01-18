@@ -1,9 +1,14 @@
 <<base>>
     title = "Blog"
     meta-desc = "Eli Waksbaum's blog."
-    css = "none"
+    css = "css/blog-home.css"
 
-    <div>
-        PREVIEWS_HERE
+    <div class="blog-flex">
+        <div class="post-holder">
+            PREVIEWS_HERE
+        </div>
+        <div class="tags-holder">
+            TAGS_HERE
+        </div>
     </div>
 <</base>>
