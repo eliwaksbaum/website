@@ -1,7 +1,7 @@
 <<blog>>
     title = "Advent of Code 2021"
     date = "12/30/2021"
-    #tags = "Programming, Advent of Code"
+    tags = ["Programming", "Advent of Code"]
 
     <p>This was the first year I heard about Advent of Code. It sounded like it would be a lot of fun and it absolutely was. 
         I really liked the variety in skillsets and approaches the puzzles demanded. Some days I was graphing quadratic inequalites and others 

@@ -9,10 +9,27 @@ struct Eag
 {
     path: String,
     text_params: Option<Vec<String>>,
-    file_params: Option<Vec<String>>
+    file_params: Option<Vec<String>>,
+    list_params: Option<Vec<ListParam>>
+}
+#[derive(Deserialize)]
+struct ListParam
+{
+    name: String,
+    wrapper: String,
+    join: String
+}
+
+type EagCall = HashMap<String, EagArg>;
+#[derive(Deserialize)]
+#[serde(untagged)]
+enum EagArg
+{
+    Text(String),
+    List(Vec<String>)
 }
 type EagRealization = HashMap<String, String>;
-type EagArgs = HashMap<String, String>;
+
 type FileCache= HashMap<String, String>;
 
 pub fn build(read_dir: &str, write_dir: &str)
@@ -52,11 +69,6 @@ fn build_dir(dir: &Path, read_base: &Path, write_base: &Path, table: &EagTable, 
 fn generate_page(read_path: &Path, table: &EagTable, cache: &mut FileCache) -> String
 {
     let heml = fs::read_to_string(read_path).unwrap_or_else(|_| panic!("Could not open {:?}.", &read_path));
-    
-    // if &heml[0..2] != "<<"
-    // {
-    //     panic!("Failed to parse {:?}. HEML files must start with a double-angle-bracketed eag.", read_path);
-    // }
 
     parse(heml, table, cache).unwrap_or_else(|m| panic!("Parsing of {:?} failed while {}", read_path, m))
 }
@@ -87,7 +99,7 @@ fn parse(mut heml: String, table: &EagTable, cache: &mut FileCache) -> Result<St
 
     let close_close = close_open + eag_name.len() + 5;
 
-    let args: EagArgs = match toml::from_str(&heml[(open_close + 2)..toml_end]) {
+    let call: EagCall = match toml::from_str(&heml[(open_close + 2)..toml_end]) {
         Ok(a) => a,
         Err(e) => { return Err(String::from("Parsing <<") + eag_name + ">>'s arguments. Here's the toml error: " + &e.to_string()) }
     };
@@ -97,9 +109,9 @@ fn parse(mut heml: String, table: &EagTable, cache: &mut FileCache) -> Result<St
         None => { return Err(String::from("Looking for <<") + eag_name + ">> in the eag table. Are you sure it's spelled right?") }
     };
 
-    let rlz = match generate_eag_realization(eag, &args, &heml[toml_end..close_open], cache) {
+    let rlz = match generate_eag_realization(eag, &call, &heml[toml_end..close_open], cache) {
         Ok(r) => r,
-        Err(param) => { return Err(String::from("Generating a realization of <<") + eag_name + ">>. Could not find required argument " + param + ".") }
+        Err(param) => { return Err(String::from("Generating a realization of <<") + eag_name + ">>. Required argument " + param + " is missing or misformatted.") }
     };
 
     let eag_doc = read_eag_doc(&eag.path);
@@ -111,29 +123,32 @@ fn parse(mut heml: String, table: &EagTable, cache: &mut FileCache) -> Result<St
     parse(heml, table, cache)
 }
 
-fn generate_eag_realization<'a>(eag: &'a Eag, args: &EagArgs, inside_text: &str, cache: &mut FileCache) -> Result<EagRealization, &'a str>
+fn generate_eag_realization<'a>(eag: &'a Eag, call: &EagCall, inside_text: &str, cache: &mut FileCache) -> Result<EagRealization, &'a str>
 {
     let mut rlz = EagRealization::new();
+    rlz.insert(String::from("{{inside}}"), inside_text.to_string());
 
-    let text_result = eag.text_params.as_ref()
-        .map_or_else(|| Ok(()), |params| place_text_params_into_realization(&params, args, &mut rlz));
-
-    let file_result = eag.file_params.as_ref()
-        .map_or_else(|| Ok(()), |params| place_file_params_into_realization(&params, args, &mut rlz, cache));
-
-    rlz.insert(String::from("%@%inside%@%"), inside_text.to_string());
-
-    text_result.and(file_result).map(|_| rlz)
+    eag.text_params.as_ref()
+        .map_or_else(|| Ok(()), |params| place_text_params_into_realization(&params, call, &mut rlz))
+        .and_then(|_|
+            eag.file_params.as_ref()
+                .map_or_else(|| Ok(()), |params| place_file_params_into_realization(&params, call, &mut rlz, cache))
+        )
+        .and_then(|_|
+            eag.list_params.as_ref()
+                .map_or_else(|| Ok(()), |params| place_list_params_into_realization(&params, call, &mut rlz))
+        )
+        .map(|_| rlz)
 }
 
-fn place_text_params_into_realization<'a>(params: &'a Vec<String>, args: &EagArgs, rlz: &mut EagRealization) -> Result<(), &'a str>
+fn place_text_params_into_realization<'a>(params: &'a Vec<String>, call: &EagCall, rlz: &mut EagRealization) -> Result<(), &'a str>
 {
     for p in params
     {
-        match args.get(p)
+        match call.get(p)
         {
-            Some(arg) => { rlz.insert(text_paramify(p), arg.clone()); }
-            None => { return Err(p); }
+            Some(EagArg::Text(arg)) => { rlz.insert(text_paramify(p), arg.clone()); }
+            _ => { return Err(p); }
         }
     }
     Ok(())
@@ -141,20 +156,20 @@ fn place_text_params_into_realization<'a>(params: &'a Vec<String>, args: &EagArg
 
 fn text_paramify(p: &str) -> String
 {
-    String::from("%@%") + p + "%@%"
+    String::from("{{") + p + "}}"
 }
 
-fn place_file_params_into_realization<'a>(params: &'a Vec<String>, args: &EagArgs, rlz: &mut EagRealization, cache: &mut FileCache) -> Result<(), &'a str>
+fn place_file_params_into_realization<'a>(params: &'a Vec<String>, call: &EagCall, rlz: &mut EagRealization, cache: &mut FileCache) -> Result<(), &'a str>
 {
     for p in params
     {
-        match args.get(p)
+        match call.get(p)
         {
-            Some(path) => {
+            Some(EagArg::Text(path)) => {
                 let file_text = cache.entry(path.clone()).or_insert_with(|| read_dump_doc(&path));
                 rlz.insert(file_paramify(p), file_text.clone());
             },
-            None => { return Err(p); }
+            _ => { return Err(p); }
         }
     }
     Ok(())
@@ -168,7 +183,33 @@ fn read_dump_doc(path: &str) -> String
 
 fn file_paramify(p: &str) -> String
 {
-    String::from("@%@") + p + "@%@"
+    String::from("@@") + p + "@@"
+}
+
+fn place_list_params_into_realization<'a>(params: &'a Vec<ListParam>, call: &EagCall, rlz: &mut EagRealization) -> Result<(), &'a str>
+{
+    for p in params
+    {
+        match call.get(&p.name)
+        {
+            Some(EagArg::List(items)) => { rlz.insert(list_paramify(&p.name), get_list_insert(p, items)); },
+            _ => { return Err(&p.name); }
+        }
+    }
+    Ok(())
+}
+
+fn get_list_insert(param: &ListParam, items: &Vec<String>) -> String
+{
+    items.iter()
+        .map(|i| param.wrapper.replace(&(String::from("{{") + &param.name + "}}"), i))
+        .reduce(|a, b| a + &param.join + &b)
+        .unwrap_or_default()
+}
+
+fn list_paramify(p: &str) -> String
+{
+    String::from("[[") + p + "]]"
 }
 
 fn read_eag_doc(path: &str) -> String

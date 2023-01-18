@@ -1,9 +1,9 @@
 <div class="listing" style="order:0">
-    <div onclick="toggleDrawer('%@%proj-name%@%-drawer')" class="card">
-        <img src="/res/svg/cards/%@%proj-name%@%.svg" class="card">
-        <span class="card">%@%display-name%@%</span>
+    <div onclick="toggleDrawer('{{proj-name}}-drawer')" class="card">
+        <img src="/res/svg/cards/{{proj-name}}.svg" class="card">
+        <span class="card">{{display-name}}</span>
     </div>
-    <div id="%@%proj-name%@%-drawer" class="drawer">
+    <div id="{{proj-name}}-drawer" class="drawer">
         <div>BLAHHHH</div>
         <div>BLAHHHH</div>
         <div>BLAHHHH</div>

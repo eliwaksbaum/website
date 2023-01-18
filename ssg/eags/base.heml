@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <<head>>
-        title = "%@%title%@%"
-        meta-desc = "%@%meta-desc%@%"
-        css = "%@%css%@%"
+        title = "{{title}}"
+        meta-desc = "{{meta-desc}}"
+        css = "{{css}}"
     <</head>>
 
     <<dump>> file = "header.html" <</dump>>
 
     <div class="content">
-    %@%inside%@%
+    {{inside}}
     </div>
 
     <<dump>> file = "footer.html" <</dump>>

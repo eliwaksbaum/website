@@ -1,7 +1,7 @@
 <<blog>>
     title = "The Making of Breakout, Again"
     date = "11/11/2021"
-    #tags = "Game Development, Godot"
+    tags = ["Game Development", "Godot"]
 
     <p>I've been interested in learning to use Godot ever since I found out ByttenStudios was using it for their new game. A fully-featured
         open-source game engine! So exciting. The thing was, I was a little nervous to try out a new editor. I had spent so much time 

@@ -1,8 +1,8 @@
 <div class="post">
-    <a href="%@%link%@%" class="header">%@%header%@%</a>
+    <a href="{{link}}" class="header">{{header}}</a>
     <div class="preview">
-        %@%preview%@%
+        {{preview}}
     </div>
-    <a href="%@%link%@%" class="read">Read More</a>
-    <div>TAGS_HERE</div>
+    <a href="{{link}}" class="read">Read More</a>
+    {{tags}}
 </div>

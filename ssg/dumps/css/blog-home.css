@@ -1,7 +1,7 @@
 h1{
     font-size: 200%;
 }
-a.header, a.header:visited{
+a.header, a.header:visited, .tags > a, .tags > a:visited{
     color: rgb(100, 110, 250)
 }
 .date{
@@ -32,4 +32,6 @@ div.preview > *{
     border-radius: 4px;
     text-decoration: none;
     margin-bottom: 20px;
+    display: block;
+    width: fit-content;
 }

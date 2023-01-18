@@ -5,11 +5,11 @@
     <script src="/res/js/mobile.js"></script>
     <link id="theme" rel="stylesheet">
     <script>findCss();</script>
-    <title>%@%title%@%</title>
-    <meta name="description" content="%@%meta-desc%@%">
+    <title>{{title}}</title>
+    <meta name="description" content="{{meta-desc}}">
     <style>
         <<dump>> file = "css/base.css" <</dump>>
-        @%@css@%@
+        @@css@@
     </style>
     <inside></inside>
 </head>

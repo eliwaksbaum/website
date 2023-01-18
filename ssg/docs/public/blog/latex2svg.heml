@@ -1,7 +1,7 @@
 <<blog>>
     title = "LaTeX 2 SVG"
     date = "04/01/2021"
-    #tags = "Programming"
+    tags = ["Programming", "LaTex2SVG"]
 
     <p>
         This a simple little tool I made while converting my <a href="/measuring-spoons.html">Measuring Spoons</a> project to

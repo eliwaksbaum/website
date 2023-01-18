@@ -1,10 +1,14 @@
 <<base>>
-    title = "%@%title%@%"
-    meta-desc = "%@%title%@%"
+    title = "{{title}}"
+    meta-desc = "{{title}}"
     css = "css/blog.css"
 
-    <h1>%@%title%@%</h1>
-    <div class="date">%@%date%@%</div>
+    <h1>{{title}}</h1>
+    <div class="date">{{date}}</div>
     
-    %@%inside%@%
+    {{inside}}
+
+    <div class="tags">
+        Tags: [[tags]]
+    </div>
 <</base>>

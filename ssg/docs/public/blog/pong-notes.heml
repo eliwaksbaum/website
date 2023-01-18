@@ -1,7 +1,7 @@
 <<blog>>
     title = "The Making of Pong"
     date = "03/24/2021"
-    #tags = "Game Development, Unity"
+    tags = ["Game Development", "Unity"]
 
     <p>As I write this in March 2021, it's been almost a year since I started working with Unity. Nobody quite knew what
         we were getting into at the time, and online companies were making a big show of offering their services for free

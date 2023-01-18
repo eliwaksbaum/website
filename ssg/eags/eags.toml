@@ -32,7 +32,13 @@ text_params = ["proj", "num-pages"]
 
 [blog]
 path = "blog.heml"
-text_params = ["title", "date"] #tags
+text_params = ["title", "date"]
+
+[[blog.list_params]]
+name = "tags"
+wrapper = '<a href="/blog/tag/{{tags}}">{{tags}}</a>'
+join = ", "
+
 
 [card]
 path = "project-card.heml"

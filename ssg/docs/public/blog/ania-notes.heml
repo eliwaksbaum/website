@@ -1,7 +1,7 @@
 <<blog>>
     title = "The Making of A Night in Algiers"
     date = "06/30/2021"
-    #tags = "Game Development, Algiers"
+    tags = ["Game Development", "Algiers"]
 
     <h2>Background</h2>
     <p>In junior year of high school I chose to write my independent thesis on Albert Camus' <i>The Stranger</i>. I may have 

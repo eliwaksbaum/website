@@ -1,7 +1,7 @@
 <<blog>>
     title = "Welcome to my Website!"
     date = "04/05/2021"
-    #tags = "Website, Programming"
+    tags = ["Website", "Programming"]
     
     <p>
         If you're reading this, then it's working! Isn't that cool? I'm writing these words on my computer, but I'm going to 

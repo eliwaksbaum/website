@@ -1,1 +1,1 @@
-<iframe id="console" style="width: 70vw; height: 70vh" scrolling="no" src="/res/blazor/%@%proj%@%/" frameborder="0"></iframe>
+<iframe id="console" style="width: 70vw; height: 70vh" scrolling="no" src="/res/blazor/{{proj}}/" frameborder="0"></iframe>

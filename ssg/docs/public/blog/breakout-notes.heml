@@ -1,7 +1,7 @@
 <<blog>>
     title = "The Making of Breakout"
     date = "05/26/2021"
-    #tags = "Game Development, Unity"
+    tags = ["Game Development", "Unity"]
 
     <p>
     Breakout, or as I knew it, Brick Breaker, used to be my favorite video game. It was about the only video game I knew for 

@@ -1,7 +1,7 @@
 <<blog>>
     title = "The Making of Session21"
     date = "02/17/2022"
-    #tags = "Game Development, Algiers"
+    tags = ["Game Development", "Algiers"]
     
     <p>
     I've been working on this one for a while now. Not continuously, but ever since I wrapped up A Night in Algiers it's 

@@ -1,7 +1,7 @@
 <<blog>>
     title = "The Making of Flappy Bird"
     date = "04/02/2021"
-    #tags = "Game Development, Unity"
+    tags = ["Game Development", "Unity"]
 
     <p>After <a href="/pong.html">Pong</a>, the next game in the CS50G curriculum was Flappy Bird. It represents a huge jump in time (I was actually
         alive when Flappy Bird came out), but I think it's a nice-sized step in terms of development. The project introduced me to

@@ -1,7 +1,7 @@
 <<blog>>
     title = "Advent of Code 2022"
     date = "01/04/2023"
-    #tags = "Programming, Advent of Code"
+    tags = ["Programming", "Advent of Code"]
 
     <p>
     Advent of code! Again, I had so much fun with these problems. I did it in C# this time since I've gotten over my fear of compiling. 

@@ -12,11 +12,12 @@ struct Preview
     html: String
 }
 
-struct HtmlInfo
+struct HtmlInfo<'a>
 {
-    header_open: usize,
-    header_close: usize,
-    date: NaiveDate
+    header: &'a str,
+    date: NaiveDate,
+    tags: &'a str,
+    prev_start: usize
 }
 
 pub fn prepare_previews(blog_dir: &str, template_path: &str, write_path: &str)
@@ -54,42 +55,55 @@ fn gen_preview_html(path: &Path, template: &str, dir: &Path) -> (String, NaiveDa
     let info = get_info(&html)
         .unwrap_or_else(|search| panic!("Reconaissance failed while looking for \"{}\" in \"{:?}\".", search, path));
 
-    let header = &html[info.header_open..=info.header_close];
+    
     let link = path.strip_prefix(dir).expect("The blog dir prefix won't strip from a blog file.").as_os_str();
     //let prev = &html[info.header_close+1..info.header_close+100];
-    let prev = &html[(info.header_close + 1)..]
+    let prev = &html[info.prev_start..]
         .split_ascii_whitespace()
         .take(50)
         .chain(once("..."))
         .fold(String::new(), |a ,b| a + b + " ");
 
     let rlz = HashMap::from([
-        ("%@%header%@%", header),
-        ("%@%link%@%", link.to_str().expect("There's a blog whose link isn't UTF-8.")),
-        ("%@%preview%@%", prev),
+        ("{{header}}", info.header),
+        ("{{link}}", link.to_str().expect("There's a blog whose link isn't UTF-8.")),
+        ("{{preview}}", prev),
+        ("{{tags}}", info.tags)
     ]);
 
     (insert(template, &rlz), info.date)
 }
 
-fn get_info(html: &str) -> Result<HtmlInfo, &str>
+fn get_info<'a>(html: &'a str) -> Result<HtmlInfo<'a>, &str>
 {
-    let h1_open_open = match html.find("<h1>") {
+    let h1_open = match html.find("<h1>") {
         Some(i) => i,
-        None => { return Err("<h1>"); }
+        None => { return Err("The <h1> opening tag"); }
     };
+
     let date_open_open = match html.find("<div class=\"date\">") {
         Some(i) => i,
-        None => { return Err("<div class=\"date\">"); }
+        None => { return Err("The date <div class=\"date\"> opening tag"); }
     };
     let date_close_open = match (&html[date_open_open..]).find("</div>") {
         Some(i) => date_open_open + i,
-        None => { return Err("</div>") }
+        None => { return Err("The date </div> closing tag") }
     };
 
-    let a_date = NaiveDate::parse_from_str(&html[(date_open_open + 18)..date_close_open], "%m/%d/%Y").unwrap();
+    let tags_open = match html.find("<div class=\"tags\">") {
+        Some(i) => i,
+        None => { return Err("The tags <div class=\"tags\"> opening tag"); }
+    };
+    let tags_close = match (&html[tags_open..]).find("</div>") {
+        Some(i) => tags_open + i + 6,
+        None => { return Err("The tags </div> closing tag") }
+    };
 
-    Ok(HtmlInfo { header_open: h1_open_open, header_close: date_close_open + 6, date: a_date })
+    let a_header = &html[h1_open..=(date_close_open + 6)];
+    let a_date = NaiveDate::parse_from_str(&html[(date_open_open + 18)..date_close_open], "%m/%d/%Y").unwrap();
+    let a_tags = &html[tags_open..=tags_close];
+
+    Ok(HtmlInfo { header: a_header, date: a_date, tags: a_tags, prev_start: date_close_open + 7 })
 }
 
 fn insert(template: &str, rlz: &HashMap<&str, &str>) -> String
