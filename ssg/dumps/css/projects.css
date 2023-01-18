@@ -40,6 +40,17 @@ div.card:focus > span.card, div.card:hover > span.card{
     display: none;
     position: relative;
     top: 10px;
-    padding: 3% 0;
     outline: solid 5px red;
+    margin-bottom: 1%;
+}
+
+@media(max-width:800px) {
+    .drawer{
+        margin-bottom: 3%;
+    }
+}
+@media(max-width:400px) {
+    .drawer{
+        margin-bottom: 5%;
+    }
 }
