@@ -1,4 +1,5 @@
 pub mod heml;
+pub mod blog;
 
 fn main()
 {
@@ -10,7 +11,7 @@ fn main()
     println!("  ..Done");
 
     println!("  Preparing Blog Previews");
-    heml::blog::prepare_previews("docs/public/blog/", "eags/blog-preview.heml", "../.com/assets/blog-previews.toml");
+    blog::prepare_previews("docs/public/blog/", "eags/blog-preview.heml", "../.com/assets/blog-previews.toml");
     println!("  ..Done");
 
     println!("..Done");

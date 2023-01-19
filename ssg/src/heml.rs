@@ -4,29 +4,27 @@ use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use serde::Deserialize;
 
-pub mod blog;
-
 type EagTable = HashMap<String, Eag>;
 #[derive(Deserialize)]
 pub struct Eag
 {
-    path: String,
-    text_params: Option<Vec<String>>,
-    file_params: Option<Vec<String>>,
-    list_params: Option<Vec<ListParam>>
+    pub path: String,
+    pub text_params: Option<Vec<String>>,
+    pub file_params: Option<Vec<String>>,
+    pub list_params: Option<Vec<ListParam>>
 }
 #[derive(Deserialize)]
-struct ListParam
+pub struct ListParam
 {
-    name: String,
-    wrapper: String,
-    join: String
+    pub name: String,
+    pub wrapper: String,
+    pub join: String
 }
 
-type EagCall = HashMap<String, EagArg>;
+pub type EagCall = HashMap<String, EagArg>;
 #[derive(Deserialize)]
 #[serde(untagged)]
-enum EagArg
+pub enum EagArg
 {
     Text(String),
     List(Vec<String>)
@@ -35,12 +33,12 @@ type EagRealization = HashMap<String, String>;
 
 type FileCache= HashMap<String, String>;
 
-struct Analysis<'a>
+pub struct Analysis<'a>
 {
-    range: Range<usize>,
-    inside_text: &'a str,
-    eag_call: EagCall,
-    eag_name: &'a str
+    pub range: Range<usize>,
+    pub inside_text: &'a str,
+    pub eag_call: EagCall,
+    pub eag_name: &'a str
 }
 
 pub fn build(read_dir: &str, write_dir: &str)
@@ -116,7 +114,7 @@ fn convert(heml: String, table: &EagTable, cache: &mut FileCache) -> Result<Stri
     convert(heml, table, cache)
 }
 
-fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
+pub fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
 {
     let open_open = match heml.find("<<") {
         Some(i) => i,
@@ -155,7 +153,7 @@ fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
     })
 }
 
-fn generate_eag_realization<'a>(eag: &'a Eag, call: &EagCall, inside_text: &str, cache: &mut FileCache) -> Result<EagRealization, &'a str>
+pub fn generate_eag_realization<'a>(eag: &'a Eag, call: &EagCall, inside_text: &str, cache: &mut FileCache) -> Result<EagRealization, &'a str>
 {
     let mut rlz = EagRealization::new();
     rlz.insert(String::from("{{inside}}"), inside_text.to_string());
@@ -250,7 +248,7 @@ fn read_eag_doc(path: &str) -> String
     return fs::read_to_string(&eag_path).unwrap_or_else(|_| panic!("Could not open {}.", &eag_path));
 }
 
-fn replace(page: &str, rlz: &EagRealization) -> String
+pub fn replace(page: &str, rlz: &EagRealization) -> String
 {
     let mut next = page.to_string();
     for (param, arg) in rlz

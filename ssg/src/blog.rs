@@ -2,9 +2,10 @@ use std::fs;
 use std::path::{PathBuf, Path};
 use std::collections::HashMap;
 use std::iter::once;
-use super::{Eag, EagCall, ListParam, EagArg::{Text, List}};
 use chrono::NaiveDate;
 use serde::Serialize;
+use crate::heml;
+use heml::{Eag, EagCall, ListParam, EagArg::{Text, List}};
 
 #[derive(Serialize)]
 struct Preview
@@ -80,15 +81,15 @@ fn get_data(post_path: &Path, eag: &Eag, template: &str) -> (String, EagCall)
     let heml = fs::read_to_string(post_path)
         .unwrap_or_else(|_| panic!("Could not open {:?}.", post_path));        
 
-    let analysis = super::parse(&heml)
+    let analysis = heml::parse(&heml)
         .unwrap_or_else(|e| panic!("{}", e));
     
-    let mut rlz = super::generate_eag_realization(&eag, &analysis.eag_call, &carve(&analysis.inside_text), &mut HashMap::new())
+    let mut rlz = heml::generate_eag_realization(&eag, &analysis.eag_call, &carve(&analysis.inside_text), &mut HashMap::new())
         .unwrap_or_else(|param| panic!("Couldn't generate a realization of <<{}>>. Required argument {} is missing or misformatted.", analysis.eag_name, param));
     
     rlz.insert(String::from("{{link}}"), format!("/blog/{}.html", post_path.file_stem().unwrap().to_str().unwrap()));
 
-    (super::replace(template, &rlz), analysis.eag_call)
+    (heml::replace(template, &rlz), analysis.eag_call)
 }
 
 fn carve(inside: &str) -> String
