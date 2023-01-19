@@ -15,6 +15,7 @@
                     ANIA description
                 </p>
                 <div class="buttons">
+                    <<play>> proj = "a-night-in-algiers" <</play>>
                     <<hub>>
                         repo = "a-night-in-algiers"
                         theme = "dark"
@@ -57,6 +58,7 @@
                     Breakout description
                 </p>
                 <div class="buttons">
+                    <<play>> proj = "breakout" <</play>>
                     <<hub>>
                         repo = "breakout"
                         theme = "dark"
@@ -78,6 +80,7 @@
                     Breakout Redux description
                 </p>
                 <div class="buttons">
+                    <<play>> proj = "breakout-redux" <</play>>
                     <<hub>>
                         repo = "breakout-redux"
                         theme = "dark"
@@ -122,6 +125,7 @@
                     Flappy Bird description
                 </p>
                 <div class="buttons">
+                    <<play>> proj = "flappy-bird" <</play>>
                     <<hub>>
                         repo = "flappy-bird"
                         theme = "light"
@@ -162,6 +166,7 @@
                     Pong description
                 </p>
                 <div class="buttons">
+                    <<play>> proj = "pong" <</play>>
                     <<hub>>
                         repo = "pong"
                         theme = "dark"
@@ -183,6 +188,7 @@
                     S21 description
                 </p>
                 <div class="buttons">
+                    <<play>> proj = "session21" <</play>>
                     <<hub>>
                         repo = "session21"
                         theme = "light"
@@ -204,6 +210,12 @@
                     webscore description
                 </p>
                 <div class="buttons">
+                    <div>
+                        <a href="/clarinet" class="drawer center-inline">
+                            <img class="drawer center-block" src="/res/svg/music.svg" alt="Webscore">
+                            <div>See it in Action</div>
+                        </a>
+                    </div>
                     <<hub>>
                         repo = "webscore-player"
                         theme = "light"

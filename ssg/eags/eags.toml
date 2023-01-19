@@ -54,3 +54,7 @@ text_params = ["repo", "theme"]
 [read]
 path = "projects/read.heml"
 text_params = ["link", "theme"]
+
+[play]
+path = "projects/play.heml"
+text_params = ["proj"]
