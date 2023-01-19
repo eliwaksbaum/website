@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="21.425961mm"
+   height="28.33687mm"
+   viewBox="0 0 21.425961 28.33687"
+   version="1.1"
+   id="svg2533"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="music.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2535"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="-105.38259"
+     inkscape:cy="75.719339"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2530" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-133.03667,-128.34199)">
+    <polyline
+       class="Stem"
+       stroke="#000000"
+       stroke-width="2.75"
+       stroke-linejoin="bevel"
+       points="1786.63,2033.05 1786.63,1955"
+       id="polyline880"
+       transform="matrix(0.26458333,0,0,0.26458333,-331.44201,-385.5979)" />
+    <polyline
+       class="Stem"
+       stroke="#000000"
+       stroke-width="2.75"
+       stroke-linejoin="bevel"
+       points="1835.11,2020.55 1835.11,1948.75"
+       id="polyline882"
+       transform="matrix(0.26458333,0,0,0.26458333,-331.44201,-385.5979)" />
+    <path
+       class="Note"
+       d="m 141.37105,151.01943 c -0.47625,-0.87577 -1.47902,-1.35202 -2.69875,-1.35202 -0.89694,0 -1.87855,0.26458 -2.83369,0.76993 -1.74361,0.92604 -2.80194,2.48444 -2.80194,3.83646 0,0.36777 0.0794,0.73819 0.26458,1.08215 0.47625,0.87312 1.47903,1.32291 2.69875,1.32291 0.89694,0 1.87855,-0.23548 2.83369,-0.74083 1.74361,-0.92604 2.80194,-2.48708 2.80194,-3.83646 0,-0.37041 -0.0794,-0.73819 -0.26458,-1.08214"
+       id="path1280"
+       style="stroke-width:0.264583" />
+    <path
+       class="Note"
+       d="m 154.19805,147.71213 c -0.47625,-0.87577 -1.48167,-1.35202 -2.7014,-1.35202 -0.89694,0 -1.8759,0.26459 -2.83104,0.76994 -1.74361,0.92604 -2.80194,2.48444 -2.80194,3.83646 0,0.36777 0.0767,0.73819 0.26458,1.08215 0.47361,0.87312 1.47903,1.32291 2.69875,1.32291 0.89694,0 1.8759,-0.23548 2.83105,-0.74083 1.74625,-0.92604 2.80458,-2.48708 2.80458,-3.83646 0,-0.37042 -0.0794,-0.73819 -0.26458,-1.08215"
+       id="path1282"
+       style="stroke-width:0.264583" />
+    <path
+       class="Beam"
+       fill-rule="evenodd"
+       d="m 140.90538,130.08824 13.5546,-1.74625 v 3.33375 l -13.5546,1.7489 v -3.3364"
+       id="path1630"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

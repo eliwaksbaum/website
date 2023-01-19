@@ -39,6 +39,9 @@ name = "tags"
 wrapper = '<a href="/blog/tag/{{tags}}">{{tags}}</a>'
 join = ", "
 
+[score-prev]
+path = "score-preview.heml"
+text_params = ["proj", "display"]
 
 [card]
 path = "projects/card.heml"

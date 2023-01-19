@@ -99,6 +99,10 @@
                     Clarinet description
                 </p>
                 <div class="buttons">
+                    <a href="/clarinet" class="drawer center-inline">
+                        <img class="drawer center-block" src="/res/svg/music.svg" alt="Arrangements">
+                        <div>Check 'em out</div>
+                    </a>
                     <<read>>
                         link = "/blog/tag/clarinet"
                         theme = "light"
@@ -122,7 +126,7 @@
                     <</hub>>
                     <<read>>
                         link = "/blog/flappy-notes.html"
-                        theme = "dark"
+                        theme = "light"
                     <</read>>
                 </div>
             <</card>>

@@ -1,0 +1,23 @@
+div.score-holder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+img.prev{
+    height: 300px;
+}
+p.title{
+    margin: 0
+}
+a.prev{
+    color: inherit;
+    text-decoration: none;
+}
+div.sheet{
+    background-color: rgb(250, 250, 250);
+}
+div.prev{
+    padding-bottom: 10px;
+}

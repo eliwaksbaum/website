@@ -1,0 +1,8 @@
+<div class="prev">
+    <a href="/clarinet/{{proj}}.html" class="prev">
+        <div class="sheet">
+            <img src="/res/scores/{{proj}}/{{proj}}-1.svg" alt="{{display}}" class="prev">
+        </div>
+        <p class="title center-inline">{{display}}</p>
+    </a>
+</div>
