@@ -8,7 +8,10 @@
             PREVIEWS_HERE
         </div>
         <div class="tags-holder">
-            TAGS_HERE
+            <h2 class="tags">Tags</h2>
+            <div class="tag-flex">
+                TAGS_HERE
+            </div>
         </div>
     </div>
 <</base>>

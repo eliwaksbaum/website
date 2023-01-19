@@ -1,8 +1,11 @@
 <div class="post">
-    <a href="{{link}}" class="header">{{header}}</a>
+    <a href="{{link}}" class="header blog">
+        <div class="title">{{title}}</div>
+        <div class="date">{{date}}</div>
+    </a>
     <div class="preview">
-        {{preview}}
+        {{inside}}
     </div>
     <a href="{{link}}" class="read">Read More</a>
-    {{tags}}
+    <div class="tags">Tags: [[tags]]</div>
 </div>

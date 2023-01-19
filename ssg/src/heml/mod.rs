@@ -1,11 +1,14 @@
 use std::fs;
-use serde::Deserialize;
+use std::ops::Range;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use serde::Deserialize;
+
+pub mod blog;
 
 type EagTable = HashMap<String, Eag>;
 #[derive(Deserialize)]
-struct Eag
+pub struct Eag
 {
     path: String,
     text_params: Option<Vec<String>>,
@@ -31,6 +34,14 @@ enum EagArg
 type EagRealization = HashMap<String, String>;
 
 type FileCache= HashMap<String, String>;
+
+struct Analysis<'a>
+{
+    range: Range<usize>,
+    inside_text: &'a str,
+    eag_call: EagCall,
+    eag_name: &'a str
+}
 
 pub fn build(read_dir: &str, write_dir: &str)
 {
@@ -66,18 +77,50 @@ fn build_dir(dir: &Path, read_base: &Path, write_base: &Path, table: &EagTable, 
     }
 }
 
-fn generate_page(read_path: &Path, table: &EagTable, cache: &mut FileCache) -> String
+pub fn generate_page(read_path: &Path, table: &EagTable, cache: &mut FileCache) -> String
 {
     let heml = fs::read_to_string(read_path).unwrap_or_else(|_| panic!("Could not open {:?}.", &read_path));
 
-    parse(heml, table, cache).unwrap_or_else(|m| panic!("Parsing of {:?} failed while {}", read_path, m))
+    convert(heml, table, cache).unwrap_or_else(|m| panic!("Conversion of {:?} failed while {}", read_path, m))
 }
 
-fn parse(mut heml: String, table: &EagTable, cache: &mut FileCache) -> Result<String, String>
+fn convert(heml: String, table: &EagTable, cache: &mut FileCache) -> Result<String, String>
+{
+    if heml.find("<<").is_none()
+    {
+        return Ok(heml);
+    }
+
+    let analysis = match parse(&heml) {
+        Ok(a) => a,
+        Err(e) => { return Err(e); }
+    };
+
+    let eag = match table.get(analysis.eag_name) {
+        Some(e) => e,
+        None => { return Err(String::from("Looking for <<") + analysis.eag_name + ">> in the eag table. Are you sure it's spelled right?") }
+    };
+
+    let rlz = match generate_eag_realization(eag, &analysis.eag_call, analysis.inside_text, cache) {
+        Ok(r) => r,
+        Err(param) => { return Err(String::from("Generating a realization of <<") + analysis.eag_name + ">>. Required argument " + param + " is missing or misformatted.") }
+    };
+
+    let eag_doc = cache.entry(eag.path.clone()).or_insert_with(|| read_eag_doc(&eag.path));
+
+    let replacement = replace(&eag_doc, &rlz);
+
+    let mut heml = heml.clone();
+    heml.replace_range(analysis.range, &replacement);
+
+    convert(heml, table, cache)
+}
+
+fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
 {
     let open_open = match heml.find("<<") {
         Some(i) => i,
-        None => { return Ok(heml) }
+        None => panic!() //should really be impossible
     };
 
     let open_close = match heml.find(">>") {
@@ -85,42 +128,31 @@ fn parse(mut heml: String, table: &EagTable, cache: &mut FileCache) -> Result<St
         None => { return Err(String::from("searching for a \">>\" to close the eag.")) }
     };
 
-    let eag_name = &heml[(open_open + 2)..(open_close)];
+    let eag = &heml[(open_open + 2)..(open_close)];
 
     let toml_end = match (&heml[(open_close + 2)..]).find("<") {
         Some(i) => i + open_close + 2,
-        None => { return Err(String::from("searching for a \"<\" to mark the end of <<") + eag_name + ">>'s arguments.") }
+        None => { return Err(String::from("searching for a \"<\" to mark the end of <<") + eag + ">>'s arguments.") }
     };
 
-    let close_open = match heml.find(&(String::from("<</") + eag_name + ">>")) {
+    let close_open = match heml.find(&(String::from("<</") + eag + ">>")) {
         Some(i) => i,
-        None => { return Err(String::from("searching for \"<</") + eag_name + ">>\" to close the section.") }
+        None => { return Err(String::from("searching for \"<</") + eag + ">>\" to close the section.") }
     };
 
-    let close_close = close_open + eag_name.len() + 5;
+    let close_close = close_open + eag.len() + 5;
 
     let call: EagCall = match toml::from_str(&heml[(open_close + 2)..toml_end]) {
         Ok(a) => a,
-        Err(e) => { return Err(String::from("Parsing <<") + eag_name + ">>'s arguments. Here's the toml error: " + &e.to_string()) }
+        Err(e) => { return Err(String::from("Parsing <<") + eag + ">>'s arguments. Here's the toml error: " + &e.to_string()) }
     };
 
-    let eag = match table.get(eag_name) {
-        Some(e) => e,
-        None => { return Err(String::from("Looking for <<") + eag_name + ">> in the eag table. Are you sure it's spelled right?") }
-    };
-
-    let rlz = match generate_eag_realization(eag, &call, &heml[toml_end..close_open], cache) {
-        Ok(r) => r,
-        Err(param) => { return Err(String::from("Generating a realization of <<") + eag_name + ">>. Required argument " + param + " is missing or misformatted.") }
-    };
-
-    let eag_doc = read_eag_doc(&eag.path);
-
-    let replacement = replace(&eag_doc, &rlz);
-
-    heml.replace_range(open_open..close_close, &replacement);
-
-    parse(heml, table, cache)
+    Ok(Analysis {
+        range: (open_open..close_close),
+        inside_text: &heml[toml_end..close_open],
+        eag_call: call,
+        eag_name: eag
+    })
 }
 
 fn generate_eag_realization<'a>(eag: &'a Eag, call: &EagCall, inside_text: &str, cache: &mut FileCache) -> Result<EagRealization, &'a str>
@@ -202,7 +234,7 @@ fn place_list_params_into_realization<'a>(params: &'a Vec<ListParam>, call: &Eag
 fn get_list_insert(param: &ListParam, items: &Vec<String>) -> String
 {
     items.iter()
-        .map(|i| param.wrapper.replace(&(String::from("{{") + &param.name + "}}"), i))
+        .map(|item| param.wrapper.replace(&text_paramify(&param.name), item))
         .reduce(|a, b| a + &param.join + &b)
         .unwrap_or_default()
 }

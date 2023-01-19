@@ -1,7 +1,7 @@
-h1{
+.title{
     font-size: 200%;
 }
-a.header, a.header:visited, .tags > a, .tags > a:visited{
+a.blog, a.blog:visited{
     color: rgb(100, 110, 250)
 }
 .date{
@@ -27,11 +27,42 @@ div.preview > *{
 .tags-holder{
     flex-basis: 30%;
 }
-.read{
+a.read{
     padding: 10px;
     border-radius: 4px;
     text-decoration: none;
     margin-bottom: 20px;
     display: block;
     width: fit-content;
+}
+
+h2.tags{
+    padding-left: 25%;
+}
+.tag-flex{
+    display: flex;
+    flex-direction: column;
+    padding-left: 30%;
+}
+div.tag{
+    margin: 5% 0;
+}
+
+@media (max-width: 600px) {
+    .blog-flex{
+        flex-direction: column-reverse;
+    }
+    h2.tags{
+        padding-left: 1%;
+        margin: 1% 0;
+    }
+    .tag-flex{
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 2%;
+        margin-bottom: 4%;
+    }
+    div.tag{
+        margin: 1% 1%;
+    }
 }
