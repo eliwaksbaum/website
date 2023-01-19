@@ -99,10 +99,12 @@
                     Clarinet description
                 </p>
                 <div class="buttons">
-                    <a href="/clarinet" class="drawer center-inline">
-                        <img class="drawer center-block" src="/res/svg/music.svg" alt="Arrangements">
-                        <div>Check 'em out</div>
-                    </a>
+                    <div>
+                        <a href="/clarinet" class="drawer center-inline">
+                            <img class="drawer center-block" src="/res/svg/music.svg" alt="The Arrangements">
+                            <div>Check 'em out</div>
+                        </a>
+                    </div>
                     <<read>>
                         link = "/blog/tag/clarinet"
                         theme = "light"
@@ -140,8 +142,13 @@
                 <p>
                     Measuring description
                 </p>
-                <div class="buttons">
-                    
+                <div class="buttons" style="justify-content: end;">
+                    <div style="padding-right: 10%;">
+                        <a href="/measuring-spoons.html" class="drawer center-inline">
+                            <img class="drawer center-block" src="/res/svg/math.svg" alt="The Math">
+                            <div>Check it out</div>
+                        </a>
+                    </div>
                 </div>
             <</card>>
 
