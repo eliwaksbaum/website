@@ -37,11 +37,13 @@ div.card:focus > span.card, div.card:hover > span.card{
 }
 
 div.drawer{
-    display: none;
+    /*display: none;*/
     position: relative;
     top: 10px;
-    /*outline: solid 5px red;*/
     margin-bottom: 1%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 div.drawer-flex{
     display: flex;

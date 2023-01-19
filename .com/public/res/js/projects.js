@@ -6,9 +6,10 @@ window.addEventListener("resize", (e) => { sizeDrawer(); })
 function toggleDrawer(drawer_id)
 {
     let drawer = document.getElementById(drawer_id);
-    if (drawer.style.display == "block")
+
+    if (drawer.style.maxHeight)
     {
-        drawer.style.display = "none";
+        drawer.style.maxHeight = null;
         cur_open = null;
     }
     else
@@ -17,9 +18,11 @@ function toggleDrawer(drawer_id)
         if (cur_open != null)
         { 
             cur_open.style.display = "none";
+            cur_open.style.maxHeight = null;
         }
         cur_open = drawer;
         sizeDrawer();
+        drawer.style.maxHeight = drawer.scrollHeight + "px";
     }
 }
 
