@@ -1,0 +1,4 @@
+<a href="{{link}}" class="drawer center-inline">
+    <img class="drawer center-block" src="/res/svg/notes_{{theme}}.svg" alt="Blog">
+    <div>Read all about it</div>
+</a>

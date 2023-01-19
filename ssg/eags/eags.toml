@@ -41,5 +41,13 @@ join = ", "
 
 
 [card]
-path = "project-card.heml"
-text_params = ["proj-name", "display-name"]
+path = "projects/card.heml"
+text_params = ["proj-name", "display-name", "color", "background"]
+
+[hub]
+path = "projects/hub.heml"
+text_params = ["repo", "theme"]
+
+[read]
+path = "projects/read.heml"
+text_params = ["link", "theme"]
