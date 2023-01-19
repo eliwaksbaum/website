@@ -1,6 +1,6 @@
 #[macro_use] extern crate rocket;
 use rocket::fs::{FileServer, NamedFile};
-use rocket::response::content::RawHtml;
+use rocket::response::{Redirect, content::RawHtml};
 use rocket::http::Status;
 
 pub mod blog;
@@ -31,9 +31,13 @@ fn blog_home() -> Result<RawHtml<String>, Status>
 }
 
 #[get("/blog/tag/<tag>")]
-fn blog_tag(tag: &str) -> Result<RawHtml<String>, Status>
+fn blog_tag(tag: &str) -> Result<Result<RawHtml<String>, Status>, Redirect>
 {
-    blog::blog(Some(tag))
+    if tag.find(char::is_uppercase).is_some()
+    {
+        return Err(Redirect::to(uri!(blog_tag(blog::normalize(tag)))))
+    }
+    Ok(blog::blog(Some(tag)))
 }
 
 #[launch]

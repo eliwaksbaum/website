@@ -42,7 +42,7 @@ fn get_tagged_previews(all_previews: &Vec<Preview>, tag: Option<&str>) -> String
     all_previews.iter()
         .filter(|p| match tag {
             None => true,
-            Some(t) => p.tags.contains(t)
+            Some(t) => p.tags.iter().map(|x| normalize(x)).find(|x| x.eq(t)).is_some()
         })
         .fold(String::new(), |a, b| a + &b.html)
 }
@@ -62,7 +62,13 @@ fn get_tag_sidebar(previews: Vec<Preview>) -> String
     counts.sort_by_key(|(_, count)| usize::max_value() - count);
 
     counts.into_iter()
-        .map(|(tag, count)| format!("<div class=\"tag\"><a class=\"blog\" href=\"/blog/tag/{}\">{} ({})</div>", tag, tag, count))
+        .map(|(tag, count)| (normalize(&tag), tag, count))
+        .map(|(tag, pretty_tag, count)| format!("<div class=\"tag\"><a class=\"blog\" href=\"/blog/tag/{}\">{} ({})</div>", tag, pretty_tag, count))
         .reduce(|a, b| a + &b)
         .unwrap_or_default()
+}
+
+pub fn normalize(tag: &str) -> String
+{
+    tag.to_lowercase().replace(" ", "_")
 }

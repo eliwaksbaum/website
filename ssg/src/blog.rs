@@ -67,11 +67,11 @@ fn gen_preview_preds(blog_dir: &Path, template: &str) -> Vec<PreviewPredecessor>
             _ => panic!("Couldn't get the post's date from the data in {:?}.", &post.path())
         };
         let a_tags = match &call["tags"] {
-            List(l) => l,
+            List(l) => l.clone(),
             _ => panic!("Couldn't get the post's tags from the data in {:?}.", &post.path())
         };
 
-        PreviewPredecessor { date: a_date, html: a_html, tags: a_tags.clone() }
+        PreviewPredecessor { date: a_date, html: a_html, tags: a_tags }
     })
     .collect::<Vec<PreviewPredecessor>>()
 }

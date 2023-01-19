@@ -96,12 +96,12 @@ fn convert(heml: String, table: &EagTable, cache: &mut FileCache) -> Result<Stri
 
     let eag = match table.get(analysis.eag_name) {
         Some(e) => e,
-        None => { return Err(String::from("Looking for <<") + analysis.eag_name + ">> in the eag table. Are you sure it's spelled right?") }
+        None => { return Err(String::from("looking for <<") + analysis.eag_name + ">> in the eag table. Are you sure it's spelled right?") }
     };
 
     let rlz = match generate_eag_realization(eag, &analysis.eag_call, analysis.inside_text, cache) {
         Ok(r) => r,
-        Err(param) => { return Err(String::from("Generating a realization of <<") + analysis.eag_name + ">>. Required argument " + param + " is missing or misformatted.") }
+        Err(param) => { return Err(String::from("generating a realization of <<") + analysis.eag_name + ">>. Required argument \"" + param + "\" is missing or misformatted.") }
     };
 
     let eag_doc = cache.entry(eag.path.clone()).or_insert_with(|| read_eag_doc(&eag.path));
@@ -142,7 +142,7 @@ pub fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
 
     let call: EagCall = match toml::from_str(&heml[(open_close + 2)..toml_end]) {
         Ok(a) => a,
-        Err(e) => { return Err(String::from("Parsing <<") + eag + ">>'s arguments. Here's the toml error: " + &e.to_string()) }
+        Err(e) => { return Err(String::from("parsing <<") + eag + ">>'s arguments. Here's the toml error: " + &e.to_string()) }
     };
 
     Ok(Analysis {
