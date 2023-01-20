@@ -152,7 +152,10 @@ the output will be:
 ```
 
 ## Nesting and Chaining
-Unlock the full power of eags with nesting and chaining. Consider the `<<base>>` eag. It's signature looks like this:
+Unlock the full power of eags with nesting and chaining.
+
+### Chaining
+Consider the `<<base>>` eag. It's signature looks like this:
 ```
 [base]
 path = "base.heml"
@@ -167,19 +170,43 @@ and it's body like this:
         meta-desc = "{{meta-desc}}"
         css = "{{css}}"
     <</head>>
-
-    <<dump>> file = "header.html" <</dump>>
-
-    <div class="content">
-    {{inside}}
-    </div>
-
-    <<dump>> file = "footer.html" <</dump>>
-</html>
+...
 ```
 
-We can see itt makes calls to the `<<dump>>` eag to place some text from other files into the document, and to the `<<head>>` eag, to which 
-it passes the values of its own arguments. Nesting and chaining can be used to build web pages from just a few lines of heml.
+We can see it makes a call to the `<<head>>` eag, but passes the values of its own arguments. Neat!
+
+### Nesting
+Check out this heml snippet:
+```
+<<base>>
+    title = "Projects"
+    meta-desc = "Projects"
+    css = "css/projects.css"
+    
+    <div>
+        <div class="card-holder" id="holder">
+            <<card>>
+                proj-name = "ania"
+                display-name = "A Night in Algiers"
+                background = "rgb(5, 5, 5)"
+                color = "rgb(74, 216, 60)"
+
+                <<play>> proj = "a-night-in-algiers" <</play>>
+                <<hub>>
+                    repo = "a-night-in-algiers"
+                    theme = "dark"
+                <</hub>>
+                <<read>>
+                    link = "/blog/ania-notes.html"
+                    theme = "dark"
+                <</read>>
+            <</card>>
+...
+```
+Here, the implicit `inisde` argument of `<<base>>` contains a call to `<<card>>`, which in turn contains calls to `<<play>>`, `<<hub>>`, 
+and `<<read>>`. The possibilities are endless!
+
+Nesting and chaining can be used to build web pages from just a few lines of heml.
 
 ## Blog
 The SSG also generates blog previews and all the info rocket needs to deal with blog tags. It uses the same heml files though, so just 
