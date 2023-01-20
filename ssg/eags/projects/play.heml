@@ -1,4 +1,4 @@
-<a href="/{{proj}}.html" class="drawer center-inline">
-    <img class="drawer center-block" src="/res/svg/play.svg" alt="Play">
-    <div>Play the Game</div>
+<a href="/{{proj}}.html" class="button center-inline">
+    <img class="button center-block" src="/res/svg/play.svg" alt="Play">
+    <p class="button">Play the Game</p>
 </a>

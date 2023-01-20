@@ -22,7 +22,6 @@ function toggleDrawer(drawer_id)
         }
         cur_open = drawer;
         sizeDrawer();
-        drawer.style.maxHeight = drawer.scrollHeight + "px";
     }
 }
 
@@ -41,5 +40,6 @@ function sizeDrawer()
 
         cur_open.style.width = `${scale * 100}%`;
         cur_open.style.right = `${left_hand_error - right_hand_error}px`;
+        cur_open.style.maxHeight = cur_open.scrollHeight + "px";
     }
 }
