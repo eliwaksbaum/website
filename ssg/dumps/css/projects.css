@@ -58,9 +58,12 @@ div.drawer-fill{
     width: 40%;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 15px;
 }
 div.drawer-text{
     width: 60%;
+    display: flex;
+    align-items: center;
 }
 a.button{
     color: inherit;
