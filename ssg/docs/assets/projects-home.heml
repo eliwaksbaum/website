@@ -13,7 +13,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        ANIA description
+                        A text-adventure creative thesis on Camus' <i>The Stranger</i> written with my home-made C# tool for writing parser-based interactive fiction.
                     </p>
                 </div>
                 <div class="buttons">
@@ -37,7 +37,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        AoC description
+                        My Advent of Code solutions. Some are quite interesting, elegant, or clever, and some are not.
                     </p>
                 </div>
                 <div class="buttons">
@@ -60,7 +60,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Breakout description
+                        My final game following the CS50G curriculum in Unity, with some significant liberties.
                     </p>
                 </div>
                 <div class="buttons">
@@ -84,7 +84,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Breakout Redux description
+                        I decided to learn Godot by remaking my latest project, Breakout.
                     </p>
                 </div>
                 <div class="buttons">
@@ -108,7 +108,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Clarinet description
+                        Sometimes I make transcriptions and arrangements of songs I like so I can play them on my clarinet. Here are some of the more polished ones.
                     </p>
                 </div>
                 <div class="buttons">
@@ -133,7 +133,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Flappy Bird description
+                        Continuing with the CS50G curriculum in Unity with a slightly more complex game.
                     </p>
                 </div>
                 <div class="buttons">
@@ -157,7 +157,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Measuring description
+                        The recipe calls for half a teaspoon of salt, but all you have is a 1 tsp spoon. What do you do? A mathematical exploration.
                     </p>
                 </div>
                 <div class="buttons" style="justify-content: end;">
@@ -178,7 +178,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Pong description
+                        I decided to get back into game development by following the CS50G curriculum in Unity. First on the list: Pong.
                     </p>
                 </div>
                 <div class="buttons">
@@ -202,7 +202,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        S21 description
+                        A short space-noir text adventure using the features of Algiers 2.0, my home-made C# tool for writing parser-based interactive fiction.
                     </p>
                 </div>
                 <div class="buttons">
@@ -226,7 +226,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        webscore description
+                        A tool for showing and playing MuseScore projects in your web browser.
                     </p>
                 </div>
                 <div class="buttons">
@@ -255,7 +255,7 @@
 
                 <div class="drawer-text">
                     <p>
-                        Website description
+                        You're already here! Click around and enjoy.
                     </p>
                 </div>
                 <div class="buttons">
