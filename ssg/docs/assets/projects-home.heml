@@ -195,8 +195,6 @@
                 <</read>>
             <</card>>
 
-            <div style="flex-grow:10; order:1000;"></div>
-
         </div>
     </div>
     <script src="/res/js/projects.js"></script>
