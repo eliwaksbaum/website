@@ -11,20 +11,15 @@
                 background = "rgb(5, 5, 5)"
                 color = "rgb(74, 216, 60)"
 
-                <!-- <p class="drawer-desc">
-                    ANIA description
-                </p>
-                <div class="buttons">
-                    <<play>> proj = "a-night-in-algiers" <</play>>
-                    <<hub>>
-                        repo = "a-night-in-algiers"
-                        theme = "dark"
-                    <</hub>>
-                    <<read>>
-                        link = "/blog/ania-notes.html"
-                        theme = "dark"
-                    <</read>>
-                </div> -->
+                <<play>> proj = "a-night-in-algiers" <</play>>
+                <<hub>>
+                    repo = "a-night-in-algiers"
+                    theme = "dark"
+                <</hub>>
+                <<read>>
+                    link = "/blog/ania-notes.html"
+                    theme = "dark"
+                <</read>>
             <</card>>
 
             <<card>>
@@ -171,7 +166,7 @@
                 <div>
                     <a href="/clarinet" class="button center-inline">
                         <img class="button center-block" src="/res/svg/music.svg" alt="Webscore">
-                        <p class="butotn">See it in Action</p>
+                        <p class="button">See it in Action</p>
                     </a>
                 </div>
                 <<hub>>
@@ -199,6 +194,8 @@
                     theme = "light"
                 <</read>>
             <</card>>
+
+            <div style="flex-grow:10; order:1000;"></div>
 
         </div>
     </div>
