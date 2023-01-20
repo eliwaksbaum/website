@@ -1,12 +1,9 @@
 .card-holder{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(400px, 1fr));
     margin: 2%;
 }
 .listing{
-    /*position: relative;*/
-    flex: 1 1 400px;
     margin-bottom: 2%;
     padding: 0 1%;
     user-select: none;
@@ -37,7 +34,7 @@ div.card:focus > span.card, div.card:hover > span.card{
 }
 
 div.drawer{
-    /*display: none;*/
+    display: none;
     position: relative;
     top: 10px;
     margin-bottom: 1%;
