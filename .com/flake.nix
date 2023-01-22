@@ -41,6 +41,17 @@
     in
     {
       packages.rocket = rocket;
+
+      devShell = pkgs.mkShell {
+        name = "rocket-shell";
+
+        buildInputs = with pkgs; [
+          rust
+          openssl
+          pkg-config
+        ];
+      };
+
       defaultPackage = rocket;
     });
 }
