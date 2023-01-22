@@ -2,9 +2,11 @@
 use rocket::fs::{FileServer, NamedFile};
 use rocket::response::{Redirect, content::RawHtml};
 use rocket::http::Status;
+use rocket::form::Form;
 
 pub mod blog;
 pub mod projects;
+pub mod mail;
 
 #[catch(404)]
 async fn not_found() -> Option<NamedFile>
@@ -40,11 +42,21 @@ fn blog_tag(tag: &str) -> Result<Result<RawHtml<String>, Status>, Redirect>
     Ok(blog::blog(Some(tag)))
 }
 
+#[post("/contact.html", data="<email>")]
+async fn send_mail(email: Form<mail::Email<'_>>) -> Option<NamedFile>
+{
+    let path = match mail::contact(email) {
+        Ok(_) => "assets/email-ok.html",
+        Err(_) => "assets/email-err.html"
+    };
+    NamedFile::open(path).await.ok()
+}
+
 #[launch]
 fn rocket() -> _
 {
     rocket::build()
         .mount("/", FileServer::from("public/"))
-        .mount("/", routes![projects_home, blog_home, blog_tag])
+        .mount("/", routes![projects_home, blog_home, blog_tag, send_mail])
         .register("/", catchers![not_found, permission_denied])
 }

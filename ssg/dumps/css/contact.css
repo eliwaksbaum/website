@@ -3,7 +3,7 @@
     grid-template-columns: 8% 1% 40% 20%;
     grid-template-rows: 50px 50px 200px;
 }
-label{
+label, #submit{
     grid-column: 1;
     padding: 13px 0
 }
@@ -23,13 +23,11 @@ input:focus, textarea:focus {
 #message {
     grid-column-start: 3;
     grid-column-end: 5;
+    resize: none;
 }
-#subject, #email {
+#subject, #email, #name {
     grid-column-start: 3;
     grid-column-end: 4;
-}
-#submit {
-    width: 8%;
 }
 
 @media(max-width: 1300px){
