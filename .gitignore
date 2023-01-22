@@ -1,9 +1,6 @@
 ssg/target
 
 .com/*
-!.com/src
-!.com/Cargo.*
-!.com/flake.*
 !.com/public
 
 .com/public/*
