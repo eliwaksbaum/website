@@ -2,8 +2,9 @@ use rocket::serde::Deserialize;
 use rocket::response::content::RawHtml;
 use rocket::http::Status;
 use std::fs;
-use std::io::{Error, ErrorKind};
 use std::collections::{HashSet, HashMap};
+
+type ChainResult<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(Deserialize)]
 #[serde(crate = "rocket::serde")]
@@ -23,18 +24,18 @@ struct Preview
 
 pub fn blog(tag: Option<&str>) -> Result<RawHtml<String>, Status>
 {
-    fs::read_to_string("assets/blog-home.html").and_then(|mut home_html|{
-        fs::read_to_string("assets/blog-previews.toml").and_then(|toml_text| {
-            toml::from_str(&toml_text).and_then(|table:PreviewTable|
-            {
-                home_html = home_html.replace("PREVIEWS_HERE", &get_tagged_previews(&table.previews, tag));
-                home_html = home_html.replace("TAGS_HERE", &get_tag_sidebar(table.previews));
-                Ok(RawHtml(home_html))
-            })
-            .map_err(|e| Error::new(ErrorKind::InvalidData, e.to_string()))
-        })
-    })
-    .map_err(|_| Status::NotFound)
+    generate(tag).map_err(|_| Status::NotFound)
+}
+
+fn generate(tag: Option<&str>) -> ChainResult<RawHtml<String>>
+{
+    let mut home_html = fs::read_to_string("assets/blog-home.html")?;
+    let toml_text = fs::read_to_string("assets/blog-previews.toml")?;
+    let table: PreviewTable = toml::from_str(&toml_text)?;
+
+    home_html = home_html.replace("PREVIEWS_HERE", &get_tagged_previews(&table.previews, tag));
+    home_html = home_html.replace("TAGS_HERE", &get_tag_sidebar(table.previews));
+    Ok(RawHtml(home_html))
 }
 
 fn get_tagged_previews(all_previews: &Vec<Preview>, tag: Option<&str>) -> String
