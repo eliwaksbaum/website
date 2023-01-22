@@ -9,7 +9,7 @@ function toggleDrawer(drawer_id)
 
     if (drawer.style.maxHeight)
     {
-        drawer.style.display = "none"
+        //drawer.style.display = "none"
         drawer.style.maxHeight = null;
         cur_open = null;
     }
