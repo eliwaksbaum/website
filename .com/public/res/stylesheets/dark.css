@@ -45,7 +45,7 @@ a.menu{
 .post{
     background-color: rgb(50, 50, 50);
 }
-.read{
+a.read, a.read:visited{
     background-color: rgb(32, 32, 32);
     color: rgb(235, 235, 235);
 }

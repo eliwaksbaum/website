@@ -160,7 +160,7 @@
                         The recipe calls for half a teaspoon of salt, but all you have is a 1 tsp spoon. What do you do? A mathematical exploration.
                     </p>
                 </div>
-                <div class="buttons" style="justify-content: end;">
+                <div class="buttons" id="spoon-button">
                     <div style="padding-right: 10%;">
                         <a href="/measuring-spoons.html" class="button center-inline">
                             <img class="button center-block" src="/res/svg/math.svg" alt="The Math">

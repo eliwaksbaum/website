@@ -1,10 +1,12 @@
 .grid {
     display: grid;
-    grid-template-columns: 8% 1% 40% 20%;
-    grid-template-rows: 50px 50px 200px;
+    grid-template-columns: 120px 1fr 4fr 1fr;
+    grid-template-rows: 50px 50px 300px;
+    padding: 0 2%;
 }
 label, #submit{
-    grid-column: 1;
+    grid-column-start: 1;
+    grid-column-end: 2;
     padding: 13px 0
 }
 input, textarea {
@@ -21,39 +23,17 @@ input:focus, textarea:focus {
     border-width: 3px;
 }
 #message {
-    grid-column-start: 3;
-    grid-column-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 4;
     resize: none;
 }
 #subject, #email, #name {
-    grid-column-start: 3;
-    grid-column-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
-@media(max-width: 1300px){
+@media(max-width:500px) {
     .grid {
-        grid-template-columns: 10% 1% 50% 25%;
-        grid-template-rows: 50px 50px 300px;
-    }
-    #submit {
-        width: 10%;
-    }
-}
-@media(max-width: 800px){
-    .grid {
-        grid-template-columns: 15% 1% 50% 25%;
-        grid-template-rows: 50px 50px 300px;
-    }
-    #submit {
-        width: 15%;
-    }
-}
-@media(max-width: 800px){
-    .grid {
-        grid-template-columns: 20% 1% 50% 25%;
-        grid-template-rows: 50px 50px 300px;
-    }
-    #submit {
-        width: 20%;
+        grid-template-columns: 80px 4fr 1fr;
     }
 }

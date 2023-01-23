@@ -3,9 +3,10 @@ let holder = document.getElementById("holder");
 
 window.addEventListener("resize", (e) => { sizeDrawer(); })
 
-function toggleDrawer(drawer_id)
+function toggleDrawer(proj_name)
 {
-    let drawer = document.getElementById(drawer_id);
+    console.log(`${proj_name}-drawer`);
+    let drawer = document.getElementById(`${proj_name}-drawer`);
 
     if (drawer.style.maxHeight)
     {

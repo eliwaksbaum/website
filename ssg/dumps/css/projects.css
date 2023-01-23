@@ -1,12 +1,13 @@
 .card-holder{
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(400px, 1fr));
-    margin: 2%;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    column-gap: 3%;
+    margin: 0 2%;
+    margin-top: 2%
 }
 .listing{
-    margin-bottom: 2%;
-    padding: 0 1%;
     user-select: none;
+    margin-bottom: 5%;
 }
 div.card{
     position:relative
@@ -52,6 +53,9 @@ div.drawer-fill{
     padding: 1%;
     border-radius: 10px;
 }
+h1.drawer{
+    font-size: 250%;
+}
 .buttons{
     display:flex;
     flex-direction: row;
@@ -72,6 +76,7 @@ a.button{
     flex-direction: column;
     justify-content: space-between;
     height: fit-content;
+    margin: 0 1%;
 }
 p.button{
     font-size: 85%;
@@ -80,6 +85,9 @@ p.button{
 img.button{
     height: 50px;
     margin-bottom: 10%;
+}
+#spoon-button{
+    justify-content: end;
 }
 
 @media(max-width:800px) {
@@ -100,8 +108,14 @@ img.button{
     .buttons{
         width: 100%;
     }
+    #spoon-button{
+        justify-content: space-around;
+    }
 }
 @media(max-width:500px) {
+    .card-holder{
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
     img.button{
         height: 36px;
     }

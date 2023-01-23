@@ -16,13 +16,13 @@
         </div>
         
         <div class="homeflex">
-            <div class="homediv">
+            <!-- <div class="homediv">
                 <a href="/projects?tag=Game Development" class="homelink">
                     <img src="res/png/home_gd.png" class="homelink">
                     <span class="homelink">Game Development</span>
                 </a>
-            </div>
-            <div class="homediv">
+            </div> -->
+            <!-- <div class="homediv">
                 <a href="/projects?tag=Programming" class="homelink">
                     <img src="res/png/home_programming.png" class="homelink">
                     <span class="homelink">Programming</span>
@@ -33,8 +33,8 @@
                     <img src="res/png/home_music.png" class="homelink">
                     <span class="homelink">Music</span>
                 </a>
-            </div>
-            <script>colorize();</script>
+            </div> -->
         </div>
+        <script>colorize();</script>
     </div>
 <</base>>
