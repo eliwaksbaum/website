@@ -11,5 +11,4 @@
         <<dump>> file = "css/base.css" <</dump>>
         @@css@@
     </style>
-    <inside></inside>
 </head>
