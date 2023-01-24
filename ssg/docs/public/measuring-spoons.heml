@@ -7,35 +7,35 @@
     <h2>1. The Problem</h2>
     <p>You’re in the middle of baking your favorite chocolate chip cookies. Everything is going swimmingly, until you start to add the salt. The recipe calls for 1/2 of a teaspoon, but you seem to have misplaced your one half measuring spoon. In fact, you can’t find any of your fractional teaspoons. All you have is a hemispherical 1 teaspoon measure, so you resign to estimating the half teaspoon you need. It occurs to you, however, that the task of filling your measuring spoon half-way might be harder than it sounds. You figure you could guess at the half-way mark reasonably well, but filling the spoon to half of its vertical height will not result in filling half of its volume. So the question arises, to what fraction of the height should you fill the teaspoon to end up with half a teaspoon of volume, or any other fraction you want?</p>
     <h2>2. Finding the Volume Formula</h2>
-    <p>To find the volume occupied by the bottom n<sup>th</sup> of a hemisphere, we can add up the volumes of infinitely thin discs of increasing radius, starting with a disc at height 0, corresponding to the disc of radius 0 at bottom-most point of the spoon, and ending with the disc at the height of <img class="math-inline themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex0.svg">. </p>
-    <div class="diagram"><img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/disc.svg"></div>
-    <p>The volume of each such disc is equal to <img class="math-inline themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex1.svg">. To integrate this formula with respect to the distance from the bottom of the spoon (x) we need to find a way to define the radius of each disc (r) in terms of x. To do this, we can assign to each height an angle θ such that a radius θ degrees from the top of the spoon hits the edge at x distance from the bottom of the spoon.</p>
-    <div class="diagram"><img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/finding r.svg"></div>
+    <p>To find the volume occupied by the bottom n<sup>th</sup> of a hemisphere, we can add up the volumes of infinitely thin discs of increasing radius, starting with a disc at height 0, corresponding to the disc of radius 0 at bottom-most point of the spoon, and ending with the disc at the height of <img class="math-inline themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex0.svg">. </p>
+    <div class="diagram"><img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/disc.svg"></div>
+    <p>The volume of each such disc is equal to <img class="math-inline themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex1.svg">. To integrate this formula with respect to the distance from the bottom of the spoon (x) we need to find a way to define the radius of each disc (r) in terms of x. To do this, we can assign to each height an angle θ such that a radius θ degrees from the top of the spoon hits the edge at x distance from the bottom of the spoon.</p>
+    <div class="diagram"><img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/finding r.svg"></div>
     <p>Considering the above diagram and the Pythagorean trig identity we get the following relation for the distance from the bottom of the spoon and the radius of the resulting disc for a spoon of radius R:</p>
     <div class="formula">
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex2.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex2.svg">
         <br>
         or
         <br>
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex3.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex3.svg">
     </div>
-    <p>Now we can rewrite our formula for the volume of the disc as <img class="math-inline themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex4.svg">, and now we’re ready to integrate.</p>
+    <p>Now we can rewrite our formula for the volume of the disc as <img class="math-inline themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex4.svg">, and now we’re ready to integrate.</p>
     <h2>3. The Integral</h2>
     <div class="formula">
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex5.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex5.svg">
         <br>
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex6.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex6.svg">
         <br>
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex7.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex7.svg">
         <br>
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex8.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex8.svg">
     </div>
     <h2>4. The Function</h2>
     <p>With the expression for the volume found, let’s try and rearrange it to get a function for the necessary height (h) in terms of the denominator of the desired fraction of volume of the spoon (f). And since we’re working with ratios of the total height and volume, let’s just set R to 1.</p>
     <div class="formula">
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex9.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex9.svg">
         <br>
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex10.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex10.svg">
     </div>
     <p>So we couldn’t isolate h, but now we have neat little cubic we can plot to get some answers.</p>
     <h2>5. The Results</h2>
@@ -69,9 +69,9 @@
         <td>8</td>
         <td>.305</td>
     </table>
-    <p>These numbers will help us aim, but they don’t let us know the consequences of our measurements falling short. For that, we need to compare the resulting fractional volume of filling up the spoon to a height of only <img class="math-inline themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex11.svg"> to the desired <em>volume</em> of <img class="math-inline themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex11.svg">. The equation uses the same integral we derived previously:</p>
+    <p>These numbers will help us aim, but they don’t let us know the consequences of our measurements falling short. For that, we need to compare the resulting fractional volume of filling up the spoon to a height of only <img class="math-inline themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex11.svg"> to the desired <em>volume</em> of <img class="math-inline themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex11.svg">. The equation uses the same integral we derived previously:</p>
     <div class="formula">
-        <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/latex12.svg">
+        <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/latex12.svg">
     </div>
     <p>By plugging in 3 for f, we see that measuring to only a third of the way up a 1 tbsp spoon would result in a volume .1852 tbsp less than what we bargained for. Baking, though, is much more reliant on the ratios between ingredients, so the percent error might be a better metric of how far off this naive measurement is. For f = 3, the percent error is over 50, meaning the resulting volume is less than half of what it should be, and it only gets worse as f grows. Below is a table and a graph of the rest of the volume errors and percent errors.</p>
 
@@ -114,7 +114,7 @@
             </tr>
         </table>
         <div class="flexed">
-            <img class="math-display themed" data-themedSrc="/res/svg/measuring-spoons/theme/errorgraph.svg">
+            <img class="math-display themed" data-themedSrc="/res/themed/cur/measuring-spoons/errorgraph.svg">
         </div> 
     </div>
 

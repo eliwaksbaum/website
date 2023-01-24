@@ -7,7 +7,7 @@
                 <a href="/contact.html" class="menu menu-span">Say Hi</a>
             </span>
             <button onclick="toggleTheme();" class="chill desktop-right">
-                <img id="theme-button-desktop" class="fitH">
+                <img id="theme-button-desktop" class="fitH themed" src="/res/themed/cur/theme.svg">
             </button>
         </nav>
 </header>
@@ -16,20 +16,19 @@
         <a class="menu header-left" href="/">EW</a>
         <div class="dropcont">
             <button onClick="menuDown()" class="mobile-right chill">
-                <img class="themed fitH" data-themedSrc="/res/svg/hamburger_theme.svg">
+                <img class="themed fitH" src="/res/themed/cur/hamburger.svg">
             </button>
             <div id="dropdown" class="dropdown fitW">
                 <a class="colorful menu" href="/projects/">Projects</a>
                 <a class="colorful menu" href="/blog/">Blog</a>
                 <a class="colorful menu" href="/contact.html">Say Hi</a>
                 <div class="colorful menu">
-                    <button onClick="toggleTheme()" class="chill fitH fitW">
-                        <img id="theme-button-mobile">
+                    <button onClick="toggleTheme();" class="chill fitH fitW">
+                        <img id="theme-button-mobile" class="themed" src="/res/themed/cur/theme.svg">
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 </header>
-<script>findButton();</script>
 <script>colorize();</script>

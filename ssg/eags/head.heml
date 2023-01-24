@@ -3,8 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/res/js/theme.js"></script>
     <script src="/res/js/mobile.js"></script>
-    <link id="theme" rel="stylesheet">
-    <script>findCss();</script>
+    <link id="theme" rel="stylesheet" href="/res/themed/cur/theme.css">
     <title>{{title}}</title>
     <meta name="description" content="{{meta-desc}}">
     <style>
