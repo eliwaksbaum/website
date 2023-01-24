@@ -57,7 +57,7 @@ fn gen_preview_preds(blog_dir: &Path, template: &str) -> Vec<PreviewPredecessor>
         path: String::new()
     };
 
-    fs::read_dir(&blog_dir).expect("Couldn't find blog heml dir.").map(|entry|
+    fs::read_dir(blog_dir).expect("Couldn't find blog heml dir.").map(|entry|
     {
         let post = entry.expect("Something went wrong in the DirEntry iterator.");
         let (a_html, call) = get_data(&post.path(), &preview_eag, template);
@@ -84,7 +84,7 @@ fn get_data(post_path: &Path, eag: &Eag, template: &str) -> (String, EagCall)
     let analysis = heml::parse(&heml)
         .unwrap_or_else(|e| panic!("{}", e));
     
-    let mut rlz = heml::generate_eag_realization(&eag, &analysis.eag_call, &carve(&analysis.inside_text), &mut HashMap::new())
+    let mut rlz = heml::generate_eag_realization(eag, &analysis.eag_call, &carve(analysis.inside_text), &mut HashMap::new())
         .unwrap_or_else(|param| panic!("Couldn't generate a realization of <<{}>>. Required argument {} is missing or misformatted.", analysis.eag_name, param));
     
     rlz.insert(String::from("{{link}}"), format!("/blog/{}.html", post_path.file_stem().unwrap().to_str().unwrap()));

@@ -65,7 +65,7 @@ fn build_dir(dir: &Path, read_base: &Path, write_base: &Path, table: &EagTable, 
             {
                 fs::create_dir(&write).unwrap_or_else(|_| panic!("Could not create dir {}", write.display()));
             }
-            build_dir(&path, read_base, &write_base, table, cache);
+            build_dir(&path, read_base, write_base, table, cache);
         }
         else
         {
@@ -84,7 +84,7 @@ pub fn generate_page(read_path: &Path, table: &EagTable, cache: &mut FileCache) 
 
 fn convert(heml: String, table: &EagTable, cache: &mut FileCache) -> Result<String, String>
 {
-    if heml.find("<<").is_none()
+    if !heml.contains("<<")
     {
         return Ok(heml);
     }
@@ -106,7 +106,7 @@ fn convert(heml: String, table: &EagTable, cache: &mut FileCache) -> Result<Stri
 
     let eag_doc = cache.entry(eag.path.clone()).or_insert_with(|| read_eag_doc(&eag.path));
 
-    let replacement = replace(&eag_doc, &rlz);
+    let replacement = replace(eag_doc, &rlz);
 
     let mut heml = heml.clone();
     heml.replace_range(analysis.range, &replacement);
@@ -114,7 +114,7 @@ fn convert(heml: String, table: &EagTable, cache: &mut FileCache) -> Result<Stri
     convert(heml, table, cache)
 }
 
-pub fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
+pub fn parse(heml: &str) -> Result<Analysis, String>
 {
     let open_open = match heml.find("<<") {
         Some(i) => i,
@@ -128,7 +128,7 @@ pub fn parse<'a>(heml: &'a str) -> Result<Analysis<'a>, String>
 
     let eag = &heml[(open_open + 2)..(open_close)];
 
-    let toml_end = match (&heml[(open_close + 2)..]).find("<") {
+    let toml_end = match heml[(open_close + 2)..].find('<') {
         Some(i) => i + open_close + 2,
         None => { return Err(String::from("searching for a \"<\" to mark the end of <<") + eag + ">>'s arguments.") }
     };
@@ -159,14 +159,14 @@ pub fn generate_eag_realization<'a>(eag: &'a Eag, call: &EagCall, inside_text: &
     rlz.insert(String::from("{{inside}}"), inside_text.to_string());
 
     eag.text_params.as_ref()
-        .map_or_else(|| Ok(()), |params| place_text_params_into_realization(&params, call, &mut rlz))
+        .map_or_else(|| Ok(()), |params| place_text_params_into_realization(params, call, &mut rlz))
         .and_then(|_|
             eag.file_params.as_ref()
-                .map_or_else(|| Ok(()), |params| place_file_params_into_realization(&params, call, &mut rlz, cache))
+                .map_or_else(|| Ok(()), |params| place_file_params_into_realization(params, call, &mut rlz, cache))
         )
         .and_then(|_|
             eag.list_params.as_ref()
-                .map_or_else(|| Ok(()), |params| place_list_params_into_realization(&params, call, &mut rlz))
+                .map_or_else(|| Ok(()), |params| place_list_params_into_realization(params, call, &mut rlz))
         )
         .map(|_| rlz)
 }
@@ -196,7 +196,7 @@ fn place_file_params_into_realization<'a>(params: &'a Vec<String>, call: &EagCal
         match call.get(p)
         {
             Some(EagArg::Text(path)) => {
-                let file_text = cache.entry(path.clone()).or_insert_with(|| read_dump_doc(&path));
+                let file_text = cache.entry(path.clone()).or_insert_with(|| read_dump_doc(path));
                 rlz.insert(file_paramify(p), file_text.clone());
             },
             _ => { return Err(p); }
@@ -208,7 +208,7 @@ fn place_file_params_into_realization<'a>(params: &'a Vec<String>, call: &EagCal
 fn read_dump_doc(path: &str) -> String
 {
     let dump_path = String::from("dumps/") + path;
-    return fs::read_to_string(&dump_path).unwrap_or_else(|_| panic!("Could not open {}.", &dump_path));
+    fs::read_to_string(&dump_path).unwrap_or_else(|_| panic!("Could not open {}.", &dump_path))
 }
 
 fn file_paramify(p: &str) -> String
@@ -229,7 +229,7 @@ fn place_list_params_into_realization<'a>(params: &'a Vec<ListParam>, call: &Eag
     Ok(())
 }
 
-fn get_list_insert(param: &ListParam, items: &Vec<String>) -> String
+fn get_list_insert(param: &ListParam, items: &[String]) -> String
 {
     items.iter()
         .map(|item| param.wrapper.replace(&text_paramify(&param.name), item))
@@ -245,7 +245,7 @@ fn list_paramify(p: &str) -> String
 fn read_eag_doc(path: &str) -> String
 {
     let eag_path = String::from("eags/") + path;
-    return fs::read_to_string(&eag_path).unwrap_or_else(|_| panic!("Could not open {}.", &eag_path));
+    fs::read_to_string(&eag_path).unwrap_or_else(|_| panic!("Could not open {}.", &eag_path))
 }
 
 pub fn replace(page: &str, rlz: &EagRealization) -> String
