@@ -1,4 +1,4 @@
 <a href="{{link}}" class="button center-inline">
-    <img class="button center-block" src="/res/svg/notes_{{theme}}.svg" alt="Blog">
+    <img class="button center-block" src="/res/themed/{{theme}}/notes.svg" alt="Blog">
     <p class="button">Read all about it</p>
 </a>
