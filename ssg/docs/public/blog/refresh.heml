@@ -1,0 +1,97 @@
+<<blog>>
+    title = "Website Refresh"
+    date = "01/24/2023"
+    tags = ["Website", "Programming", "Rust"]
+    
+    <p>
+        A lot has happened in the past two years. So much so, in fact, that it's hard to believe it's only been two years. I went from New York to 
+        Vermont to Montreal, received four COVID vaccines, started university, and was even briefly being paid to work in software development 
+        (as an intern). I've learned a lot, both in and beyond the lecture hall. This is all to say, quite melodramatically, that it was time for a change. 
+    </p>
+    <p>
+        Two years ago, just getting this website operational was an appropriate goal. After a few more projects and few computer 
+science courses, though, I think we can aim higher. The site was definitely still functional, and every time I added a new 
+project or feature I was pleasantly surprised at how easy it was to achieve within the slapdash system I built in 2021. However, 
+an upgrade was overdue. The visuals and layout of the site, the way I generate the pages from templates, and the way 
+those pages get served have all received a refresh, which I think gets more of me across as I am in 2023.
+    </p>
+
+    <h2>The Cosmetics</h2>
+    <p>
+        The biggest visual changes are the new, sleeker projects page and the blog. The old projects page was a bit of a mess. Projects 
+had different numbers of buttons, the pictures were all in different styles, and the tone of the intros varied wildly. It felt very cluttered 
+and full of dead space at the same time. For the new version, I tried to make things feel more consistent and stylized. The layout is inspired 
+by the album view in a music player, and so I approached the visuals like album covers. It was a lot of fun designing the cards; I ought to 
+spend more time goofing around in Inkscape. I think the result is much more visually engaging, plus it fits more projects on the screen
+at once.
+    </p>
+    <p>
+        As for the blog, it serves two purposes. The projects that end up on here often take a long time for me to complete as I fall in and out 
+of being obsessed with one problem, then move on to something else, then get lazy over summer break, etc. I think waiting for something 
+to be completely finished before I write any thoughts on it or even admit it exists is not exactly helpful. The point of this site is to give me an 
+outlet to share and discuss different creative projects, which ideally encourages me to work on those projects more. Having a separate place 
+here for “blog posts” as opposed to just “all-done posts” that go with finishing a project will allow me to get those dopamine boosts that 
+come from publishing something new to the site more often. I can share more of the process behind a project, more work-in-progress type 
+stuff, and prove to the world (and more importantly, to myself) that I'm not just doing nothing for months at a time.
+    </p>
+    <p>
+        The blog also helps to compartmentalize the place. This is my website, so of course it needs to be silly and 
+have lots of bad jokes in it. However, it's also supposed to be a sort of portfolio that some serious people might hopefully look at 
+sometimes. So I feel more 
+comfortable being goofiest in a section that's explicitly called a blog, where it's expected for the voice to be more personal and casual. 
+Then the “work” can live in its own section that's a little more serious and with a little less commentary than before. If someone just wants 
+to know what kind of stuff I can code up and then go look at some github pages, they can do that now without running across <i>too</i> 
+much funny stuff. But fear not, for the funny stuff will live on in the blog, where only the cool kids will see it 😎.
+    </p>
+
+    <h2>The SSG</h2>
+    <p>
+        The first decision I made when redesigning the static site generator portion of the website was to move from the type-less wasteland 
+of Python into the algebraic oasis of Rust. “But Eli,” I can hear some of you saying. “Static site generation involves lots of data parsing, 
+reading from formats like JSON or TOML which don't have strong type systems themselves. Surely strict, persnickety Rust is ill-equipped 
+to handle that kind of uncertainty; not to mention the headaches that come with string manipulation and file system operations. You'd be 
+better off working in a more flexible language like Python.” And to those uninitiated among you I say: “the uncertainty or complexity 
+contained within an operation or a piece of data doesn't go away simply because a language's type system can't express it. It's still there 
+but now you have no way to tell the compiler about it, so the compiler can't help you deal with it. The compiler is your friend. You'll feel 
+better if you just talk to the compiler. How many times did I google 'best way to concatenate strings in Rust'? Not important.”
+    </p>
+    <p>
+        To be fair, I wouldn't be talking like without <a target="_blank" href="https://serde.rs">serde</a>, which made reading and writing to TOML an absolute breeze. Automatically inferring 
+field names, optional keys, the same key having values of different types in different tables, with the right structs, enums, and options, 
+serde could handle it all. And when something does go wrong, I usually know exactly where and when it happened thanks to wrapping 
+the relevant info in a Result and passing it back up the chain.
+    </p>
+    <p>
+        I also switched from laying out all the info for the pages in one huge TOML file to having a separate document for each page. Now the 
+directory structure of the source files and the final HTML is exactly the same, which makes generating a good deal simpler. But if each 
+page has its own file, what should that file look like? (I actually considered that question before I started coding anything up, which I'm 
+counting as a big personal win.) I want to be able easily include things like the head section and header that need to be a part of pretty 
+much every page. Adding something like a Unity player or music score should be simple too, but I also want to be able to include arbitrary 
+HTML content as I need it. The solution I came up with is a modified sort of HTML where certain tags are actually place holders for 
+the content of other files. You can read a very in-depth and githubby sounding description of how it works <a target="_blank" href="https://github.com/eliwaksbaum/website#heml">here</a>, but that's the gist. The 
+result is a system that strikes a nice balance between having ready-to-go templates and being able to customize on the fly.
+    </p>
+
+    <h2>The Server</h2>
+    <p>
+        The story doesn't end with the static, though. The server side operations have also moved from Python to Rust, specifically the fantastic 
+<a target="_blank" href="https://rocket.rs">Rocket framework</a>. Like Rust in general, it's powerful, provides high-level abstractions as well as the power to dive into the guts of things, and has 
+excellent error handling. It's also a total one-stop shop, so nginx just does a proxy pass now and Rocket takes care of the rest. Which means 
+I can run it locally on my laptop and the result is practically the same as when it goes live, which makes testing things so much easier.
+    </p>
+    <p>
+        Rocket handles the stuff you'd expect it to, like sorting the blog posts by date and tag and sending emails from the contact page. But 
+the new access to the server side of things also lets me give the site some superpowers. If you visit the projects page a bunch of times, 
+you'll notice the order of the cards is always different. And if you look at the javascript code that handles switching between 
+light and dark themes, it looks suspiciously sparse. In fact, the images that have different dark and light versions have these weird looking 
+src attributes. How can <code>/res/themed/cur/notes.svg</code> point to two different files at once? I'll leave it as an exercise for the reader.
+    </p>
+
+    <p>
+        And that's about it. I'm hopeful that I've thought things through a little better this time, to the point that these tools are powerful 
+and versatile enough to accommodate the next big idea I have for this site. But if not, designing a new website every two years doesn't 
+sound like the worst way to spend my time.
+    </p>
+
+
+<</blog>>
