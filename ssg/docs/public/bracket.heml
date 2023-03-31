@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+    <head>
+        <script type="text/javascript" src="/res/js/bracket/jsxgraphcore.js"></script>
+        <script type="module" src="/res/js/bracket/main.js"></script>
+    </head>
+    <style>
+        #canvas {
+            display: flex;
+            flex-direction: row;
+        }
+
+        div.column {
+            margin: 0 8px;
+        }
+
+        #slider-box {
+            margin-top: 10px;
+            width: fit-content;
+            padding: 3px;
+            border: black 2px solid;
+        }
+        div.slider {
+            display: flex;
+            align-items: center;
+            padding: 3px;
+        }
+        input.slider {
+            margin: 0 10px;
+        }
+
+        #seed-table {
+            margin-top: 8px;
+        }
+
+        div.seed-row {
+            padding-right: 5px;
+            margin: 8px 0;
+
+            display: flex;
+            justify-content: space-between;
+            border-radius: 4px;
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        div.seed-flex {
+            width: 85%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        span.seed-text {
+            display:inline-block;
+            font-size: 120%;
+        }
+
+        <<dump>> file = "css/jsxgraph.css" <</dump>>
+    </style>
+    <body>
+        <div id="canvas">
+            <div class="column">
+                <div id="box" class="jxgbox" style="width:800px; height:600px;"></div>
+                
+                <div id="slider-box">
+                    <div class="slider">
+                        <label for="r_slider">Total teams in the tournament:</label>
+                        <input class="slider" type="range" id="r_slider" min="2" onchange="update_T();" oninput="update_T();">
+                        <label id="T_label" for="r_slider"></label>
+                    </div>
+                    <div class="slider">
+                        <label for="k_slider">Round</label>
+                        <input class="slider" type="range" id="k_slider" min="1" onchange="update_k(this.value);" oninput="update_k(this.value);">
+                        <label id="k_label" for="k_slider"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div>
+                    <label for="n_input">Seed</label>
+                    <input type="number" id="n_input" min="1" max="128">
+                    <input type="button" onclick="plot();" value="Add to Graph">
+                </div>
+
+                <div id="seed_table">
+
+                </div>
+            </div>
+        </div>
+    
+        <script type="module">
+            init();
+        </script>
+    </body>
+
+    <template id="seed_template">
+        <div class="seed-row">
+            <svg width="20px" height="100%">
+                <rect width="100%" height="100%"></rect>
+            </svg>
+            <div class="seed-flex">
+                <span class="seed-text"></span>
+                <input class="remove-button" type="button" value="remove">
+            </div>
+        </div>
+    </template>
+</html>
