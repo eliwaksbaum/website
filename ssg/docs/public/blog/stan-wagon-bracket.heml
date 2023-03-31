@@ -1,0 +1,37 @@
+<<blog>>
+    title = "Stan Wagon's March Madness Puzzle"
+    date = "03/31/2023"
+    tags = ["Math", "Programming"]
+
+    <p>
+        I have been on Stan Wagon's wonderful <a target="_blank" href="https://stanwagon.com/pow/">problem of the week</a> email list for some time but I confess that I haven't given 
+        any of the problems serious thought until now. I received this very timely problem a week ago and have been a little obsessed with it since. 
+        The problem "1358: Seedings and Probabilites", submitted by Erich Friedman of Stetson University in Deland, Florida, is given as follows:
+    </p>
+
+    <i>
+        <p>
+            Suppose there are 8 teams in a single elimination tournament, seeded in the usual way from #1 (best) to #8 (worst). In the first round, #1 plays #8, #4 plays #5 (and the winner of 1 vs 8 then plays the winner of 4 vs 5), and #2 plays #7, #3 plays #6 (and the winner of 3 vs 6 then plays the winner of 2 vs 7). The two unbeaten teams after the second round play in the final game to determine the tournament winner.
+        </p>
+        <p>
+            Suppose the lower seed (the better team) wins with fixed probability p, where 1/2 ≤ p ≤ 1. The #1 seed would prefer p=1 as that guarantees that they win every game. What value of p would team #2 want so as to maximize its chance of winning the tournament? Same question for the other six teams.
+        </p>
+    </i>
+
+    <p>
+        Now I'm far from done chewing this over, but I want to share what I've managed so far. I took a very computer-science approach and found some 
+        recursive algorithms for computing all the seeds, brackets, and probabilities involved. I coded it up in javascript, discovered the lovely 
+        <a target="_blank" href="http://jsxgraph.uni-bayreuth.de">JSX Graph</a>, read up on the <a target="_blank" href="https://en.wikipedia.org/wiki/Golden-section_search">golden section search</a> algorithm, and ended up with this little <a target="_blank" href="/bracket.html">applet</a> that solves the generalized 
+        form of the problem.
+    </p>
+    <p>
+        The x-axis is the fixed probability of the lower seed winning each game, and the y-axis is the probability that a given seed 
+        wins the tournament. Though using the sliders on the bottom, you can change the size of the tournament and the round to consider, to find the 
+        odds of things like a team winning its second-round game or making it to the semi-finals.
+    </p>
+    <p>
+        Graphing it all out I can see quite a few patterns, so I bet there's some more insight lurking somewhere. I want to analyze my recurrences to see if I 
+        can get something to pop out, or maybe I need to start over with a new approach. Once I feel satisfied (and probably once the solution is released 
+        so I can make sure I'm not completely embarassing myself), I might post a more mathematical write-up.
+    </p>
+<</blog>>
